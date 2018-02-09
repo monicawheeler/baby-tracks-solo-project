@@ -1,10 +1,12 @@
-myApp.controller('LoginController', ['$http', '$location', 'UserService', function($http, $location, UserService) {
+myApp.controller('LoginController', ['$http', '$location', 'FamilyService', function($http, $location, FamilyService) {
     console.log('LoginController created');
     var self = this;
+
     self.user = {
       username: '',
       password: ''
     };
+
     self.message = '';
 
     self.login = function () {
@@ -12,12 +14,12 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
         self.message = "Enter your username and password!";
       } else {
         console.log('sending to server...', self.user);
-        $http.post('/api/user/login', self.user).then(
+        $http.post('/api/family/login', self.user).then(
           function (response) {
             if (response.status == 200) {
               console.log('success: ', response.data);
               // location works with SPA (ng-route)
-              $location.path('/user');
+              $location.path('/family');
             } else {
               console.log('failure error: ', response);
               self.message = "Incorrect credentials. Please try again.";
@@ -35,9 +37,9 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
         self.message = "Choose a username and password!";
       } else {
         console.log('sending to server...', self.user);
-        $http.post('/api/user/register', self.user).then(function (response) {
+        $http.post('/api/family/register', self.user).then(function (response) {
           console.log('success');
-          $location.path('/home');
+          $location.path('/login');
         },
           function (response) {
             console.log('error');

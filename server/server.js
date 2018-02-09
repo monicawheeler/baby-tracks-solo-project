@@ -7,7 +7,7 @@ const passport = require('./strategies/sql.localstrategy');
 const sessionConfig = require('./modules/session-middleware');
 
 // Route includes
-const userRouter = require('./routes/user.router');
+const familyRouter = require('./routes/family.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
-app.use('/api/user', userRouter);
+app.use('/api/family', familyRouter);
 
 // Serve static files
 app.use(express.static('server/public'));
