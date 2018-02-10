@@ -1,19 +1,21 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
-<div class="container">
-  <h1 class="lead">Login</h1>
-    <h1 class="lead alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-    <form class="form" ng-submit="vm.login()">
-      <div class="form-row">
-          <label for="username">Username:</label>
-          <input type="text" ng-model="vm.user.username" />
-      </div>
-      <div class="form-row">
-          <label for="password">Password:</label>
-          <input type="password" ng-model="vm.user.password" />
-      </div>
-      <div class="form-row">
-          <input class="btn btn-alt" type="submit" name="submit" value="Log In" />
-          <a class="btn btn-alt" href="#!register">Register</a>
-      </div>
-    </form>
+<div class="input-container">
+    <div class="input-inner">
+        <h1 class="input-header">Login</h1>
+        <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+        <form class="input-form form" ng-submit="vm.login()">
+        <div class="input-row">
+            <label class="input-label" for="username">Username:</label>
+            <input class="input" type="text" ng-model="vm.user.username" placeholder="Username" />
+        </div>
+        <div class="input-row">
+            <label class="input-label" for="password">Password:</label>
+            <input class="input" type="password" ng-model="vm.user.password" placeholder="Password" />
+        </div>
+        <div class="input-row">
+            <input class="btn btn-alt" type="submit" name="submit" value="Log In" />
+            <a class="btn btn-alt" href="#!register">Register</a>
+        </div>
+        </form>
+    </div>
 </div>
