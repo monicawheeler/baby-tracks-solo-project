@@ -106,6 +106,7 @@ h1 {
   height: 100vh;
   overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -118,6 +119,13 @@ h1 {
   left: 0;
   z-index: 0;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.landing-header,
+.langing-tagline {
+  flex: 0 1 100%;
+  width: 100%;
+  max-width: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

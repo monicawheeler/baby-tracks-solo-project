@@ -8,18 +8,22 @@
         <!-- Styles -->
         <link rel="stylesheet" href="styles/main.css">
         <link href="https://fonts.googleapis.com/css?family=Lato:300|Playfair+Display" rel="stylesheet">
+
         <!-- Vendors -->
         <script type="text/javascript" src="vendors/angular.min.js"></script>
         <script type="text/javascript" src="vendors/angular-route.min.js"></script>
         <script type="text/javascript" src="vendors/angular-messages.min.js"></script>
+        <script type="text/javascript" src="vendors/sweetalert.min.js"></script>
 
         <!-- Scripts -->
         <script type="text/javascript" src="scripts/client.js"></script>
+
         <!-- Controllers -->
         <script type="text/javascript" src="scripts/controllers/info.controller.js"></script>
         <script type="text/javascript" src="scripts/controllers/login.controller.js"></script>
         <script type="text/javascript" src="scripts/controllers/family.controller.js"></script>
         <script type="text/javascript" src="scripts/controllers/landing.controller.js"></script>
+
         <!-- Services -->
         <script type="text/javascript" src="scripts/services/family.service.js"></script>
 
@@ -33,8 +37,6 @@
     </head>
 
     <body ng-app="myApp">
-        <header class="header" ng-include="'/views/partials/header.html'"></header>
-
         <main ng-view></main>
     </body>
 </html>

@@ -5,6 +5,7 @@
     height: 100vh;
     overflow: hidden;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     &:after {
@@ -17,4 +18,10 @@
         z-index: 0;
         background-color: transparentize($color: $black, $amount: .5);
     }
+}
+.landing-header,
+.langing-tagline {
+    flex: 0 1 100%;
+    width: 100%;
+    max-width: 100%;
 }
