@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']);
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -28,8 +28,35 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
+    .when('/account', {
+      templateUrl: '/views/templates/account.html',
+      controller: 'InfoController as vm',
+      resolve: {
+        getuser : function(FamilyService){
+          return FamilyService.getuser();
+        }
+      }
+    })
     .when('/info', {
-      templateUrl: '/views/templates/info.html',
+      templateUrl: '/views/templates/account.html',
+      controller: 'InfoController as vm',
+      resolve: {
+        getuser : function(FamilyService){
+          return FamilyService.getuser();
+        }
+      }
+    })
+    .when('/manage-children', {
+      templateUrl: '/views/templates/manage-children.html',
+      controller: 'InfoController as vm',
+      resolve: {
+        getuser : function(FamilyService){
+          return FamilyService.getuser();
+        }
+      }
+    })
+    .when('/tracking', {
+      templateUrl: '/views/templates/tracking.html',
       controller: 'InfoController as vm',
       resolve: {
         getuser : function(FamilyService){

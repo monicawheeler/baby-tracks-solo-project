@@ -21,15 +21,17 @@ router.get('/', (req, res) => {
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
+  const family_name = req.body.family_name;
   const password = encryptLib.encryptPassword(req.body.password);
 
   var saveUser = {
     username: req.body.username,
+    family_name: req.body.family_name,
     password: encryptLib.encryptPassword(req.body.password)
   };
   console.log('new user:', saveUser);
-  pool.query('INSERT INTO family (username, password) VALUES ($1, $2) RETURNING id',
-    [saveUser.username, saveUser.password], (err, result) => {
+  pool.query('INSERT INTO family (username, family_name, password) VALUES ($1, $2, $3)',
+    [saveUser.username, saveUser.family_name, saveUser.password], (err, result) => {
       if (err) {
         console.log("Error inserting data: ", err);
         res.sendStatus(500);

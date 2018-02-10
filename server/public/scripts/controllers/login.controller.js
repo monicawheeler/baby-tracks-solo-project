@@ -4,6 +4,7 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
 
     self.user = {
       username: '',
+      family_name: '',
       password: ''
     };
 
@@ -19,7 +20,7 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
             if (response.status == 200) {
               console.log('success: ', response.data);
               // location works with SPA (ng-route)
-              $location.path('/family');
+              $location.path('/tracking');
             } else {
               console.log('failure error: ', response);
               self.message = "Incorrect credentials. Please try again.";
@@ -33,7 +34,7 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
     };
 
     self.registerUser = function () {
-      if (self.user.username === '' || self.user.password === '') {
+      if (self.user.username === '' || self.user.family_name === '' || self.user.password === '') {
         self.message = "Choose a username and password!";
       } else {
         console.log('sending to server...', self.user);

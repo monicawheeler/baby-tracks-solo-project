@@ -1,0 +1,28 @@
+.btn {
+    color: $white;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: $sans-serif;
+    transition: all 250ms;
+    &:hover {
+        background-color: transparentize($color: $white, $amount: .8);
+        cursor: pointer;
+    }
+}
+
+.btn-default {
+    border: 2px solid $white;
+}
+
+.btn-alt {
+    border: 2px solid $primary;
+    color: $primary;
+    &:hover {
+        background-color: transparentize($color: $primary, $amount: .95);
+        cursor: pointer;
+    }
+}
