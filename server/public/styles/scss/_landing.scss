@@ -19,9 +19,30 @@
         background-color: transparentize($color: $black, $amount: .5);
     }
 }
+
+.landing-inner {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: $white;
+    & * + * {
+        margin-top: 40px;
+    }
+}
+
 .landing-header,
-.langing-tagline {
+.landing-tagline {
     flex: 0 1 100%;
     width: 100%;
     max-width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.landing-header {
+    font-size: 44px;
+}
+
+.landing-tagline {
+    font-size: 24px;
 }

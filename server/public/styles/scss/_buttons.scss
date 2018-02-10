@@ -1,12 +1,14 @@
 .btn {
-    color: $white;
-    text-decoration: none;
+    display: inline-block;
     position: relative;
     z-index: 1;
     padding: 10px;
+    color: $white;
+    text-decoration: none;
     font-size: 18px;
     font-weight: 400;
     font-family: $sans-serif;
+    line-height: 1;
     transition: all 250ms;
     &:hover {
         background-color: transparentize($color: $white, $amount: .8);

@@ -60,14 +60,16 @@ h1 {
 }
 
 .btn {
-  color: #ffffff;
-  text-decoration: none;
+  display: inline-block;
   position: relative;
   z-index: 1;
   padding: 10px;
+  color: #ffffff;
+  text-decoration: none;
   font-size: 18px;
   font-weight: 400;
   font-family: "Lato", sans-serif;
+  line-height: 1;
   transition: all 250ms;
 }
 .btn:hover {
@@ -121,11 +123,80 @@ h1 {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.landing-inner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+}
+.landing-inner * + * {
+  margin-top: 40px;
+}
+
 .landing-header,
-.langing-tagline {
+.landing-tagline {
   flex: 0 1 100%;
   width: 100%;
   max-width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.landing-header {
+  font-size: 44px;
+}
+
+.landing-tagline {
+  font-size: 24px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.input-header {
+  margin: 5px 0 40px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.input-row + .input-row {
+  margin-top: 30px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.input {
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+}
+
+::-moz-placeholder {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+}
+
+:-ms-input-placeholder {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+}
+
+:-moz-placeholder {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
 }
 
 /*# sourceMappingURL=main.css.map */
