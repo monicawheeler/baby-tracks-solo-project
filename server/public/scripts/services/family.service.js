@@ -21,7 +21,7 @@ myApp.service('FamilyService', ['$http', '$location', function($http, $location)
       console.log('FamilyService -- getuser -- failure: ', response);
       $location.path("/landing");
     });
-  },
+  }
 
   self.logout = function() {
     console.log('FamilyService -- logout');

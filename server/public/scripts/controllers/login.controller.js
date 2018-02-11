@@ -47,5 +47,5 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
             self.message = "Something went wrong. Please try again."
           });
       }
-    }
+    };
 }]);
