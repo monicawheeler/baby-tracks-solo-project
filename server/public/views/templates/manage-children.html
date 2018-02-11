@@ -1,4 +1,27 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
 
-manage children view
+<div class="manage-children-wrapper">
+    <input class="btn btn-alt" ng-click="vm.showAddChild = true; vm.addChildBtn = false" ng-if="vm.addChildBtn" type="button" name="add-child" value="Add Child" />
+</div>
+
+<div class="add-child" ng-if="vm.showAddChild">
+    <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+    <form class="input-form form" ng-submit="vm.addChild()">
+        <div class="input-row">
+            <label class="input-label" for="first_name">First Name:</label>
+            <input class="input" type="text" ng-model="vm.child.first_name" placeholder="First Name" />
+        </div>
+        <div class="input-row">
+            <label class="input-label" for="dob">Date of Birth:</label>
+            <input class="input" type="date" ng-model="vm.child.dob" placeholder="Date of Birth" />
+        </div>
+        <div class="input-row">
+            <label class="input-label" for="gender">Gender:</label>
+            <input class="input" type="text" ng-model="vm.child.gender" placeholder="Gender" />
+        </div>
+        <div class="input-row">
+            <input class="btn btn-alt" type="submit" name="submit" value="Add Child" />
+        </div>
+    </form>
+</div>

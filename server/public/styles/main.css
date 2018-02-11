@@ -177,6 +177,7 @@ h1 {
 .input {
   padding: 5px 10px;
   font-size: 18px;
+  font-family: "Lato", sans-serif;
 }
 
 ::-webkit-input-placeholder {
