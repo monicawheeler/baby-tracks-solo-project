@@ -1,14 +1,34 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
-
-<div class="manage-children-wrapper">
-    <div class="input-row">
-        <select class="select input">
-            <option ng-repeat="child in vm.childList.list" value="{{child.first_name}}">{{child.first_name}}</option>
+<div class="update-child-wrapper">
+    <div class="input-row" ng-if="vm.showChildSelector">
+        <select class="select input" ng-model="vm.updatedChild" ng-options="child as child.first_name for child in vm.childList.list">
         </select>
     </div>
+    <form ng-submit="vm.updateChild()" class="input-form form">
+        <div class="input-row">
+            <label class="input-label" for="first_name">First Name:</label>
+            <input class="input" type="text" ng-model="vm.updatedChild.first_name" placeholder="First Name" />
+        </div>
+        <div class="input-row">
+            <label class="input-label" for="dob">Date of Birth:</label>
+            <input class="input" type="text" ng-model="vm.updatedChild.dob | date:'MM/dd/yyyy'" placeholder="MM/DD/YYYY" />
+        </div>
+        <div class="input-row">
+            <label class="input-label" for="gender">Gender:</label>
+            <input class="input" type="text" ng-model="vm.updatedChild.gender" placeholder="Gender" />
+        </div>
+        <div class="input-row">
+            <input class="btn btn-alt" type="submit" name="submit" value="Update Child" />
+        </div>
+    </form>
     <div class="input-row">
-        <input class="btn btn-alt" ng-click="vm.showAddChild = true; vm.addChildBtn = false" ng-if="vm.addChildBtn" type="button" name="add-child" value="Add Child" />
+        <input class="btn btn-warn" type="submit" name="submit" value="Delete Child" />
+    </div>
+</div>
+<div class="add-children-wrapper">
+    <div class="input-row">
+        <input class="btn btn-alt" ng-click="vm.showAddChild = true; vm.addChildBtn = false" ng-if="vm.addChildBtn" type="button" name="add-child" value="Add New Child" />
     </div>
 </div>
 <div class="add-child" ng-if="vm.showAddChild">
@@ -25,6 +45,15 @@
         <div class="input-row">
             <label class="input-label" for="gender">Gender:</label>
             <input class="input" type="text" ng-model="vm.child.gender" placeholder="Gender" />
+        </div>
+        <div class="input-row">
+            <select class="select input" multiple ng-model="vm.child.categories">
+                <option selected disabled>Select Categories</option>
+                <option ng-repeat="category in vm.categoryList.list" value="{{category.category_name}}">{{category.category_name}}</option>
+            </select>
+            <ul>
+                <li ng-repeat="childCategory in vm.child.categories">{{childCategory}}</li>
+            </ul>
         </div>
         <div class="input-row">
             <input class="btn btn-alt" type="submit" name="submit" value="Add Child" />

@@ -90,6 +90,15 @@ h1 {
   cursor: pointer;
 }
 
+.btn-warn {
+  border: 2px solid darkred;
+  color: darkred;
+}
+.btn-warn:hover {
+  background-color: rgba(139, 0, 0, 0.05);
+  cursor: pointer;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

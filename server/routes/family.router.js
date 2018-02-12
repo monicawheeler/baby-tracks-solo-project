@@ -29,7 +29,7 @@ router.post('/register', (req, res, next) => {
     family_name: req.body.family_name,
     password: encryptLib.encryptPassword(req.body.password)
   };
-  console.log('new user:', saveUser);
+  //console.log('new user:', saveUser);
   pool.query('INSERT INTO family (username, family_name, password) VALUES ($1, $2, $3)',
     [saveUser.username, saveUser.family_name, saveUser.password], (err, result) => {
       if (err) {

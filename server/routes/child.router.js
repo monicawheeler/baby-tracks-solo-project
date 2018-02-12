@@ -4,7 +4,7 @@ const userStrategy = require('../strategies/sql.localstrategy');
 const pool = require('../modules/pool.js');
 const router = express.Router();
 
-// Adds child to child table
+// Add child to database
 router.post('/', (req, res, next) => {
     // check if logged in
     if (req.isAuthenticated()) {
@@ -39,20 +39,35 @@ router.post('/', (req, res, next) => {
     }
   });
 
-  router.get('/:id', (req, res) => {
-    const queryText = 'SELECT child.first_name, child.dob, child.gender FROM child JOIN family ON family.id = child.family_id WHERE child.family_id=$1';
+  // GET children based on family id
+  router.get('/family/:id', (req, res) => {
+    const queryText = 'SELECT child.id, child.first_name, child.dob, child.gender FROM child JOIN family ON family.id = child.family_id WHERE child.family_id=$1';
     pool.query(queryText, [req.params.id], (err, result) => {
       if(err) {
-        console.log('error in get request for children by family id');
+        //console.log('error in get request for children by family id');
         res.sendStatus(500);
       } else {
-        console.log('success in get request for children by family id');
-        console.log('result', result.rows);
-        
+        // console.log('success in get request for children by family id');
+        // console.log('result', result.rows);
         res.send(result.rows);
       }
     }
   )
+  });
+
+  router.get('/category', (req, res) => {
+    //SQL query
+    const queryText = 'SELECT category.id, category_name FROM category';
+    pool.query(queryText)
+    .then((result) => {
+      //console.log('query results: ', result);
+      res.send(result.rows); //send back the results
+    })
+    //error handling
+    .catch((err) => {
+      console.log('error making select query: ', err); 
+      res.sendStatus(500);
+    });
   });
 
 module.exports = router;
