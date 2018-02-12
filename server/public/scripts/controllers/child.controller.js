@@ -88,5 +88,19 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
   self.getChildList();
   self.getCategoryList();
 
+  self.deleteChild = function(id) {
+    const childId = id;
+    console.log('delete child by this id:', childId);
+    
+    $http.delete(`/api/child/${childId}`).then(function(response) {
+      console.log('in delete child');
+      if(response.data)
+        console.log('child deleted succesfully');
+        self.getChildList();
+      }, function(response) {
+          console.log('service does not exist');
+          
+      });
+    }
 }]);
   
