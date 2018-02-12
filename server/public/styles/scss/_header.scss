@@ -1,10 +1,14 @@
 .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
     padding: 20px;
     background-color: $primary;
     color: $white;
     font-size: 22px;
 }
 
-.family-name {
+.header-subtitle {
     text-transform: capitalize;
 }

@@ -48,7 +48,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/manage-children', {
       templateUrl: '/views/templates/manage-children.html',
-      controller: 'InfoController as vm',
+      controller: 'ChildController as vm',
       resolve: {
         getuser : function(FamilyService){
           return FamilyService.getuser();

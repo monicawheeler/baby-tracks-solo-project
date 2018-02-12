@@ -90,14 +90,27 @@ h1 {
   cursor: pointer;
 }
 
+.btn-warn {
+  border: 2px solid darkred;
+  color: darkred;
+}
+.btn-warn:hover {
+  background-color: rgba(139, 0, 0, 0.05);
+  cursor: pointer;
+}
+
 .header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
   padding: 20px;
   background-color: #299def;
   color: #ffffff;
   font-size: 22px;
 }
 
-.family-name {
+.header-subtitle {
   text-transform: capitalize;
 }
 
@@ -177,6 +190,7 @@ h1 {
 .input {
   padding: 5px 10px;
   font-size: 18px;
+  font-family: "Lato", sans-serif;
 }
 
 ::-webkit-input-placeholder {

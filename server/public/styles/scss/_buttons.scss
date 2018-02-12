@@ -28,3 +28,12 @@
         cursor: pointer;
     }
 }
+
+.btn-warn {
+    border: 2px solid $warn;
+    color: $warn;
+    &:hover {
+        background-color: transparentize($color: $warn, $amount: .95);
+        cursor: pointer;
+    }
+}
