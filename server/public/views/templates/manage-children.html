@@ -5,18 +5,18 @@
         <select class="select input" ng-model="vm.updatedChild" ng-options="child as child.first_name for child in vm.childList.list">
         </select>
     </div>
-    <form ng-submit="vm.updateChild()" class="input-form form">
+    <form ng-submit="vm.updateChild(vm.updatedChild, vm.updatedChild.id)" class="input-form form">
         <div class="input-row">
             <label class="input-label" for="first_name">First Name:</label>
             <input class="input" type="text" ng-model="vm.updatedChild.first_name" placeholder="First Name" />
         </div>
         <div class="input-row">
             <label class="input-label" for="dob">Date of Birth:</label>
-            <input class="input" type="text" ng-model="vm.updatedChild.dob | date:'MM/dd/yyyy'" placeholder="MM/DD/YYYY" />
+            <input class="input" type="text" ng-model="vm.updatedChild.dob" placeholder="MM/DD/YYYY" />
         </div>
         <div class="input-row">
             <label class="input-label" for="gender">Gender:</label>
-            <input class="input" type="text" ng-model="vm.updatedChild.gender" placeholder="Gender" />
+            <input class="input" type="text" ng-model="vm.updatedChild.gender" placeholder="Gender (male/female)" />
         </div>
         <div class="input-row">
             <input class="btn btn-alt" type="submit" name="submit" value="Update Child" />
@@ -40,11 +40,11 @@
         </div>
         <div class="input-row">
             <label class="input-label" for="dob">Date of Birth:</label>
-            <input class="input" type="date" ng-model="vm.child.dob" placeholder="Date of Birth" />
+            <input class="input" type="date" ng-model="vm.child.dob" placeholder="MM/DD/YYYY" />
         </div>
         <div class="input-row">
             <label class="input-label" for="gender">Gender:</label>
-            <input class="input" type="text" ng-model="vm.child.gender" placeholder="Gender" />
+            <input class="input" type="text" ng-model="vm.child.gender" placeholder="Gender (Male/Female)" />
         </div>
         <div class="input-row">
             <select class="select input" multiple ng-model="vm.child.categories">

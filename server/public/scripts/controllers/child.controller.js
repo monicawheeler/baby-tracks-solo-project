@@ -32,6 +32,7 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
       console.log('sending to server', self.child);
       $http.post('/api/child', self.child).then(function(response) {
       console.log('success');
+      self.child = {};
       self.getChildList();
     },
       function(response) {
@@ -102,5 +103,22 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
           
       });
     }
+
+    self.updateChild = function(data, id) {
+      const childId = id;
+      const childObject = data;
+      $http.put(`/api/child/update/${childId}`, childObject).then(function(response) {
+      console.log('id', childId, 'childObject', childObject);
+        console.log('in update child');
+        if(response.data)
+          console.log('child updated succesfully');
+          self.getChildList();
+        }, function(response) {
+            console.log('service does not exist');
+            
+        });
+      }
+
+
 }]);
   
