@@ -91,13 +91,17 @@ h1 {
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
   padding: 20px;
   background-color: #299def;
   color: #ffffff;
   font-size: 22px;
 }
 
-.family-name {
+.header-subtitle {
   text-transform: capitalize;
 }
 
