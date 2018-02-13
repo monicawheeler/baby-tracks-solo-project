@@ -1,7 +1,13 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
-
-    <h1 id="welcome" class="lead">Welcome, <span class="family-name">{{vm.familyObject.family_name}}</span> Family!</h1>
-
-</div>
+    <div class="track-wrapper">
+        <div class="input-row">
+            <select class="select input" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+            </select>
+        </div>
+        <div class="input-row">
+            <select class="select input" multiple ng-model="vm.trackChild" ng-options="category as category.category_name for category in vm.categoryList.list">
+            </select>
+        </div>
+    </div>
+<!-- {{vm.trackChild.id}} -->

@@ -2,7 +2,6 @@
 <div ng-include="'views/partials/nav.html'"></div>
 
 <div class="account-wrapper">
-        {{vm.familyObject}}
     <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
     <form class="input-form form" ng-submit="vm.updateUser(vm.familyObject.id, vm.familyObject)">
         <div class="input-row">

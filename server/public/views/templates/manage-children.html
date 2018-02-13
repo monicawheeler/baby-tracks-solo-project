@@ -1,7 +1,7 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="update-child-wrapper">
-    <div class="input-row" ng-if="vm.showChildSelector">
+    <div class="input-row">
         <select class="select input" ng-model="vm.updatedChild" ng-options="child as child.first_name for child in vm.childList.list">
         </select>
     </div>
