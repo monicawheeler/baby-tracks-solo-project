@@ -6,9 +6,10 @@
                 <option value="" selected disabled>Select</option>
             </select>
         </div>
-        <div class="input-row">
-            <select class="select input" multiple ng-model="vm.trackChild" ng-options="category as category.category_name for category in vm.categoryList.list">
-            </select>
-        </div>
-    </div>
+        <p>selected child id: {{vm.trackChild.id}}</p>
+
+        <div class="event-row" ng-repeat="category in vm.categoryList.list" ng-click="vm.trackEvent()">
+            <p>{{category.category_name}} - category id: {{category.id}}</p>
+        </div> <!-- .event-row -->
+    </div> <!-- .track-wrapper -->
 <!-- {{vm.trackChild.id}} -->
