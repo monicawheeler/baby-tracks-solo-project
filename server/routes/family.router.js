@@ -60,8 +60,6 @@ router.put('/update/:id', function(req, res){
   const username = req.body.username;
   const family_name = req.body.family_name;
   const password = encryptLib.encryptPassword(req.body.password);
-  console.log('password in update put request', password);
-  
 
   var saveUser = {
     username: username,

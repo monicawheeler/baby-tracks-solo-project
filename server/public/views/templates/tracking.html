@@ -3,6 +3,7 @@
     <div class="track-wrapper">
         <div class="input-row">
             <select class="select input" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+                <option value="" selected disabled>Select</option>
             </select>
         </div>
         <div class="input-row">
