@@ -1,0 +1,10 @@
+.event-row {
+    & + .event-row {
+        margin-top: 50px;
+    }
+}
+
+.event-header {
+    font-weight: 700;
+    text-transform: uppercase;
+}

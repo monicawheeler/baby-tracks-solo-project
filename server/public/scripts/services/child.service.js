@@ -91,12 +91,4 @@ myApp.service('ChildService', ['$http', '$location', function($http, $location) 
         });
     }; // end deleteChild
 
-    self.trackEvent = function(childId, date, time) {
-        if (childId === '' || childId === undefined) {
-            self.message = 'Please select a child.'
-        } else {
-            console.log('trackEvent:', childId, date, time);
-        }
-    }
-
 }]);

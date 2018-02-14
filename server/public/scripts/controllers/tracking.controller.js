@@ -1,4 +1,4 @@
-myApp.controller('TrackingController', ['$http', 'FamilyService', 'ChildService', function($http, FamilyService, ChildService) {
+myApp.controller('TrackingController', ['$http', 'FamilyService', 'ChildService', 'EventService', function($http, FamilyService, ChildService, EventService) {
     console.log('TrackingController created');
     var self = this;
     self.message = '';
@@ -12,6 +12,7 @@ myApp.controller('TrackingController', ['$http', 'FamilyService', 'ChildService'
     self.categoryList = ChildService.categoryList;
     self.childList = ChildService.childList;
 
+
     self.getChildList = function(id) {
         ChildService.getChildList(self.familyObject.id);
     }
@@ -24,11 +25,15 @@ myApp.controller('TrackingController', ['$http', 'FamilyService', 'ChildService'
         FamilyService.updateUser(id, user);
     }
 
-    self.trackEvent = function(childId, date, time) {
+    self.trackEvent = function(child_id, notes, category_id, date, time, family_id) {
         let currentDateTime = new Date();
         let formattedDate = currentDateTime.toLocaleDateString();
         let formattedTime = currentDateTime.toLocaleTimeString();
-        ChildService.trackEvent(childId, formattedDate, formattedTime);
+        EventService.trackEvent(child_id, notes, category_id, formattedDate, formattedTime, self.familyObject.id);
+    }
+
+    self.updateCategoryList = function () {
+        EventService.updateCategoryList();
     }
 
 	self.getChildList(self.familyObject.id);

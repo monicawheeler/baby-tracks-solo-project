@@ -1,16 +1,32 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
-    <div class="track-wrapper">
-        <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-        <div class="input-row">
-            <select class="select input" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
-                <option value="" selected disabled>Select</option>
-            </select>
-        </div>
-        <p>selected child id: {{vm.trackChild.id}}</p>
 
-        <div class="event-row" ng-repeat="category in vm.categoryList.list" ng-click="vm.trackEvent(vm.trackChild.id)">
-            <p>{{category.category_name}} - category id: {{category.id}}</p>
-        </div> <!-- .event-row -->
-    </div> <!-- .track-wrapper -->
-<!-- {{vm.trackChild.id}} -->
+<div class="track-wrapper">
+    <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+    <div class="input-row">
+        <select class="select input" ng-change="vm.updateCategoryList()" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+            <option value="" selected disabled>Select</option>
+        </select>
+    </div>
+<br />
+<br />
+    <div class="event-row" ng-repeat="category in vm.categoryList.list">
+        <!-- <p>{{category.category_name}} - category id: <span ng-model="vm.trackChild.category_id">{{category.id}}</span></p> -->
+        <!-- <textarea cols="30" rows="10"></textarea> -->
+        <!-- <button>Submit Task</button> -->
+        <h2 class="event-header">{{category.category_name}}</h2>
+        <h3>Last {{category.category_name}}:</h3>
+        <!-- MOST RECENT EVENT -->
+        <!-- get time -->
+        <!-- get current time minus last time logged in hours -->
+        <!-- get notes -->
+
+        <div class="test-trackEvent">
+            <p ng-model="vm.trackChild.id">selected child id: {{vm.trackChild.id}}</p>
+            <textarea ng-model="vm.trackChild.notes">{{vm.trackChild.notes}}</textarea>
+            <p ng-model="category.category_id">category id {{category.category_id}}</p>
+            <button ng-click="vm.trackEvent(vm.trackChild.id, vm.trackChild.notes, category.id, date, time, family_id)">Send Test Event</button>
+        </div>
+
+    </div> <!-- .event-row -->
+</div> <!-- .track-wrapper -->
