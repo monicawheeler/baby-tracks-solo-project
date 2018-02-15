@@ -75,7 +75,7 @@ router.delete('/:id', function(req, res) {
         // runs on successful query
         .then((result) => {
             //console.log('query results: ', result);            
-            res.send(200);
+            res.sendStatus(200);
         })
         // error handling
         .catch((err) => {

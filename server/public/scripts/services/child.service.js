@@ -5,6 +5,7 @@ myApp.service('ChildService', ['$http', '$location', function($http, $location) 
     self.childList = {
         list: []
     };
+    
     self.categoryList = {
         list: []
     };

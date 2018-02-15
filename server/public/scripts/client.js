@@ -57,7 +57,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/tracking', {
       templateUrl: '/views/templates/tracking.html',
-      controller: 'TrackingController as vm',
+      controller: 'EventController as vm',
       resolve: {
         getuser : function(FamilyService){
           return FamilyService.getuser();

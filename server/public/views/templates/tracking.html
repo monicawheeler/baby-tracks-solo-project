@@ -4,29 +4,78 @@
 <div class="track-wrapper">
     <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
     <div class="input-row">
-        <select class="select input" ng-change="vm.updateCategoryList()" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+        <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id)" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
             <option value="" selected disabled>Select</option>
         </select>
     </div>
-<br />
-<br />
-    <div class="event-row" ng-repeat="category in vm.categoryList.list">
-        <!-- <p>{{category.category_name}} - category id: <span ng-model="vm.trackChild.category_id">{{category.id}}</span></p> -->
-        <!-- <textarea cols="30" rows="10"></textarea> -->
-        <!-- <button>Submit Task</button> -->
-        <h2 class="event-header">{{category.category_name}}</h2>
-        <h3>Last {{category.category_name}}:</h3>
-        <!-- MOST RECENT EVENT -->
-        <!-- get time -->
-        <!-- get current time minus last time logged in hours -->
-        <!-- get notes -->
+    <div class="events-wrapper">
+        <div class="event-row">
+            <h2 class="event-header">Feeding</h2>
+            <ul>
+                <li ng-repeat="feeding in vm.categoryFeeding.list">
+                    <p>Last fed: {{feeding.datetime | date:'h:mm a'}} ({{vm.feedingTimeDifferenceInHours}} hours ago)</p>
+                    <p></p>
+                    <p>Notes: {{feeding.notes}}</p>
+                </li>
+            </ul>
+        </div> <!-- .event-row -->
+        <div class="event-row">
+            <h2 class="event-header">Sleeping</h2>
+            <ul>
+                <li ng-repeat="sleeping in vm.categorySleeping.list">
+                    <p>Last slept: {{sleeping.datetime | date: MM/dd/YYYY}} {{sleeping.datetime | date:'h:mm a'}}</p>
+                    <p>Notes: {{sleeping.notes}}</p>
+                </li>
+            </ul>
+        </div> <!-- .event-row -->
+        <div class="event-row">
+            <h2 class="event-header">Diapering</h2>
+            <ul>
+                <li ng-repeat="diapering in vm.categoryDiapering.list">
+                    <p>Last diapered: {{diapering.datetime | date: MM/dd/YYYY}} {{diapering.datetime | date:'h:mm a'}}</p>
+                    <p>Notes: {{diapering.notes}}</p>
+                </li>
+            </ul>
+        </div> <!-- .event-row -->
+        <div class="event-row">
+            <h2 class="event-header">Medication</h2>
+            <ul>
+                <li ng-repeat="medication in vm.categoryMedication.list">
+                    <p>Last medication: {{medication.datetime | date: MM/dd/YYYY}} {{medication.datetime | date:'h:mm a'}}</p>
+                    <p>Notes: {{medication.notes}}</p>
+                </li>
+            </ul>
+        </div> <!-- .event-row -->
+        <div class="event-row">
+            <h2 class="event-header">Other</h2>
+            <ul>
+                <li ng-repeat="other in vm.categoryOther.list">
+                    <p>Last other: {{other.datetime | date: MM/dd/YYYY}} {{other.datetime | date:'h:mm a'}}</p>
+                    <p>Notes: {{other.notes}}</p>
+                </li>
+            </ul>
+        </div> <!-- .event-row -->
+    </div>
 
-        <div class="test-trackEvent">
-            <p ng-model="vm.trackChild.id">selected child id: {{vm.trackChild.id}}</p>
-            <textarea ng-model="vm.trackChild.notes">{{vm.trackChild.notes}}</textarea>
-            <p ng-model="category.category_id">category id {{category.category_id}}</p>
-            <button ng-click="vm.trackEvent(vm.trackChild.id, vm.trackChild.notes, category.id, date, time, family_id)">Send Test Event</button>
-        </div>
-
-    </div> <!-- .event-row -->
+<!-- 
+<h2>EVENT TABLE: </h2>
+<table class="event-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Notes</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="childEvent in vm.childEvents.list">
+            <td>{{childEvent.datetime | date: MM/dd/YYYY}}</td>
+            <td>{{childEvent.datetime | date:'h:mm a'}}</td>
+            <td>{{childEvent.notes}}</td>
+            <td>{{childEvent.category_name}}</td>
+        </tr>
+    </tbody>
+</table> -->
 </div> <!-- .track-wrapper -->
+
