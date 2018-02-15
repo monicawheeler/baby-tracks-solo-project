@@ -20,6 +20,13 @@
     flex: 1 0 calc(20% - 50px);
 }
 
+.edit-btn {
+    font-size: 12px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 table {
     border-collapse: collapse;
     width: 100%;

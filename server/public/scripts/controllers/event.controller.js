@@ -2,6 +2,30 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     console.log('EventController created');
     var self = this;
 
+    self.showNewFeedingEvent = false;
+    self.showNewSleepingEvent = false;
+    self.showNewDiaperingEvent = false;
+    self.showNewMedicationEvent = false;
+    self.showNewOtherEvent = false;
+
+    self.editFeedingNotes = false;
+    self.editSleepingNotes = false;
+    self.editDiaperingNotes = false;
+    self.editMedicationNotes = false;
+    self.editOtherNotes = false;
+
+    self.showNewFeedingNotes = false;
+    self.showNewSleepingNotes = false;
+    self.showNewDiaperingNotes = false;
+    self.showNewMedicationNotes = false;
+    self.showNewOtherNotes = false;
+    
+    self.showFeedingTrackingButton = true;
+    self.showSleepingTrackingButton = true;
+    self.showDiaperingTrackingButton = true;
+    self.showMedicationTrackingButton = true;
+    self.showOtherTrackingButton = true;
+
     self.message = '';
     
     self.familyService = FamilyService;
@@ -17,9 +41,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.categoryDiapering = EventService.categoryDiapering;
     self.categoryMedication = EventService.categoryMedication;
     self.categoryOther = EventService.categoryOther;
-
-    self.feedingTimeDifferenceInHours = EventService.feedingTimeDifferenceInHours;
-    console.log('self.time in hours', self.feedingTimeDifferenceInHours);
     
 
     self.getChildList = function(id) {
@@ -43,7 +64,15 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
         EventService.getChildEventList(id);
     }
 
+    self.updateNotes = function(eventId, notes, childId) {
+        EventService.updateNotes(eventId, notes, childId);
+    }
+
 	self.getChildList(self.familyObject.id);
     self.getCategoryList();
+
+    // try promise on the controller to see if that will wait
+    self.feedingTimeDifferenceInHours = EventService.feedingTimeDifferenceInHours;
+    console.log('self.time in hours', self.feedingTimeDifferenceInHours);
 
 }]);

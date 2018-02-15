@@ -59,6 +59,10 @@ h1 {
   font-family: "Lato", sans-serif;
 }
 
+strong {
+  font-weight: 700;
+}
+
 .btn {
   display: inline-block;
   position: relative;
@@ -231,6 +235,13 @@ h1 {
   width: calc(20% - 50px);
   max-width: calc(20% - 50px);
   flex: 1 0 calc(20% - 50px);
+}
+
+.edit-btn {
+  font-size: 12px;
+}
+.edit-btn:hover {
+  cursor: pointer;
 }
 
 table {

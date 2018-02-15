@@ -134,9 +134,22 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
             } else {
                 console.log('get events by child id failed');
             }
-        }, function (response) {
-            console.log('get events by child id failed');
-            // return error
         });
     }; // end getChildEventList
+
+    self.updateNotes = function(eventId, notes, childId) {
+        let notesToSend = {
+            notes: notes
+        };
+        console.log('in service, updateNotes - eventId and notes', eventId, notesToSend);
+        $http.put(`/api/event/update/${eventId}`, notesToSend)
+        .then(function(response) {
+                console.log('success');
+                self.getChildEventList(childId);
+            },
+            function(response) {
+                console.log('error, response:', response);
+                self.message = "Something went wrong. Please try again."
+            });
+    }; // end updateNotes
 }]);
