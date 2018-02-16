@@ -4,7 +4,7 @@ myApp.controller('InfoController', ['$http', 'FamilyService', function($http, Fa
 
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;
-
+    
     self.updateUser = function(id, user) {
         FamilyService.updateUser(id, user);
     }

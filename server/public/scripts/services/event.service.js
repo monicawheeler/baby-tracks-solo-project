@@ -3,11 +3,11 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
     var self = this;
     self.message = '';
 
-    self.feedingTimeDifferenceInHours = 0;
-    self.sleepingTimeDifferenceInHours = 0;
-    self.diaperingTimeDifferenceInHours = 0;
-    self.medicationTimeDifferenceInHours = 0;
-    self.otherTimeDifferenceInHours = 0;
+    // self.feedingTimeDifferenceInHours = 0;
+    // self.sleepingTimeDifferenceInHours = 0;
+    // self.diaperingTimeDifferenceInHours = 0;
+    // self.medicationTimeDifferenceInHours = 0;
+    // self.otherTimeDifferenceInHours = 0;
 
     self.childEvents = {
         list: []
@@ -28,13 +28,13 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
         list: []
     };
 
-    self.trackEvent = function(child_id, notes, category_id, familyId, datetime) {
+    self.trackEvent = function(child_id, notes, category_id, datetime) {
         if (child_id === '' || child_id === undefined) {
             self.message = 'Please select a child.'
         } else {
             let eventObjectToSend = {
-                notes: notes,
                 child_id: child_id,
+                notes: notes,
                 category_id: category_id,
                 datetime: datetime
             };
@@ -56,6 +56,7 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
 
         // get category events based on child
         $http.get(`/api/event/child/${id}`).then(function(response) {
+            
             if(response.data) {
                 self.childEvents.list = response.data;
                 console.log('self.childEvents.list', self.childEvents.list);
@@ -64,10 +65,11 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
                 $http.get(`/api/event/category/feeding/${id}`).then(function(response){
                     if (response.data) {
                         self.categoryFeeding.list = response.data;
-                        // calculate the hours between current time and last event
-                        self.feedingTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryFeeding.list[0].datetime))) / 1000) / 60) / 60));
-                        
-                        console.log('feeding time difference:', self.feedingTimeDifferenceInHours);
+                        // if(self.categoryFeeding.list[0].datetime != '' || self.categoryFeeding.list[0].datetime != undefined || self.categoryFeeding.list[0].datetime != null) {
+                        //     // calculate the hours between current time and last event
+                        //     self.feedingTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryFeeding.list[0].datetime))) / 1000) / 60) / 60));
+                        //     console.log('feeding time difference:', self.feedingTimeDifferenceInHours);
+                        // }
                     } else {
                         console.log('failed getting category');
                     }
@@ -79,9 +81,11 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
                 $http.get(`/api/event/category/sleeping/${id}`).then(function(response){
                     if (response.data) {
                         self.categorySleeping.list = response.data;
-                        // calculate the hours between current time and last event
-                        self.sleepingTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categorySleeping.list[0].datetime))) / 1000) / 60) / 60));
-                        console.log('sleeping time difference:', self.sleepingTimeDifferenceInHours);
+                        // if(self.categorySleeping.list[0].datetime != '' || self.categorySleeping.list[0].datetime != undefined || self.categorySleeping.list[0].datetime != null) {
+                        //     // calculate the hours between current time and last event
+                        //     self.sleepingTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categorySleeping.list[0].datetime))) / 1000) / 60) / 60));
+                        //     console.log('sleeping time difference:', self.sleepingTimeDifferenceInHours);
+                        // }
                     } else {
                         console.log('failed getting category');
                     }
@@ -93,9 +97,11 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
                 $http.get(`/api/event/category/diapering/${id}`).then(function(response){
                     if (response.data) {
                         self.categoryDiapering.list = response.data;
-                        // calculate the hours between current time and last event
-                        self.diaperingTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryDiapering.list[0].datetime))) / 1000) / 60) / 60));
-                        console.log('diapering time difference:', self.diaperingTimeDifferenceInHours);
+                        // if(self.categoryDiapering.list[0].datetime != '' || self.categoryDiapering.list[0].datetime != undefined || self.categoryDiapering.list[0].datetime != null) {
+                        //     // calculate the hours between current time and last event
+                        //     self.diaperingTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryDiapering.list[0].datetime))) / 1000) / 60) / 60));
+                        //     console.log('diapering time difference:', self.diaperingTimeDifferenceInHours);
+                        // }
                     } else {
                         console.log('failed getting category');
                     }
@@ -107,9 +113,11 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
                 $http.get(`/api/event/category/medication/${id}`).then(function(response){
                     if (response.data) {
                         self.categoryMedication.list = response.data;
-                        // calculate the hours between current time and last event
-                        self.medicationTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryMedication.list[0].datetime))) / 1000) / 60) / 60));
-                        console.log('medication time difference:', self.medicationTimeDifferenceInHours);
+                        // if(self.categoryMedication.list[0].datetime != '' || self.categoryMedication.list[0].datetime != undefined || self.categoryMedication.list[0].datetime != null) {
+                        //     // calculate the hours between current time and last event
+                        //     self.medicationTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryMedication.list[0].datetime))) / 1000) / 60) / 60));
+                        //     console.log('medication time difference:', self.medicationTimeDifferenceInHours);
+                        // }
                     } else {
                         console.log('failed getting category');
                     }
@@ -121,8 +129,10 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
                 $http.get(`/api/event/category/other/${id}`).then(function(response){
                     if (response.data) {
                         self.categoryOther.list = response.data;
-                        // calculate the hours between current time and last event
-                        self.otherTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryOther.list[0].datetime))) / 1000) / 60) / 60));
+                        // if(self.categoryOther.list[0].datetime != '' || self.categoryOther.list[0].datetime != undefined || self.categoryOther.list[0].datetime != null) {
+                        //     // calculate the hours between current time and last event
+                        //     self.otherTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryOther.list[0].datetime))) / 1000) / 60) / 60));
+                        // }
                         console.log('other time difference:', self.otherTimeDifferenceInHours);
                     } else {
                         console.log('failed getting category');

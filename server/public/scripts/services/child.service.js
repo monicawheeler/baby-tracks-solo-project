@@ -1,34 +1,14 @@
 myApp.service('ChildService', ['$http', '$location', function($http, $location) {
     console.log('ChildService Loaded');
     var self = this;
-
-    self.childList = {
-        list: []
-    };
     
     self.categoryList = {
         list: []
     };
-
-    self.getChildList = function(id) {
-        console.log('id in getChildList in service', id);
-        
-        $http.get(`/api/child/family/${id}`).then(function(response) {
-            console.log('ChildService -- get child');
-            if (response.data) {
-                self.childList.list = response.data;
-                console.log('self.childList.list', self.childList.list);
-                self.childListLength = self.childList.list.length;
-            } else {
-                console.log('ChildController -- getuser -- failure');
-                // return error
-            }
-        }, function(response) {
-            console.log('ChildController -- getuser -- failure: ', response);
-            // return error
-        });
-    }; // end getChildList()
-
+    
+    self.childList = {
+        list: []
+    };
 
     self.getCategoryList = function() {
         $http.get('/api/child/category').then(function(response) {
@@ -91,5 +71,25 @@ myApp.service('ChildService', ['$http', '$location', function($http, $location) 
 
         });
     }; // end deleteChild
+
+    
+    self.getChildList = function(id) {
+        console.log('id in getChildList in service', id);
+
+        $http.get(`/api/child/family/${id}`).then(function(response) {
+            console.log('ChildService -- get child');
+            if (response.data) {
+                self.childList.list = response.data;
+                console.log('self.childList.list', self.childList.list);
+                self.childListLength = self.childList.list.length;
+            } else {
+                console.log('ChildController -- getuser -- failure');
+                // return error
+            }
+        }, function(response) {
+            console.log('ChildController -- getuser -- failure: ', response);
+            // return error
+        });
+    }; // end getChildList()
 
 }]);

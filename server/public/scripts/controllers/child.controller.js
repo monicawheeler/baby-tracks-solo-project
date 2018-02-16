@@ -20,12 +20,14 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 	};
 
 	self.categoryList = ChildService.categoryList;
-	self.childList = ChildService.childList;
+	self.childList = FamilyService.childList;
 	self.childListLength = ChildService.childListLength;
+	
+	console.log('in child controller', self.familyObject.id);
 	
 	
 	self.getChildList = function (familyId) {
-		ChildService.getChildList(self.familyObject.id);
+		FamilyService.getChildList(self.familyObject.id);
 	}
 
 	self.getCategoryList = function() {

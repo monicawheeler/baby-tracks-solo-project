@@ -30,10 +30,10 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;
-    self.childService = ChildService;
 
+    self.childService = ChildService;
     self.categoryList = ChildService.categoryList;
-    self.childList = ChildService.childList;
+    self.childList = FamilyService.childList;
 
     self.childEvents = EventService.childEvents;
     self.categoryFeeding = EventService.categoryFeeding;
@@ -42,9 +42,11 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.categoryMedication = EventService.categoryMedication;
     self.categoryOther = EventService.categoryOther;
     
+	console.log('in event controller', self.familyObject.id);
+	
 
     self.getChildList = function(id) {
-        ChildService.getChildList(self.familyObject.id);
+        FamilyService.getChildList(self.familyObject.id);
     }
 
     self.getCategoryList = function() {
@@ -55,9 +57,9 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
         FamilyService.updateUser(id, user);
     }
 
-    self.trackEvent = function(child_id, notes, category_id, family_id, datetime) {
+    self.trackEvent = function(child_id, notes, category_id, datetime) {
         let currentDateTime = new Date();
-        EventService.trackEvent(child_id, notes, category_id, self.familyObject.id, currentDateTime);
+        EventService.trackEvent(child_id, notes, category_id, currentDateTime);
     }
 
     self.getChildEventList = function (id) {
@@ -70,9 +72,5 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
 
 	self.getChildList(self.familyObject.id);
     self.getCategoryList();
-
-    // try promise on the controller to see if that will wait
-    self.feedingTimeDifferenceInHours = EventService.feedingTimeDifferenceInHours;
-    console.log('self.time in hours', self.feedingTimeDifferenceInHours);
 
 }]);
