@@ -27,6 +27,22 @@
     }
 }
 
+.event-btn-no {
+    font-weight: 700;
+    color: $warn;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.event-btn-yes {
+    font-weight: 700;
+    color: $confirm;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 table {
     border-collapse: collapse;
     width: 100%;

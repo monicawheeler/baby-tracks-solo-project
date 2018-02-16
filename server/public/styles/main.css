@@ -249,6 +249,22 @@ strong {
   cursor: pointer;
 }
 
+.event-btn-no {
+  font-weight: 700;
+  color: darkred;
+}
+.event-btn-no:hover {
+  cursor: pointer;
+}
+
+.event-btn-yes {
+  font-weight: 700;
+  color: darkgreen;
+}
+.event-btn-yes:hover {
+  cursor: pointer;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;

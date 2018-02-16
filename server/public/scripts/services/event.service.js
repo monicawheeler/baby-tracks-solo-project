@@ -29,31 +29,30 @@ myApp.service('EventService', ['$http', '$location', function($http, $location) 
     };
 
     self.trackEvent = function(child_id, notes, category_id, datetime) {
-        if (child_id === '' || child_id === undefined) {
-            self.message = 'Please select a child.'
-        } else {
-            let eventObjectToSend = {
-                child_id: child_id,
-                notes: notes,
-                category_id: category_id,
-                datetime: datetime
-            };
-            console.log('trackEvent:', eventObjectToSend);
-            // Post Event
-            $http.post('/api/event', eventObjectToSend).then(function(response) {
-                console.log('success');
-                self.getChildEventList(child_id);
-            },
-            function(response) {
-                console.log('error');
-                self.message = 'Something went wrong. Please try again.'
-            })
-        }
+        let eventObjectToSend = {
+            child_id: child_id,
+            notes: notes,
+            category_id: category_id,
+            datetime: datetime
+        };
+        console.log('trackEvent:', eventObjectToSend);
+        // Post Event
+        $http.post('/api/event', eventObjectToSend).then(function(response) {
+            console.log('success');
+            console.log('track event in service - success - child_id', child_id);
+            
+            self.getChildEventList(child_id);
+        },
+        function(response) {
+            console.log('error');
+            self.message = 'Something went wrong. Please try again.'
+        })
     }; // end trackEvent
 
     self.getChildEventList = function (id) {
         self.currentDateTime = new Date();
-
+        console.log('in getChildEventList');
+        
         // get category events based on child
         $http.get(`/api/event/child/${id}`).then(function(response) {
             

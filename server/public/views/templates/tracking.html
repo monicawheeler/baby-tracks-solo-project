@@ -16,11 +16,11 @@
                     <button class="btn btn-alt" ng-if="vm.showFeedingTrackingButton = true;" ng-click="vm.showNewFeedingEvent = true; vm.showFeedingTrackingButton = false;">Track New Feeding</button>
                     <div class="new-event" ng-if="vm.showNewFeedingEvent">
                         <h2>Track More Information?</h2>
-                        <p ng-click="vm.trackEvent(feeding.child_id, vm.feedingNotes, feeding.id, date); vm.showNewFeedingEvent = false; vm.showFeedingTrackingButton = true;">No, track this event without notes</p>
-                        <p ng-click="vm.showNewFeedingNotes = true">Yes</p>
+                        <p class="event-btn-no" ng-click="vm.trackEvent(feeding.child_id, vm.feedingNotes, 1, date); vm.showNewFeedingEvent = false; vm.showFeedingTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn-yes" ng-click="vm.showNewFeedingNotes = true">Yes, more info!</p>
                         <textarea cols="30" rows="10" ng-model="vm.feedingNotes" ng-if="vm.showNewFeedingNotes"></textarea>
-                        <button class="btn btn-alt" ng-if="vm.showNewFeedingNotes" ng-click="vm.trackEvent(feeding.child_id, 'null', feeding.id, date); vm.showNewFeedingNotes = false; vm.showFeedingTrackingButton = true; vm.showNewFeedingEvent = false;">Submit Feeding</button>
-                        <button class="btn btn-warn" ng-if="vm.showNewFeedingNotes" ng-click="vm.showNewFeedingEvent = false;vm.showFeedingTrackingButton = true;">Cancel Tracking Feeding</button>
+                        <button class="btn btn-alt" ng-if="vm.showNewFeedingNotes" ng-click="vm.trackEvent(feeding.child_id, vm.feedingNotes, 1, date); vm.showNewFeedingNotes = false; vm.showFeedingTrackingButton = true; vm.showNewFeedingEvent = false;">Log This Feeding</button>
+                        <button class="btn btn-warn" ng-if="vm.showNewFeedingNotes" ng-click="vm.showNewFeedingEvent = false;vm.showFeedingTrackingButton = true;">Do Not Log This Feeding</button>
                     </div>
 
                     <h2 class="event-header">{{feeding.category_name}}</h2>
@@ -35,7 +35,7 @@
             </ul>
         </div> <!-- .event-row -->
         <div class="event-row">
-            <ul>
+            <!-- <ul>
                 <li ng-repeat="sleeping in vm.categorySleeping.list">
                     <button class="btn btn-alt" ng-if="vm.showSleepingTrackingButton" ng-click="vm.showNewSleepingEvent = true;vm.showSleepingTrackingButton = false;">Track New Sleeping</button>
                     <div class="new-event" ng-if="vm.showNewSleepingEvent">
@@ -56,10 +56,10 @@
                         <button class="btn btn-warn" ng-click="vm.editSleepingNotes = false">Cancel</button>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </div> <!-- .event-row -->
         <div class="event-row">
-            <ul>
+            <!-- <ul>
                 <li ng-repeat="diapering in vm.categoryDiapering.list">
                     <button class="btn btn-alt" ng-if="vm.showDiaperingTrackingButton" ng-click="vm.showNewDiaperingEvent = true;vm.showDiaperingTrackingButton = false;">Track New Diapering</button>
                     <div class="new-event" ng-if="vm.showNewDiaperingEvent">
@@ -80,10 +80,10 @@
                         <button class="btn btn-warn" ng-click="vm.editDiaperingNotes = false">Cancel</button>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </div> <!-- .event-row -->
         <div class="event-row">
-            <ul>
+            <!-- <ul>
                 <li ng-repeat="medication in vm.categoryMedication.list">
                     <button class="btn btn-alt" ng-if="vm.showMedicationTrackingButton" ng-click="vm.showNewMedicationEvent = true;vm.showMedicationTrackingButton = false;">Track New Medication</button>
                     <div class="new-event" ng-if="vm.showNewMedicationEvent">
@@ -104,10 +104,10 @@
                         <button class="btn btn-warn" ng-click="vm.editMedicationNotes = false">Cancel</button>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </div> <!-- .event-row -->
         <div class="event-row">
-            <ul>
+            <!-- <ul>
                 <li ng-repeat="other in vm.categoryOther.list">
                         <button class="btn btn-alt" ng-if="vm.showOtherTrackingButton" ng-click="vm.showNewOtherEvent = true;vm.showOtherTrackingButton = false;">Track New Other</button>
                         <div class="new-event" ng-if="vm.showNewOtherEvent">
@@ -128,7 +128,7 @@
                         <button class="btn btn-warn" ng-click="vm.editOtherNotes = false">Cancel</button>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </div> <!-- .event-row -->
     </div>
 

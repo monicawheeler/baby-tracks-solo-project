@@ -60,10 +60,10 @@ router.get('/category/feeding/:id', (req, res) => {
     const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 1 ORDER BY datetime DESC LIMIT 1';
     pool.query(queryText, [req.params.id], (err, result) => {
         if (err) {
-            //console.log('error in get request for children by family id');
+            console.log('error in get request for children by family id');
             res.sendStatus(500);
         } else {
-            // console.log('success in get request for children by family id');
+            console.log('success in get request for children by family id - feeding');
             // console.log('result', result.rows);
             res.send(result.rows);
         }
