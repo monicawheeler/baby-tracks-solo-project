@@ -2,11 +2,12 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="update-child-wrapper">
     <div class="input-row">
-        <select class="select input" ng-model="vm.updatedChild" ng-options="child as child.first_name for child in vm.childList.list">
+        <select class="select input" ng-change="vm.showChildInfo = true;" ng-model="vm.updatedChild" ng-options="child as child.first_name for child in vm.childList.list">
             <option value="" disabled selected>Select Child</option>
         </select>
     </div>
-    <form ng-submit="vm.updateChild(vm.updatedChild, vm.updatedChild.id)" class="input-form form">
+    <h2 style="font-size: 20px; font-weight: 700; margin: 20px 0;" ng-if="vm.showChildInfo">{{vm.updatedChild.first_name}} - Date of Birth: {{vm.updatedChild.dob | date: MM/dd/YYYY}}</h2>
+    <!-- <form ng-submit="vm.updateChild(vm.updatedChild, vm.updatedChild.id)" class="input-form form">
         <div class="input-row">
             <label class="input-label" for="first_name">First Name:</label>
             <input class="input" type="text" ng-model="vm.updatedChild.first_name" placeholder="First Name" />
@@ -22,7 +23,7 @@
         <div class="input-row">
             <input class="btn btn-alt" type="submit" name="submit" value="Update Child" />
         </div>
-    </form>
+    </form> -->
     <div class="input-row">
         <input class="btn btn-warn" ng-click="vm.deleteChild(vm.updatedChild.id, vm.updatedChild.family_id)" type="submit" name="submit" value="Remove Child" />
     </div>
@@ -47,7 +48,7 @@
             <label class="input-label" for="gender">Gender:</label>
             <input class="input" type="text" ng-model="vm.child.gender" placeholder="Gender (Male/Female)" />
         </div>
-        <div class="input-row">
+        <!-- <div class="input-row">
             <select class="select input" multiple ng-model="vm.child.categories">
                 <option selected disabled>Select Categories</option>
                 <option ng-repeat="category in vm.categoryList.list" value="{{category.category_name}}">{{category.category_name}}</option>
@@ -55,7 +56,7 @@
             <ul>
                 <li ng-repeat="childCategory in vm.child.categories">{{childCategory}}</li>
             </ul>
-        </div>
+        </div> -->
         <div class="input-row">
             <input class="btn btn-alt" type="submit" name="submit" value="Add Child" />
         </div>
