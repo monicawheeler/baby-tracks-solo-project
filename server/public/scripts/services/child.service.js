@@ -32,7 +32,7 @@ myApp.service('ChildService', ['$http', '$location', function($http, $location) 
         } else {
             console.log('sending to server', child);
             $http.post('/api/child', child).then(function(response) {
-                    console.log('success');
+                    console.log('success adding child');
                     self.getChildList(child.family_id);
                 },
                 function(response) {
