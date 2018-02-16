@@ -56,7 +56,6 @@ router.get('/child/:id', (req, res) => {
 
 // GET feeding category by child id 
 router.get('/category/feeding/:id', (req, res) => {
-    
     const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 1 ORDER BY datetime DESC LIMIT 1';
     pool.query(queryText, [req.params.id], (err, result) => {
         if (err) {
@@ -72,7 +71,6 @@ router.get('/category/feeding/:id', (req, res) => {
 
 // GET sleeping category by child id 
 router.get('/category/sleeping/:id', (req, res) => {
-    
     const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 2 ORDER BY datetime DESC LIMIT 1';
     pool.query(queryText, [req.params.id], (err, result) => {
         if (err) {
@@ -88,7 +86,6 @@ router.get('/category/sleeping/:id', (req, res) => {
 
 // GET diapering category by child id 
 router.get('/category/diapering/:id', (req, res) => {
-    
     const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 3 ORDER BY datetime DESC LIMIT 1';
     pool.query(queryText, [req.params.id], (err, result) => {
         if (err) {
@@ -104,7 +101,6 @@ router.get('/category/diapering/:id', (req, res) => {
 
 // GET medication category by child id 
 router.get('/category/medication/:id', (req, res) => {
-    
     const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 4 ORDER BY datetime DESC LIMIT 1';
     pool.query(queryText, [req.params.id], (err, result) => {
         if (err) {
@@ -120,7 +116,6 @@ router.get('/category/medication/:id', (req, res) => {
 
 // GET other category by child id 
 router.get('/category/other/:id', (req, res) => {
-    
     const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 5 ORDER BY datetime DESC LIMIT 1';
     pool.query(queryText, [req.params.id], (err, result) => {
         if (err) {
@@ -136,11 +131,9 @@ router.get('/category/other/:id', (req, res) => {
 
 router.put('/update/:id', function(req, res) {
     const notes = req.body.notes;
-    
     var saveNotes = {
         notes: notes
     };
-
     pool.query('UPDATE event SET notes=$1 WHERE id=$2', [saveNotes.notes, req.params.id], (err, result) => {
         if (err) {
             console.log("Error inserting data: ", err);

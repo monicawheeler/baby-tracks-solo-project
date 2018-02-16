@@ -1,4 +1,4 @@
-myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', function($http, FamilyService, ChildService) {
+myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', function ($http, FamilyService, ChildService) {
 	console.log('ChildController created');
 	var self = this;
 
@@ -23,29 +23,31 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 	self.categoryList = ChildService.categoryList;
 	self.childList = FamilyService.childList;
 	self.childListLength = ChildService.childListLength;
-	
+
 	console.log('in child controller', self.familyObject.id);
-	
-	
+
+
 	self.getChildList = function (familyId) {
 		FamilyService.getChildList(self.familyObject.id);
 	}
 
-	self.getCategoryList = function() {
+	self.getCategoryList = function () {
 		ChildService.getCategoryList();
 	}
 
-	self.addChild = function(child) {
-		ChildService.addChild(child);
+	self.addChild = function (child, familyId) {
+		ChildService.addChild(child, self.familyObject.id);
+		self.getChildList(self.familyObject.id);
 	}
 
-	self.deleteChild = function(id, familyId) {
+	self.deleteChild = function (id, familyId) {
 		ChildService.deleteChild(id, self.familyObject.id);
+		self.getChildList(self.familyObject.id);
 	}
 
-	self.updateChild = function(child, id, familyId) {
-		ChildService.updateChild(child, id, self.familyObject.id);
-	}
+	// self.updateChild = function(child, id, familyId) {
+	// 	ChildService.updateChild(child, id, self.familyObject.id);
+	// }
 
 	self.getChildList(self.familyObject.id);
 	self.getCategoryList();

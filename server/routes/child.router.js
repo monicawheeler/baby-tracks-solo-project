@@ -69,7 +69,7 @@ router.get('/category', (req, res) => {
 });
 
 
-router.delete('/:id', function(req, res) {
+router.delete('/:id', function (req, res) {
     const queryText = 'DELETE FROM child WHERE id=$1';
     pool.query(queryText, [req.params.id])
         // runs on successful query
@@ -85,7 +85,7 @@ router.delete('/:id', function(req, res) {
 });
 
 
-router.put('/update/:id', function(req, res) {
+router.put('/update/:id', function (req, res) {
     console.log('req.body', req.body);
 
     const queryText = 'UPDATE child SET first_name=$1, dob=$2, gender=$3 WHERE id=$4;';
