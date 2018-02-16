@@ -7,6 +7,9 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
       family_name: '',
       password: ''
     };
+	
+    self.familyService = FamilyService;
+    self.familyObject = FamilyService.familyObject;
 
     self.message = '';
 

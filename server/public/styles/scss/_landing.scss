@@ -21,12 +21,13 @@
 }
 
 .landing-inner {
+    max-width: 600px;
     text-align: center;
     position: relative;
     z-index: 1;
     color: $white;
     & * + * {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 }
 
@@ -45,4 +46,8 @@
 
 .landing-tagline {
     font-size: 24px;
+}
+
+.landing-subtag {
+    font-size: 18px;
 }

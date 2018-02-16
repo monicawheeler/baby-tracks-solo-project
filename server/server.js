@@ -9,6 +9,7 @@ const sessionConfig = require('./modules/session-middleware');
 // Route includes
 const familyRouter = require('./routes/family.router');
 const childRouter = require('./routes/child.router');
+const eventRouter = require('./routes/event.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,11 +25,12 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/family', familyRouter);
 app.use('/api/child', childRouter);
+app.use('/api/event', eventRouter);
 
 // Serve static files
 app.use(express.static('server/public'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8282;
 
 /** Listen * */
 app.listen(PORT, () => {

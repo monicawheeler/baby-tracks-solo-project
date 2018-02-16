@@ -1,124 +1,52 @@
 myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', function($http, FamilyService, ChildService) {
-  console.log('ChildController created');
-  var self = this;
+	console.log('ChildController created');
+	var self = this;
 
-  self.showAddChild = false;
-  self.addChildBtn = true;
+	self.showAddChild = false;
+	self.addChildBtn = true;
 
-  self.childService = ChildService;
-  
-  self.familyService = FamilyService;
-  self.familyObject = FamilyService.familyObject;
-  
-  self.message = '';
-  
-  self.child = {
-    first_name: '',
-    dob: '',
-    gender: '',
-    family_id: self.familyObject.id
-  };
+	self.childService = ChildService;
 
-  self.childList = {list: []};
-  self.categoryList = {list: []};
-  self.childListLength = 0;
-  self.showChildSelector = false;
-  
+	self.familyService = FamilyService;
+	self.familyObject = FamilyService.familyObject;
 
-  self.addChild = function() {
-    if(self.child.first_name === '' || self.child.dob === '' || self.child.gender === '') {
-      self.message = 'Enter first name, date of birth, and gender.'
-    } else {
-      console.log('sending to server', self.child);
-      $http.post('/api/child', self.child).then(function(response) {
-      console.log('success');
-      self.child = {};
-      self.getChildList();
-    },
-      function(response) {
-        console.log('error');
-        self.message = 'Something went wrong. Please try again.'
-      })
-    }
-  };
+	self.message = '';
 
+	self.child = {
+		first_name: '',
+		dob: '',
+		gender: '',
+		family_id: self.familyObject.id
+	};
 
-  self.getChildList = function () {
-    $http.get(`/api/child/family/${self.familyObject.id}`).then(function(response) {
-      console.log('ChildService -- get child');
-          if(response.data) {
-              self.childList.list = response.data;
-              console.log('self.childList.list', self.childList.list);
-              self.childListLength = self.childList.list.length;
+	self.categoryList = ChildService.categoryList;
+	self.childList = FamilyService.childList;
+	self.childListLength = ChildService.childListLength;
+	
+	console.log('in child controller', self.familyObject.id);
+	
+	
+	self.getChildList = function (familyId) {
+		FamilyService.getChildList(self.familyObject.id);
+	}
 
-              // conditional to check for children
-              if (self.childListLength > 0) {
-                self.showChildSelector = true;
-              } else {
-                self.showChildSelector = false;
-              }
+	self.getCategoryList = function() {
+		ChildService.getCategoryList();
+	}
 
-          } else {
-              console.log('ChildController -- getuser -- failure');
-              // return error
-          }
-      },function(response){
-          console.log('ChildController -- getuser -- failure: ', response);
-          // return error
-      });
-  }
+	self.addChild = function(child) {
+		ChildService.addChild(child);
+	}
 
-  self.getCategoryList = function () {
-    $http.get('/api/child/category').then(function(response) {
-      console.log('get category');
-          if(response.data) {
-              self.categoryList.list = response.data;
-              console.log('self.categoryList.list', self.categoryList.list);
-          } else {
-              console.log('1 get category -- failure');
-              // return error
-          }
-      }
-      ,function(response){
-          console.log('2 get category -- failure: ', response);
-          // return error
-      }
-    );
-  }
+	self.deleteChild = function(id, familyId) {
+		ChildService.deleteChild(id, self.familyObject.id);
+	}
 
-  self.getChildList();
-  self.getCategoryList();
+	self.updateChild = function(child, id, familyId) {
+		ChildService.updateChild(child, id, self.familyObject.id);
+	}
 
-  self.deleteChild = function(id) {
-    const childId = id;
-    console.log('delete child by this id:', childId);
-    
-    $http.delete(`/api/child/${childId}`).then(function(response) {
-      console.log('in delete child');
-      if(response.data)
-        console.log('child deleted succesfully');
-        self.getChildList();
-      }, function(response) {
-          console.log('service does not exist');
-          
-      });
-    }
-
-    self.updateChild = function(data, id) {
-      const childId = id;
-      const childObject = data;
-      $http.put(`/api/child/update/${childId}`, childObject).then(function(response) {
-      console.log('id', childId, 'childObject', childObject);
-        console.log('in update child');
-        if(response.data)
-          console.log('child updated succesfully');
-          self.getChildList();
-        }, function(response) {
-            console.log('service does not exist');
-            
-        });
-      }
-
+	self.getChildList(self.familyObject.id);
+	self.getCategoryList();
 
 }]);
-  
