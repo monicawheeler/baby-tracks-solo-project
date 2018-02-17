@@ -276,4 +276,8 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
+.navbar {
+  text-align: right;
+}
+
 /*# sourceMappingURL=main.css.map */
