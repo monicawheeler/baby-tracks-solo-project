@@ -35,13 +35,11 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
             category_id: category_id,
             datetime: datetime
         };
-        console.log('trackEvent:', eventObjectToSend);
+        
         // Post Event
         $http.post('/api/event', eventObjectToSend) 
             .then(function (response) {
-                console.log('success');
-                console.log('track event in service - success - child_id', child_id);
-
+                console.log('success posting even');
                 self.getChildEventList(child_id);
             })
             .catch(function (error) {
@@ -53,15 +51,13 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
 
     self.getChildEventList = function (id) {
         self.currentDateTime = new Date();
-        console.log('in getChildEventList');
 
         // get category events based on child
-        $http.get(`/api/event/child/${id}`).then(function (response) {
-
-            if (response.data) {
+        $http.get(`/api/event/child/${id}`)
+            .then(function (response) {
+                console.log('success get child event list');
                 self.childEvents.list = response.data;
-                console.log('self.childEvents.list', self.childEvents.list);
-
+                
                 // GET feeding category content
                 $http.get(`/api/event/category/feeding/${id}`)
                     .then(function (response) {
@@ -132,10 +128,12 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
                         self.message = "Something went wrong. Please try again."
                     });  // end getting other category
 
-            } else {
-                console.log('get events by child id failed');
-            }
-        });
+            })
+            .catch(function (error) {
+                console.log('error, response:', response);
+                self.message = "Something went wrong. Please try again."
+            });
+            
     }; // end getChildEventList
 
     self.updateNotes = function (eventId, notes, childId) {
