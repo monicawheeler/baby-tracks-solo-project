@@ -41,7 +41,7 @@ router.post('/', (req, res, next) => {
 // GET children based on child id
 router.get('/child/:id', (req, res) => {
     
-    const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id=$1 ORDER BY category.category_name';
+    const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id=$1 ORDER BY event.datetime DESC';
     pool.query(queryText, [req.params.id], (err, result) => {
         if (err) {
             //console.log('error in get request for children by family id');
