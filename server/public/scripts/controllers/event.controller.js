@@ -1,6 +1,9 @@
 myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', 'EventService', function($http, FamilyService, ChildService, EventService) {
     console.log('EventController created');
     var self = this;
+    
+	self.message = ChildService.message;
+	self.message = FamilyService.message;
 
     self.showEventHistory = false;
 
@@ -27,8 +30,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.showDiaperingTrackingButton = true;
     self.showMedicationTrackingButton = true;
     self.showOtherTrackingButton = true;
-
-    self.message = '';
     
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;

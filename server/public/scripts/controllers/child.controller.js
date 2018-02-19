@@ -11,7 +11,7 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 	self.familyService = FamilyService;
 	self.familyObject = FamilyService.familyObject;
 
-	self.message = '';
+	self.message = ChildService.message;
 
 	self.child = {
 		first_name: '',

@@ -1,6 +1,8 @@
-myApp.controller('InfoController', ['$http', 'FamilyService', function($http, FamilyService, ChildService) {
-    console.log('InfoController created');
+myApp.controller('AccountController', ['$http', 'FamilyService', function($http, FamilyService) {
+    console.log('AccountController created');
     var self = this;
+    
+	self.message = FamilyService.message;
 
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;
