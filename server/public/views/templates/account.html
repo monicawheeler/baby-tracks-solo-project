@@ -1,7 +1,7 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
 
-<div class="account-wrapper">{{vm.message}}
+<div class="account-wrapper">
     <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
     <h2 class="">Update Account Password</h2>
     <form class="input-form form" ng-submit="vm.updateUser(vm.familyObject.id, vm.familyObject)">
