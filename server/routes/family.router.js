@@ -55,25 +55,30 @@ router.get('/logout', (req, res) => {
     res.sendStatus(200);
 });
 
-router.put('/update/:id', function(req, res) {
-    const username = req.body.username;
-    const family_name = req.body.family_name;
-    const password = encryptLib.encryptPassword(req.body.password);
+router.put('/update/:id', function (req, res) {
+    if (req.isAuthenticated()) {
+        const username = req.body.username;
+        const family_name = req.body.family_name;
+        const password = encryptLib.encryptPassword(req.body.password);
 
-    var saveUser = {
-        username: username,
-        family_name: family_name,
-        password: password
-    };
+        var saveUser = {
+            username: username,
+            family_name: family_name,
+            password: password
+        };
 
-    pool.query('UPDATE family SET username=$1, family_name=$2, password=$3 WHERE id=$4', [saveUser.username, saveUser.family_name, saveUser.password, req.params.id], (err, result) => {
-        if (err) {
-            console.log("Error inserting data: ", err);
-            res.sendStatus(500);
-        } else {
-            res.sendStatus(201);
-        }
-    });
+        pool.query('UPDATE family SET username=$1, family_name=$2, password=$3 WHERE id=$4', [saveUser.username, saveUser.family_name, saveUser.password, req.params.id], (err, result) => {
+            if (err) {
+                console.log("Error inserting data: ", err);
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(201);
+            }
+        });
+    } else {
+        // failure best handled on the server. do redirect here.
+        res.sendStatus(403);
+    }
 });
 
 

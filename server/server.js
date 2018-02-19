@@ -30,7 +30,7 @@ app.use('/api/event', eventRouter);
 // Serve static files
 app.use(express.static('server/public'));
 
-const PORT = process.env.PORT || 8282;
+const PORT = process.env.PORT || 2828;
 
 /** Listen * */
 app.listen(PORT, () => {

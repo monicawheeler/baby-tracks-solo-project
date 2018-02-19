@@ -28,12 +28,12 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 
 	self.addChild = function (child, familyId) {
 		ChildService.addChild(child, self.familyObject.id);
-		self.getChildList(self.familyObject.id);
+		//self.getChildList(self.familyObject.id);
 	}
 
 	self.deleteChild = function (id, familyId) {
 		ChildService.deleteChild(id, self.familyObject.id);
-		self.getChildList(self.familyObject.id);
+		//self.getChildList(self.familyObject.id);
 	}
 
 	self.getChildList = function (familyId) {
