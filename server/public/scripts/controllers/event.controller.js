@@ -2,8 +2,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     console.log('EventController created');
     var self = this;
     
-	self.message = ChildService.message;
-	self.message = FamilyService.message;
+	self.message = EventService.message;
 
     self.showEventHistory = false;
 
@@ -73,4 +72,20 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
 	self.getChildList(self.familyObject.id);
     self.getCategoryList();
 
+    self.showFeedingTrackingButton = false; 
+    self.showSleepingTrackingButton = false; 
+    self.showDiaperingTrackingButton = false; 
+    self.showMedicationTrackingButton = false; 
+    self.showOtherTrackingButton = false;
+
+    self.showAllButtons = function(childId) {
+        console.log('showAllButtons function', childId);
+        if(childId !== '' || childId !== undefined) {
+            self.showFeedingTrackingButton = true; 
+            self.showSleepingTrackingButton = true; 
+            self.showDiaperingTrackingButton = true; 
+            self.showMedicationTrackingButton = true; 
+            self.showOtherTrackingButton = true;
+        }
+    }
 }]);

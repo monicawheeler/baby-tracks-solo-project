@@ -12,14 +12,14 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
 
     self.getCategoryList = function () {
         $http.get('/api/child/category')
-        .then(function (response) {
-            self.categoryList.list = response.data;
-            console.log('self.categoryList.list', self.categoryList.list);
-        })
-        .catch(function (error) {
-            console.log('error, response:', response);
-            self.message = "Something went wrong. Please try again."
-        });
+            .then(function (response) {
+                self.categoryList.list = response.data;
+                console.log('self.categoryList.list', self.categoryList.list);
+            })
+            .catch(function (error) {
+                console.log('error, response:', response);
+                self.message = "Something went wrong. Please try again."
+            });
     }; // end getCategoryList
 
     self.getChildList = function (id) {
@@ -34,9 +34,9 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
     }; // end getChildList()
 
     self.addChild = function (child, familyId) {
-		if (child.first_name === '' || child.dob === '' || child.gender === '' ) {
+        if (child.first_name === '' || child.dob === '' || child.gender === '') {
             self.message = "Enter first name, date of birth, and gender!";
-		} else {
+        } else {
             $http.post('/api/child', child)
                 .then(function (response) {
                     console.log('success adding child');
@@ -50,17 +50,36 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
     }; // end addChild
 
     self.deleteChild = function (id, familyId) {
-        const childId = id;
-
-        $http.delete(`/api/child/${childId}`)
-            .then(function (response) {
-                console.log('child deleted succesfully');
-                self.getChildList(familyId);
+        console.log('id', id);
+        
+        if(!id) {
+            swal('No child selected', 'Select a child from the drop-down to stop tracking.');
+        } else {
+            swal({
+                text: "Are you sure you want to stop tracking the child?",
+                icon: "warning",
+                buttons: ['Nevermind', 'Yes, stop tracking.'],
+                dangerMode: true,
+                closeOnClickOutside: false
             })
-            .catch(function (error) {
-                console.log('error, response:', response);
-                self.message = "Something went wrong. Please try again."
+            .then((willDelete) => {
+                if (willDelete) {
+                    const childId = id;
+                    $http.delete(`/api/child/${childId}`)
+                        .then(function (response) {
+                            swal('The child has been removed from tracking.');
+                            self.getChildList(familyId);
+                        })
+                        .catch(function (error) {
+                            console.log('error, response:', response);
+                            self.message = "Something went wrong. Please try again."
+                        });
+                } else {
+                    swal('The child will not be removed from tracking.');
+                } // end willDelete if statement
             });
+        } // end if/else for child id being present
     }; // end deleteChild
+
 
 }]);
