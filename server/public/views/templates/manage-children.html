@@ -1,15 +1,16 @@
 <header class="header" ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="update-child-wrapper">
+<div class="select-child-wrapper">
     <div class="input-row">
         <select class="select input" ng-change="vm.showChildInfo = true" ng-model="vm.selectedChild" ng-options="child as child.first_name for child in vm.childList.list">
             <option value="" disabled selected>Select Child</option>
         </select>
     </div>
+
     <ul>
-        <li ng-repeat="child in vm.childList.list">{{child.first_name}}</li>
+        <li ng-repeat="child in vm.childList.list" ng-click="vm.currentSelectedChild" class="baby-{{child.gender}}">{{child.first_name}} - Born: {{child.dob | date: MM/dd/YYYY}}</li>
     </ul>
-    <h2 ng-if="vm.showChildInfo">{{vm.selectedChild.id}} {{vm.selectedChild.first_name}} - Date of Birth: {{vm.selectedChild.dob | date: MM/dd/YYYY}}</h2>
+    <h2 style="font-weight: 900" ng-if="vm.showChildInfo">{{vm.selectedChild.first_name}} - Born: {{vm.selectedChild.dob | date: MM/dd/YYYY}}</h2>
     <div class="input-row">
         <input class="btn btn-warn" ng-click="vm.deleteChild(vm.selectedChild.id, vm.selectedChild.family_id)" type="submit" name="submit" value="Remove from Tracking" />
     </div>
@@ -19,22 +20,27 @@
         <input class="btn btn-alt" ng-click="vm.showAddChild = true; vm.addChildBtn = false" ng-if="vm.addChildBtn" type="button" name="add-child" value="Add New Child" />
     </div>
     <div class="add-child" ng-if="vm.showAddChild">
-        <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>{{vm.selectedChild.family_id}}
+        <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
         <form class="input-form form" ng-submit="vm.addChild(vm.child, vm.selectedChild.family_id)">
             <div class="input-row">
                 <label class="input-label" for="first_name">First Name<span class="input-required">*</span></label>
                 <input class="input" type="text" required ng-model="vm.child.first_name" placeholder="First Name" />
             </div>
             <div class="input-row">
-                <label class="input-label" for="dob">Date of Birth<span class="input-required">*</span></label>
+                <label class="input-label" for="dob">Born<span class="input-required">*</span></label>
                 <input class="input" type="date" required ng-model="vm.child.dob" placeholder="MM/DD/YYYY" />
             </div>
             <div class="input-row">
                 <label class="input-label" for="gender">Gender<span class="input-required">*</span></label>
-                <input class="input" type="text" required ng-model="vm.child.gender" placeholder="Gender (Male/Female)" />
+                <select class="select input" ng-model="vm.child.gender">
+                    <option value="Select Gender" disabled selected>Select Gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
             </div>
             <div class="input-row">
                 <input class="btn btn-alt" type="submit" name="submit" value="Add Child" />
+                <input class="btn btn-warn" type="button" name="cancel" ng-click="vm.showAddChild = false;" value="Cancel" />
             </div>
         </form>
     </div>
