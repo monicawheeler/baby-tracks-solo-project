@@ -9,9 +9,9 @@
     <ul>
         <li ng-repeat="child in vm.childList.list">{{child.first_name}}</li>
     </ul>
-    <h2 ng-if="vm.showChildInfo">{{vm.selectedChild.first_name}} - Date of Birth: {{vm.selectedChild.dob | date: MM/dd/YYYY}}</h2>
+    <h2 ng-if="vm.showChildInfo">{{vm.selectedChild.id}} {{vm.selectedChild.first_name}} - Date of Birth: {{vm.selectedChild.dob | date: MM/dd/YYYY}}</h2>
     <div class="input-row">
-        <input class="btn btn-warn" ng-click="vm.deleteChild(vm.selectedChild.id, vm.selectedChild.family_id); vm.getChildList(vm.selectedChild.family_id)" type="submit" name="submit" value="Remove from Tracking" />
+        <input class="btn btn-warn" ng-click="vm.deleteChild(vm.selectedChild.id, vm.selectedChild.family_id)" type="submit" name="submit" value="Remove from Tracking" />
     </div>
 </div>
 <div class="add-children-wrapper">

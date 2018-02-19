@@ -2,6 +2,8 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     console.log('EventController created');
     var self = this;
 
+    self.showEventHistory = false;
+
     self.showNewFeedingEvent = false;
     self.showNewSleepingEvent = false;
     self.showNewDiaperingEvent = false;
@@ -41,9 +43,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.categoryDiapering = EventService.categoryDiapering;
     self.categoryMedication = EventService.categoryMedication;
     self.categoryOther = EventService.categoryOther;
-    
-	console.log('in event controller', self.familyObject.id);
-	
 
     self.getChildList = function(id) {
         FamilyService.getChildList(self.familyObject.id);
