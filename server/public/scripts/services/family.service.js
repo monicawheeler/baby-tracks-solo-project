@@ -34,7 +34,7 @@ myApp.service('FamilyService', ['$http', '$location', function ($http, $location
     }; // end getuser
 
     self.logout = function () {
-        console.log('FamilyService -- logout');
+        console.log('navservice -- logout');
         $http.get('/api/family/logout')
             .then(function (response) {
                 console.log('FamilyService -- logout -- logged out');

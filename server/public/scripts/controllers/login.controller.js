@@ -15,7 +15,6 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
 		if (self.user.username === '' || self.user.password === '') {
 			self.message = "Enter your username and password!";
 		} else {
-			console.log('sending to server...', self.user);
 			$http.post('/api/family/login', self.user).then(
 				function (response) {
 					if (response.status == 200) {
