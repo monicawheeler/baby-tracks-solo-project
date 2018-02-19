@@ -38,7 +38,7 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
 
     self.registerUser = function () {
       if (self.user.username === '' || self.user.family_name === '' || self.user.password === '') {
-        self.message = "Choose a username and password!";
+        self.message = "Choose a username, family name, and password!";
       } else {
         console.log('sending to server...', self.user);
         $http.post('/api/family/register', self.user).then(function (response) {
