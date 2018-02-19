@@ -28,6 +28,10 @@
     font-family: $sans-serif;
 }
 
+.input-required {
+    color: $warn;
+}
+
 ::-webkit-input-placeholder {
     font-family: $sans-serif;
     font-size: 16px;

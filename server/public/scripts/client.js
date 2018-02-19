@@ -30,7 +30,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/account', {
       templateUrl: '/views/templates/account.html',
-      controller: 'InfoController as vm',
+      controller: 'AccountController as vm',
       resolve: {
         getuser : function(FamilyService){
           return FamilyService.getuser();

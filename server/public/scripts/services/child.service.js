@@ -34,15 +34,19 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
     }; // end getChildList()
 
     self.addChild = function (child, familyId) {
-        $http.post('/api/child', child)
-            .then(function (response) {
-                console.log('success adding child');
-                self.getChildList(familyId);
-            })
-            .catch(function (error) {
-                console.log('error, response:', response);
-                self.message = "Something went wrong. Please try again."
-            });
+		if (child.first_name === '' || child.dob === '' || child.gender === '' ) {
+            self.message = "Enter first name, date of birth, and gender!";
+		} else {
+            $http.post('/api/child', child)
+                .then(function (response) {
+                    console.log('success adding child');
+                    self.getChildList(familyId);
+                })
+                .catch(function (error) {
+                    console.log('error, response:', response);
+                    self.message = "Something went wrong. Please try again."
+                });
+        }
     }; // end addChild
 
     self.deleteChild = function (id, familyId) {

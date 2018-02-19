@@ -6,16 +6,16 @@
     <h2 class="">Update Account Password</h2>
     <form class="input-form form" ng-submit="vm.updateUser(vm.familyObject.id, vm.familyObject)">
         <div class="input-row">
-            <label class="input-label" for="username">Username:</label>
+            <label class="input-label" for="username">Username</label>
             <input class="input" type="text" disabled ng-model="vm.familyObject.username" placeholder="Username" />
         </div>
         <div class="input-row">
-            <label class="input-label" for="family_name">Family Name:</label>
+            <label class="input-label" for="family_name">Family Name</label>
             <input class="input" type="family_name" disabled ng-model="vm.familyObject.family_name" placeholder="Family Name (Smith)" />
         </div>
         <div class="input-row">
-            <label class="input-label" for="password">New Password:</label>
-            <input class="input" type="password" ng-model="vm.familyObject.password" placeholder="New Password" />
+            <label class="input-label" for="password">New Password<span class="input-required">*</span></label>
+            <input class="input" type="password" required ng-model="vm.familyObject.password" placeholder="New Password" />
         </div>
         <div class="input-row">
             <input class="btn btn-alt" type="submit" name="submit" value="Update Password" />
