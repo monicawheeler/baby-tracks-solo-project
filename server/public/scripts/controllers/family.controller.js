@@ -6,4 +6,5 @@ myApp.controller('FamilyController', ['FamilyService', function (FamilyService) 
 
 	self.familyService = FamilyService;
 	self.familyObject = FamilyService.familyObject;
+
 }]);

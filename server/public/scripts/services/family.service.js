@@ -33,24 +33,19 @@ myApp.service('FamilyService', ['$http', '$location', function ($http, $location
             });
     }; // end getuser
 
+    //logout user
     self.logout = function () {
-        console.log('navservice -- logout');
         $http.get('/api/family/logout')
-            .then(function (response) {
-                console.log('FamilyService -- logout -- logged out');
-                $location.path("/landing");
-            })
-            .catch(function (error) {
-                console.log('error, response:', response);
-                self.message = "Something went wrong. Please try again."
-            });
-    }; // end logout
+        .then(function (response) {
+            $location.path("/landing");
+        });
+    } //end logout
 
 
     self.updateUser = function (id, user) {
-		if (user.password === '' || user.password === undefined || !user.password) {
+        if (user.password === '' || user.password === undefined || !user.password) {
             self.message = "Enter a new password!";
-		} else {
+        } else {
             console.log('sending to server...', user);
             $http.put(`/api/family/update/${id}`, user)
                 .then(function (response) {
@@ -60,7 +55,7 @@ myApp.service('FamilyService', ['$http', '$location', function ($http, $location
                     console.log('error, response:', response);
                     self.message = "Something went wrong. Please try again."
                 });
-            }
+        }
     }; // end updateUser
 
     self.getChildList = function (id) {
