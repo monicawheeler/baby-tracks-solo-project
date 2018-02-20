@@ -238,8 +238,9 @@ strong {
 .input-container {
   display: flex;
   justify-content: center;
-  width: 800px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 40px auto 0;
+  box-sizing: border-box;
   text-align: center;
 }
 
