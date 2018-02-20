@@ -5,12 +5,23 @@
 
 .events-wrapper {
     margin-bottom: 40px;
+    @media screen and (min-width: 900px) {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 .event-row {
     display: flex;
     align-items: center;
     margin-top: 40px;
+    @media screen and (min-width: 900px) {
+        width: calc(50% - 40px);
+        padding: 0 20px;
+    }
+    @media screen and (min-width: 1200px) {
+        width: calc(33% - 40px);
+    }
 }
 
 .event-content {
@@ -33,6 +44,14 @@
 
 .event-content-btn {
     order: 2;
+    @media screen and (min-width: 500px) {
+        flex: 1 0 320px;
+        max-width: 320px;
+    }
+    @media screen and (min-width: 900px) {
+        flex: 1 0 100%;
+
+    }
 }
 
 .edit-btn {

@@ -86,11 +86,11 @@ strong {
 }
 
 .btn-alt {
-  border: 2px solid #1BC5FD;
-  color: #1BC5FD;
+  border: 2px solid #5D2F85;
+  color: #5D2F85;
 }
 .btn-alt:hover {
-  background-color: rgba(27, 197, 253, 0.05);
+  background-color: rgba(93, 47, 133, 0.05);
   cursor: pointer;
 }
 
@@ -110,7 +110,7 @@ strong {
   width: 100%;
   box-sizing: border-box;
   padding: 20px;
-  background-color: #1BC5FD;
+  background-color: #5D2F85;
   color: #ffffff;
   font-size: 22px;
 }
@@ -250,7 +250,7 @@ strong {
 }
 
 .select {
-  border: 1px solid #1BC5FD;
+  border: 1px solid #5D2F85;
   border-radius: 0;
   width: 250px;
   box-shadow: none;
@@ -292,11 +292,28 @@ strong {
 .events-wrapper {
   margin-bottom: 40px;
 }
+@media screen and (min-width: 900px) {
+  .events-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 
 .event-row {
   display: flex;
   align-items: center;
   margin-top: 40px;
+}
+@media screen and (min-width: 900px) {
+  .event-row {
+    width: calc(50% - 40px);
+    padding: 0 20px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .event-row {
+    width: calc(33% - 40px);
+  }
 }
 
 .event-content {
@@ -319,6 +336,17 @@ strong {
 
 .event-content-btn {
   order: 2;
+}
+@media screen and (min-width: 500px) {
+  .event-content-btn {
+    flex: 1 0 320px;
+    max-width: 320px;
+  }
+}
+@media screen and (min-width: 900px) {
+  .event-content-btn {
+    flex: 1 0 100%;
+  }
 }
 
 .edit-btn {
@@ -421,7 +449,7 @@ strong {
 
 .category-image {
   height: 65px;
-  background-color: #1BC5FD;
+  background-color: #5D2F85;
   border-radius: 50%;
   padding: 10px;
 }
