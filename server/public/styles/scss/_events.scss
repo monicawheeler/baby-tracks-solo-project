@@ -8,9 +8,31 @@
 }
 
 .event-row {
-    & + .event-row {
-        margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.event-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 20px;
+    & > * {
+        flex: 1 0 100%;
     }
+}
+
+.event-content-body {
+    order: 1;
+    margin-bottom: 10px;
+    .event-header {
+        margin-bottom: 5px;
+    }
+}
+
+.event-content-btn {
+    order: 2;
 }
 
 .edit-btn {
