@@ -104,15 +104,45 @@ strong {
   cursor: pointer;
 }
 
-.header {
+.content-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 25px 20px;
+  background-color: #5D2F85;
+  color: #ffffff;
+  font-size: 22px;
+}
+@media screen and (min-width: 700px) {
+  .content-header {
+    flex-wrap: nowrap;
+  }
+}
+.content-header > * {
+  width: 100%;
+}
+@media screen and (min-width: 700px) {
+  .content-header > * {
+    width: 33%;
+    text-align: center;
+    max-width: 33%;
+    flex: 1 0 33%;
+  }
+  .content-header > *:first-child {
+    text-align: left;
+  }
+}
+
+.bare-header {
   width: 100%;
   box-sizing: border-box;
   padding: 20px;
   background-color: #5D2F85;
   color: #ffffff;
   font-size: 22px;
+  text-align: center;
 }
 
 .header-subtitle {
@@ -483,10 +513,18 @@ th, td {
 }
 
 .open-nav {
-  position: relative;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   height: 15px;
   width: 30px;
-  padding: 0 5px 5px;
+}
+@media screen and (min-width: 700px) {
+  .open-nav {
+    position: relative;
+    top: 0px;
+    right: 0px;
+  }
 }
 .open-nav:hover {
   cursor: pointer;
@@ -494,6 +532,7 @@ th, td {
 
 .open-nav-icon {
   position: absolute;
+  right: 0;
   width: 30px;
   height: 2px;
   border-radius: 1px;
@@ -501,6 +540,7 @@ th, td {
 }
 .open-nav-icon:before, .open-nav-icon:after {
   position: absolute;
+  right: 0;
   content: "";
   width: 30px;
   height: 2px;
@@ -527,17 +567,19 @@ th, td {
 .nav-list-item-link {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
+  font-size: 24px;
   font-weight: 400;
   transition: all 300ms;
 }
 .nav-list-item-link:hover {
   color: #ffffff;
+  cursor: pointer;
 }
 
 .close-nav {
   position: absolute;
-  top: 35px;
-  right: 45px;
+  top: 20px;
+  right: 20px;
   height: 15px;
   width: 20px;
   padding: 0 5px 5px;
