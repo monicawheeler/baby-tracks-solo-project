@@ -28,6 +28,31 @@
     font-family: $sans-serif;
 }
 
+.input-row-select {
+    position: relative;
+    padding: 10px 0;
+    .arrow {
+        content: "\f107";
+        position: absolute;
+        font-family: "FontAwesome";
+        top: 50%;
+        transform: translateY(-50%);
+        left: 225px;
+        pointer-events:none;
+    }
+}
+
+.select {
+    border: 1px solid $primary;
+    border-radius: 0;
+    width: 250px;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    padding: 10px 40px 10px 10px;
+}
+
 .input-required {
     color: $warn;
 }
