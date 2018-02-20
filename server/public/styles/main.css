@@ -496,6 +496,15 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
+.account-wrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 40px auto;
+}
+.account-wrapper .subtitle {
+  margin: 55px 0 10px;
+}
+
 .overlay {
   position: fixed;
   z-index: 10;
