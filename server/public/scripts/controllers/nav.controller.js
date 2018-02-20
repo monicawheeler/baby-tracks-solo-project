@@ -4,8 +4,5 @@ myApp.controller('NavController', ['FamilyService', function (FamilyService) {
 
     self.showNav = false;
 
-    self.logout = function () {
-        FamilyService.logout();
-    };
-
+	self.familyService = FamilyService;
 }]);
