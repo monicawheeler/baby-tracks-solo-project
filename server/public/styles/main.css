@@ -70,7 +70,7 @@ strong {
   padding: 10px;
   color: #ffffff;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   font-family: "Lato", sans-serif;
   line-height: 1;
@@ -86,20 +86,21 @@ strong {
 }
 
 .btn-alt {
-  border: 2px solid #299def;
-  color: #299def;
+  border: 2px solid #1BC5FD;
+  color: #1BC5FD;
 }
 .btn-alt:hover {
-  background-color: rgba(41, 157, 239, 0.05);
+  background-color: rgba(27, 197, 253, 0.05);
   cursor: pointer;
 }
 
 .btn-warn {
-  border: 2px solid darkred;
-  color: darkred;
+  text-transform: uppercase;
+  border: 2px solid #b23737;
+  color: #b23737;
 }
 .btn-warn:hover {
-  background-color: rgba(139, 0, 0, 0.05);
+  background-color: rgba(178, 55, 55, 0.05);
   cursor: pointer;
 }
 
@@ -109,13 +110,17 @@ strong {
   width: 100%;
   box-sizing: border-box;
   padding: 20px;
-  background-color: #299def;
+  background-color: #1BC5FD;
   color: #ffffff;
   font-size: 22px;
 }
 
 .header-subtitle {
   text-transform: capitalize;
+}
+
+.subtitle {
+  font-weight: 400;
 }
 
 /* The starting CSS styles for the enter animation */
@@ -138,6 +143,12 @@ strong {
 /* The finishing CSS styles for the leave animation */
 .fade.ng-leave.ng-leave-active {
   opacity: 0;
+}
+
+.view-wrapper {
+  max-width: 1300px;
+  margin: 20px auto;
+  padding: 0 20px;
 }
 
 .landing-wrapper {
@@ -224,8 +235,33 @@ strong {
   font-family: "Lato", sans-serif;
 }
 
+.input-row-select {
+  position: relative;
+  padding: 10px 0;
+}
+.input-row-select .arrow {
+  content: "\f107";
+  position: absolute;
+  font-family: "FontAwesome";
+  top: 50%;
+  transform: translateY(-50%);
+  left: 225px;
+  pointer-events: none;
+}
+
+.select {
+  border: 1px solid #1BC5FD;
+  border-radius: 0;
+  width: 250px;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  padding: 10px 40px 10px 10px;
+}
+
 .input-required {
-  color: darkred;
+  color: #b23737;
 }
 
 ::-webkit-input-placeholder {
@@ -248,24 +284,17 @@ strong {
   font-size: 16px;
 }
 
-.event-row + .event-row {
-  margin-left: 50px;
-}
-
 .event-header {
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .events-wrapper {
-  display: flex;
-  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
-.event-row {
-  width: calc(20% - 50px);
-  max-width: calc(20% - 50px);
-  flex: 1 0 calc(20% - 50px);
+.event-row + .event-row {
+  margin-top: 20px;
 }
 
 .edit-btn {
@@ -275,20 +304,102 @@ strong {
   cursor: pointer;
 }
 
+.event-button-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.event-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  padding: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  margin: 0 10px;
+  height: 130px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  transition: all 250ms;
+}
+
 .event-btn-no {
+  border-color: #b23737;
   font-weight: 700;
-  color: darkred;
+  color: #b23737;
 }
 .event-btn-no:hover {
   cursor: pointer;
 }
 
 .event-btn-yes {
+  border-color: #08C9B5;
   font-weight: 700;
-  color: darkgreen;
+  color: #08C9B5;
 }
 .event-btn-yes:hover {
   cursor: pointer;
+}
+
+.new-event-inner .btn {
+  display: block;
+  width: 100%;
+}
+
+.new-event,
+.update-notes {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.95);
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  transition: 0.5s;
+}
+.new-event > *,
+.update-notes > * {
+  position: relative;
+  z-index: 15;
+}
+
+.new-event-inner,
+.update-notes-inner {
+  background-color: #ffffff;
+  padding: 40px;
+  text-align: center;
+}
+.new-event-inner > * + *,
+.update-notes-inner > * + * {
+  margin-top: 20px;
+}
+
+.new-event-header,
+.update-notes-header {
+  font-size: 26px;
+}
+
+.event-notes {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+.category-image {
+  height: 65px;
+  background-color: #1BC5FD;
+  border-radius: 50%;
+  padding: 10px;
 }
 
 table {

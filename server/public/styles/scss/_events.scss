@@ -1,23 +1,16 @@
-.event-row {
-    & + .event-row {
-        margin-left: 50px;
-    }
-}
-
 .event-header {
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .events-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 .event-row {
-    width: calc(20% - 50px);
-    max-width: calc(20% - 50px);
-    flex: 1 0 calc(20% - 50px);
+    & + .event-row {
+        margin-top: 20px;
+    }
 }
 
 .edit-btn {
@@ -27,7 +20,30 @@
     }
 }
 
+.event-button-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.event-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    margin: 0 10px;
+    height: 130px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    transition: all 250ms;
+}
+
 .event-btn-no {
+    border-color: $warn;
     font-weight: 700;
     color: $warn;
     &:hover {
@@ -36,11 +52,70 @@
 }
 
 .event-btn-yes {
+    border-color: $confirm;
     font-weight: 700;
     color: $confirm;
     &:hover {
         cursor: pointer;
     }
+}
+
+.new-event-inner {
+    & .btn {
+        display: block;
+        width: 100%;
+    }
+}
+
+// Modal type view
+.new-event,
+.update-notes {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: $black;
+    background-color: transparentize($black, 0.05);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s;
+    & > * {
+        position: relative;
+        z-index: 15;
+    }
+}
+
+.new-event-inner,
+.update-notes-inner {
+    background-color: $white;
+    padding: 40px;
+    text-align: center;
+    & > * + * {
+        margin-top: 20px;
+    }
+}
+
+.new-event-header,
+.update-notes-header {
+    font-size: 26px;
+}
+
+.event-notes {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+.category-image {
+    height: 65px;
+    background-color: $primary;
+    border-radius: 50%;
+    padding: 10px;
 }
 
 table {
