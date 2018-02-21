@@ -56,7 +56,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
         FamilyService.updateUser(id, user);
     }
 
-    self.trackEvent = function(child_id, notes, category_id, datetime) {
+    self.trackEvent = function(child_id, notes, category_id) {
         let currentDateTime = new Date();
         EventService.trackEvent(child_id, notes, category_id, currentDateTime);
     }

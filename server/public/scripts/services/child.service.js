@@ -10,6 +10,8 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
         list: []
     };
 
+    self.showAddChild = false;
+
     self.getCategoryList = function () {
         $http.get('/api/child/category')
             .then(function (response) {
@@ -26,6 +28,9 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
         $http.get(`/api/child/family/${id}`)
             .then(function (response) {
                 self.childList.list = response.data;
+                // self.childList = {
+                //     list: response.data
+                // }
             })
             .catch(function (error) {
                 console.log('error, response:', response);
@@ -40,6 +45,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
             $http.post('/api/child', child)
                 .then(function (response) {
                     console.log('success adding child');
+                    self.showAddChild = false;
                     self.getChildList(familyId);
                 })
                 .catch(function (error) {
