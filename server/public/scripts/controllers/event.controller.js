@@ -6,6 +6,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
 
     self.showEventHistory = false;
     self.showChildTracking = false;
+    self.showEventColumns = false;
 
     self.showNewFeedingEvent = false;
     self.showNewSleepingEvent = false;
@@ -36,6 +37,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
 
     self.childService = ChildService;
     self.categoryList = ChildService.categoryList;
+    
 
     self.childEvents = EventService.childEvents;
 
@@ -59,10 +61,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
         ChildService.getCategoryList();
     }
 
-    // self.updateUser = function(id, user) {
-    //     FamilyService.updateUser(id, user);
-    // }
-
     self.trackEvent = function(child_id, notes, category_id) {
         let currentDateTime = new Date();
         EventService.trackEvent(child_id, notes, category_id, currentDateTime);
@@ -76,7 +74,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
         EventService.updateNotes(eventId, notes, childId);
     }
 
-    self.getCategoryList();
+    // self.getCategoryList();
 
     self.showFeedingTrackingButton = false; 
     self.showSleepingTrackingButton = false; 

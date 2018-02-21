@@ -6,7 +6,7 @@
         <div class="select-wrapper">
             <h2 class="subtitle">Select a child to track:</h2>
             <div class="input-row input-row-select">
-                <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); vm.showEventHistory = true; vm.showChildTracking = true; vm.showAllButtons(vm.trackChild.id)" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+                <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); vm.showEventHistory = true; vm.showChildTracking = true; vm.showAllButtons(vm.trackChild.id); vm.showEventColumns = true;" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
                     <option value="" selected disabled>Select a Child</option>
                 </select>
                 <div class="arrow">
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="events-wrapper">
+    <div class="events-wrapper" ng-if="vm.showEventColumns">
         <div class="event-row">
             <img ng-if="vm.showFeedingTrackingButton" class="category-image" ng-src="styles/assets/images/feeding.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewFeedingEvent">

@@ -9,6 +9,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
     self.childList = {
         list: []
     };
+
     self.showAddChild = false;
 
     self.getCategoryList = function () {
@@ -27,11 +28,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
         $http.get(`/api/child/family/${id}`)
             .then(function (response) {
                 self.childList.list = response.data;
-                
-                // for possible mutation:
-                // self.childList = {
-                //     list: response.data
-                // }
+                self.childCount = self.childList.list;
             })
             .catch(function (error) {
                 console.log('error, response:', response);
