@@ -36,12 +36,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.childService = ChildService;
     self.categoryList = ChildService.categoryList;
 
-
-    self.childList = ChildService.childList;
-    console.log('self.childList in event controller', self.childList);
-
-
-    
     self.childEvents = EventService.childEvents;
 
     self.categoryFeeding = EventService.categoryFeeding;
@@ -50,18 +44,23 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.categoryMedication = EventService.categoryMedication;
     self.categoryOther = EventService.categoryOther;
 
-    // self.getChildList = function(id) {
-    //     ChildService.getChildList(self.familyObject.id);
-    // }
-	// self.getChildList(self.familyObject.id);
+	self.getChildList = function (familyId) {
+		ChildService.getChildList(self.familyObject.id);
+    }
+    
+	self.getChildList(self.familyObject.id);
+
+	self.childList = ChildService.childList;
+	console.log('childList variable in event controller', self.childList);
+
 
     self.getCategoryList = function() {
         ChildService.getCategoryList();
     }
 
-    self.updateUser = function(id, user) {
-        FamilyService.updateUser(id, user);
-    }
+    // self.updateUser = function(id, user) {
+    //     FamilyService.updateUser(id, user);
+    // }
 
     self.trackEvent = function(child_id, notes, category_id) {
         let currentDateTime = new Date();

@@ -27,8 +27,8 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 	self.getChildList = function (familyId) {
 		ChildService.getChildList(self.familyObject.id);
 	}
-	self.getChildList(self.familyObject.id);
 
+	self.getChildList(self.familyObject.id);
 
 	self.childList = ChildService.childList;
 	console.log('childList variable in child controller', self.childList);
