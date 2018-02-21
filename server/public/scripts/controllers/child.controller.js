@@ -9,6 +9,8 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 	self.showAddChild = ChildService.showAddChild;
 
 	self.childService = ChildService;
+	
+	self.categoryList = ChildService.categoryList;
 
 	self.familyService = FamilyService;
 	self.familyObject = FamilyService.familyObject;
@@ -22,31 +24,25 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 		family_id: self.familyObject.id
 	};
 
-	self.categoryList = ChildService.categoryList;
-	self.childList = FamilyService.childList;
-	self.childListLength = ChildService.childListLength;
+	self.getChildList = function (familyId) {
+		ChildService.getChildList(self.familyObject.id);
+	}
+	self.getChildList(self.familyObject.id);
 
-	console.log('in child controller', self.familyObject.id);
+
+	self.childList = ChildService.childList;
+	console.log('childList variable in child controller', self.childList);
 
 	self.addChild = function (child, familyId) {
 		ChildService.addChild(child, self.familyObject.id);
-		//self.getChildList(self.familyObject.id);
 	}
 
 	self.deleteChild = function (id, familyId) {
 		ChildService.deleteChild(id, self.familyObject.id);
-		//self.getChildList(self.familyObject.id);
-	}
-
-	self.getChildList = function (familyId) {
-		FamilyService.getChildList(self.familyObject.id);
 	}
 
 	self.getCategoryList = function () {
 		ChildService.getCategoryList();
 	}
-
-	self.getChildList(self.familyObject.id);
 	self.getCategoryList();
-
 }]);
