@@ -2,17 +2,26 @@
 
 <div class="track-wrapper view-wrapper fade">
     <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-    <h2 class="subtitle">Select a child to track:</h2>
-    <div class="input-row input-row-select">
-        <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); vm.showEventHistory = true; vm.showAllButtons(vm.trackChild.id)" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
-            <option value="" selected disabled>Select a Child</option>
-        </select>
-        <div class="arrow">
-            <i class="fas fa-angle-down"></i>
+    <div class="select-header">
+        <div class="select-wrapper">
+            <h2 class="subtitle">Select a child to track:</h2>
+            <div class="input-row input-row-select">
+                <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); vm.showEventHistory = true; vm.showChildTracking = true; vm.showAllButtons(vm.trackChild.id)" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+                    <option value="" selected disabled>Select a Child</option>
+                </select>
+                <div class="arrow">
+                    <i class="fas fa-angle-down"></i>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="child-selected-wrapper">
-        <h2 class="subtitle">Child Tracking: {{vm.trackChild}}</h2>
+        <div class="child-selected-wrapper" ng-if="vm.showChildTracking">
+            <img class="child-image" ng-src="styles/assets/images/baby-{{vm.trackChild.gender}}.svg" alt="">
+            <div class="inner-subtitle-child">
+                <p class="super-title">Currently Tracking:</p>
+                {{vm.trackChild.first_name}}
+                <div class="inner-subtitle-small">Born: {{vm.trackChild.dob | date: MM/dd/YYYY}}</div>
+            </div>
+        </div>
     </div>
     <div class="events-wrapper">
         <div class="event-row">

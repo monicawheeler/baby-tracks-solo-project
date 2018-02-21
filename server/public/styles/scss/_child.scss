@@ -1,3 +1,14 @@
+.select-child-wrapper {
+    & > * {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    .arrow {
+        left: calc(50% + 100px);
+    }
+}
+
 .inner-subtitle {
     display: flex;
     align-items: center;
@@ -40,6 +51,14 @@
     text-align: center;
     & > * + * {
         margin-top: 20px;
+    }
+    .input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .input-row-select .arrow {
+        right: 15px;
+        left: initial;
     }
 }
 

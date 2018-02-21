@@ -296,6 +296,7 @@ strong {
   transform: translateY(-50%);
   left: 225px;
   pointer-events: none;
+  color: #764ba2;
 }
 
 .select {
@@ -335,6 +336,32 @@ strong {
   font-family: "Lato", sans-serif;
   font-size: 16px;
   font-weight: 300;
+}
+
+.select-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child-selected-wrapper {
+  margin-left: 20px;
+}
+
+.child-selected-wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 300;
+}
+.child-selected-wrapper .super-title {
+  font-size: 12px;
+}
+.child-selected-wrapper .inner-subtitle-child {
+  margin-left: 10px;
+}
+.child-selected-wrapper .inner-subtitle-small {
+  font-size: 1rem;
 }
 
 .event-header {
@@ -529,6 +556,15 @@ th, td {
   font-size: 1.25rem;
 }
 
+.select-child-wrapper > * {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+.select-child-wrapper .arrow {
+  left: calc(50% + 100px);
+}
+
 .inner-subtitle {
   display: flex;
   align-items: center;
@@ -573,6 +609,14 @@ th, td {
 }
 .add-children-inner > * + * {
   margin-top: 20px;
+}
+.add-children-inner .input {
+  width: 100%;
+  box-sizing: border-box;
+}
+.add-children-inner .input-row-select .arrow {
+  right: 15px;
+  left: initial;
 }
 
 .add-child-header {
