@@ -9,7 +9,6 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
     self.childList = {
         list: []
     };
-
     self.showAddChild = false;
 
     self.getCategoryList = function () {
@@ -28,6 +27,8 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
         $http.get(`/api/child/family/${id}`)
             .then(function (response) {
                 self.childList.list = response.data;
+                
+                // for possible mutation:
                 // self.childList = {
                 //     list: response.data
                 // }
@@ -56,8 +57,6 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
     }; // end addChild
 
     self.deleteChild = function (id, familyId) {
-        console.log('id', id);
-        
         if(!id) {
             swal('No child selected', 'Select a child from the drop-down to stop tracking.');
         } else {

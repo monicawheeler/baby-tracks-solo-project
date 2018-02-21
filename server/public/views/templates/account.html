@@ -4,9 +4,11 @@
     <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
     <form class="input-form form" ng-submit="vm.updateUser(vm.familyObject.id, vm.familyObject)">
         <div class="input-row">
+            <label class="input-label" for="username">Username</label>
             <input class="input" type="text" disabled ng-model="vm.familyObject.username" placeholder="Username" />
         </div>
         <div class="input-row">
+            <label class="input-label" for="family_name">Family Name</label>
             <input class="input" type="family_name" disabled ng-model="vm.familyObject.family_name" placeholder="Family Name (Smith)" />
         </div>
         <h2 class="subtitle">Update Account Password</h2>

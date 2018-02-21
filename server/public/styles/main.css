@@ -149,6 +149,10 @@ strong {
   text-align: center;
 }
 
+.header-title {
+  font-family: "Playfair Display", serif;
+}
+
 .header-subtitle {
   text-transform: capitalize;
 }
@@ -206,6 +210,11 @@ strong {
   z-index: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+.landing-wrapper .btn {
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-top: 40px;
+}
 
 .landing-inner {
   max-width: 600px;
@@ -229,6 +238,7 @@ strong {
 
 .landing-header {
   font-size: 44px;
+  font-family: "Playfair Display", serif;
 }
 
 .landing-tagline {
@@ -268,6 +278,10 @@ strong {
   padding: 5px 10px;
   font-size: 18px;
   font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+.input[disabled] {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .input-row-select {
@@ -302,21 +316,25 @@ strong {
 ::-webkit-input-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
+  font-weight: 300;
 }
 
 ::-moz-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
+  font-weight: 300;
 }
 
 :-ms-input-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
+  font-weight: 300;
 }
 
 :-moz-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
+  font-weight: 300;
 }
 
 .event-header {
@@ -507,6 +525,8 @@ th, td {
 }
 .account-wrapper .subtitle {
   margin: 55px 0 10px;
+  text-transform: uppercase;
+  font-size: 1.25rem;
 }
 
 .inner-subtitle {
@@ -577,11 +597,10 @@ th, td {
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-color: #000000;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   overflow-x: hidden;
   /* Disable horizontal scroll */
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .open-nav {
@@ -637,15 +656,28 @@ th, td {
 }
 
 .nav-list-item-link {
-  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  color: #ffffff;
   text-decoration: none;
   font-size: 24px;
   font-weight: 400;
   transition: all 300ms;
 }
 .nav-list-item-link:hover {
-  color: #ffffff;
   cursor: pointer;
+}
+.nav-list-item-link:hover:after {
+  width: 100%;
+}
+.nav-list-item-link:after {
+  content: "";
+  width: 0;
+  position: absolute;
+  height: 2px;
+  background: #ffffff;
+  bottom: -5px;
+  left: 0;
+  transition: all 250ms;
 }
 
 .close-nav {

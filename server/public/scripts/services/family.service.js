@@ -1,12 +1,11 @@
-myApp.service('FamilyService', ['$http', '$location', function ($http, $location) {
+myApp.service('FamilyService', ['$http', '$location', 'ChildService', function ($http, $location, ChildService) {
     console.log('FamilyService Loaded');
     var self = this;
     self.familyObject = {};
 
-    self.childList = {
-        list: []
-    };
-
+    childService = ChildService;
+    console.log('childService variable in the family.service.js file', childService);
+    
     self.message = '';
 
     self.getuser = function () {
@@ -20,7 +19,7 @@ myApp.service('FamilyService', ['$http', '$location', function ($http, $location
                     self.familyObject.family_name = response.data.family_name;
                     // console.log('FamilyService -- getuser -- User Data: ', self.familyObject.username);
                     // once logged call get children
-                    self.getChildList(self.familyObject.id);
+                    // childService.getChildList(self.familyObject.id);
                 } else {
                     console.log('FamilyService -- getuser -- failure');
                     // user has no session, bounce them back to the login page
@@ -41,15 +40,14 @@ myApp.service('FamilyService', ['$http', '$location', function ($http, $location
         });
     } //end logout
 
-
     self.updateUser = function (id, user) {
         if (user.password === '' || user.password === undefined || !user.password) {
             self.message = "Enter a new password!";
         } else {
-            console.log('sending to server...', user);
             $http.put(`/api/family/update/${id}`, user)
                 .then(function (response) {
                     console.log('success');
+                    swal('Password successfully updated.');
                 })
                 .catch(function (error) {
                     console.log('error, response:', response);
@@ -57,23 +55,4 @@ myApp.service('FamilyService', ['$http', '$location', function ($http, $location
                 });
         }
     }; // end updateUser
-
-    self.getChildList = function (id) {
-        console.log('id in getChildList in service', id);
-
-        $http.get(`/api/child/family/${id}`)
-            .then(function (response) {
-                self.childList.list = response.data;
-                // self.childList = {
-                //     list: response.data
-                // }
-                // console.log('self.childList.list', self.childList.list);
-                self.childListLength = self.childList.list.length;
-            })
-            .catch(function (error) {
-                console.log('error, response:', response);
-                self.message = "Something went wrong. Please try again."
-            });
-    }; // end getChildList()
-
 }]);

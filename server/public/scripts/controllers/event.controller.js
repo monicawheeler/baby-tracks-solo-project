@@ -35,18 +35,25 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
 
     self.childService = ChildService;
     self.categoryList = ChildService.categoryList;
-    self.childList = FamilyService.childList;
 
+
+    self.childList = ChildService.childList;
+    console.log('self.childList in event controller', self.childList);
+
+
+    
     self.childEvents = EventService.childEvents;
+
     self.categoryFeeding = EventService.categoryFeeding;
     self.categorySleeping = EventService.categorySleeping;
     self.categoryDiapering = EventService.categoryDiapering;
     self.categoryMedication = EventService.categoryMedication;
     self.categoryOther = EventService.categoryOther;
 
-    self.getChildList = function(id) {
-        FamilyService.getChildList(self.familyObject.id);
-    }
+    // self.getChildList = function(id) {
+    //     ChildService.getChildList(self.familyObject.id);
+    // }
+	// self.getChildList(self.familyObject.id);
 
     self.getCategoryList = function() {
         ChildService.getCategoryList();
@@ -69,7 +76,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
         EventService.updateNotes(eventId, notes, childId);
     }
 
-	self.getChildList(self.familyObject.id);
     self.getCategoryList();
 
     self.showFeedingTrackingButton = false; 
