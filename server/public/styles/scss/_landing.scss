@@ -18,6 +18,11 @@
         z-index: 0;
         background-color: transparentize($color: $black, $amount: .5);
     }
+    .btn {
+        font-weight: 300;
+        font-size: 1.5rem;
+        margin-top: 40px;
+    }
 }
 
 .landing-inner {
@@ -42,6 +47,7 @@
 
 .landing-header {
     font-size: 44px;
+    font-family: $serif;
 }
 
 .landing-tagline {

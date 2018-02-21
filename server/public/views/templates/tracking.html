@@ -168,8 +168,7 @@
             </div>
         </div> <!-- .event-row -->
     </div>
-
-<div class="event-history" ng-if="vm.showEventHistory">
+<div class="event-history" ng-if="vm.showEventHistory && vm.childEvents.list.length > 0">
     <h2 class="subtitle">History</h2>
     <table class="event-table">
         <thead>
