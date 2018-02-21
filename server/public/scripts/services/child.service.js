@@ -48,6 +48,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
                     console.log('success adding child');
                     self.showAddChild = false;
                     self.getChildList(familyId);
+                    swal('The child was sucessfully added!');
                 })
                 .catch(function (error) {
                     console.log('error, response:', response);
@@ -80,7 +81,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
                             self.message = "Something went wrong. Please try again."
                         });
                 } else {
-                    swal('The child will not be removed from tracking.');
+                    swal('The child will NOT be removed from tracking.');
                 } // end willDelete if statement
             });
         } // end if/else for child id being present
