@@ -28,7 +28,7 @@
 <div class="add-children-wrapper fade" ng-if="vm.showAddChild">
     <div class="add-children-inner">
         <div class="add-child">
-            <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+            <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
             <h2 class="add-child-header">Add Child</h2>
             <form class="input-form form" ng-submit="vm.addChild(vm.child, vm.selectedChild.family_id); vm.showAddChild=false;">
                 <div class="input-row">

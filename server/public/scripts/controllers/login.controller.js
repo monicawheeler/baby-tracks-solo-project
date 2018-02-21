@@ -1,4 +1,4 @@
-myApp.controller('LoginController', ['$http', '$location', 'FamilyService', function ($http, $location, FamilyService) {
+myApp.controller('LoginController', ['$http', '$location', 'FamilyService', 'ChildService', function ($http, $location, FamilyService, ChildService) {
 	console.log('LoginController created');
 	var self = this;
 
@@ -40,7 +40,7 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', func
 			console.log('sending to server...', self.user);
 			$http.post('/api/family/register', self.user).then(function (response) {
 				console.log('success');
-				$location.path('/login');
+				$location.path('/login-new');
 			},
 				function (response) {
 					console.log('error');

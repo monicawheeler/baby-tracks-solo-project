@@ -189,6 +189,29 @@ strong {
   padding: 0 20px;
 }
 
+.wrapper-404 > * {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+.wrapper-404 .btn {
+  width: 250px;
+}
+
+.success-message {
+  text-align: center;
+  margin: 15px 0;
+  color: #764ba2;
+  font-size: 18px;
+}
+
+.alert-message {
+  text-align: center;
+  margin: 15px 0;
+  color: #ff0844;
+  font-size: 18px;
+}
+
 .landing-wrapper {
   position: relative;
   background: url("assets/images/baby-feet.jpg") no-repeat center center fixed;
