@@ -296,6 +296,7 @@ strong {
   transform: translateY(-50%);
   left: 225px;
   pointer-events: none;
+  color: #764ba2;
 }
 
 .select {
@@ -555,6 +556,15 @@ th, td {
   font-size: 1.25rem;
 }
 
+.select-child-wrapper > * {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+.select-child-wrapper .arrow {
+  left: calc(50% + 100px);
+}
+
 .inner-subtitle {
   display: flex;
   align-items: center;
@@ -607,7 +617,6 @@ th, td {
 .add-children-inner .input-row-select .arrow {
   right: 15px;
   left: initial;
-  color: #764ba2;
 }
 
 .add-child-header {

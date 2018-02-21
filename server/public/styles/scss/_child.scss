@@ -1,3 +1,14 @@
+.select-child-wrapper {
+    & > * {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    .arrow {
+        left: calc(50% + 100px);
+    }
+}
+
 .inner-subtitle {
     display: flex;
     align-items: center;
@@ -48,7 +59,6 @@
     .input-row-select .arrow {
         right: 15px;
         left: initial;
-        color: $primary;
     }
 }
 
