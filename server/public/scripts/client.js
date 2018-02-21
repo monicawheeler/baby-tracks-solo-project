@@ -15,6 +15,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/login.html',
       controller: 'LoginController as vm'
     })
+    .when('/login-new', {
+      templateUrl: '/views/templates/login-new.html',
+      controller: 'LoginController as vm'
+    })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
       controller: 'LoginController as vm'
