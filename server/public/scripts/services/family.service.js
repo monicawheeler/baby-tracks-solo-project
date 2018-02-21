@@ -64,6 +64,9 @@ myApp.service('FamilyService', ['$http', '$location', function ($http, $location
         $http.get(`/api/child/family/${id}`)
             .then(function (response) {
                 self.childList.list = response.data;
+                // self.childList = {
+                //     list: response.data
+                // }
                 // console.log('self.childList.list', self.childList.list);
                 self.childListLength = self.childList.list.length;
             })

@@ -3,52 +3,61 @@
 <div class="select-child-wrapper view-wrapper">
     <h2 class="subtitle">Select a child to manage:</h2>
     <div class="input-row input-row-select">
-        <select class="select input" ng-change="vm.showChildInfo = true" ng-model="vm.selectedChild" ng-options="child as child.first_name for child in vm.childList.list">
+        <select class="select input" ng-change="vm.showChildInfo = true; vm.removeChildButton = true;" ng-model="vm.selectedChild" ng-options="child as child.first_name for child in vm.childList.list">
             <option value="" disabled selected>Select Child</option>
         </select>
         <div class="arrow">
             <i class="fas fa-angle-down"></i>
         </div>
     </div>
-
-    <h2 style="font-weight: 900" ng-if="vm.showChildInfo">Manage: {{vm.selectedChild.first_name}} - Born: {{vm.selectedChild.dob | date: MM/dd/YYYY}}</h2>
+    <h2 class="inner-subtitle" ng-if="vm.showChildInfo">
+        <img class="child-image" ng-src="styles/assets/images/baby-{{vm.selectedChild.gender}}.svg" alt="">
+        
+        <div class="inner-subtitle-child">
+            {{vm.selectedChild.first_name}}
+            <div class="inner-subtitle-small">Born: {{vm.selectedChild.dob | date: MM/dd/YYYY}}</div>
+        </div>
+    </h2>
+    <div class="input-row" ng-if="vm.removeChildButton">
+        <input class="btn btn-warn" ng-click="vm.deleteChild(vm.selectedChild.id, vm.selectedChild.family_id)" type="submit" name="submit" value="Remove {{vm.selectedChild.first_name}} from Tracking" />
+    </div>
     <div class="input-row">
-        <input class="btn btn-warn" ng-click="vm.deleteChild(vm.selectedChild.id, vm.selectedChild.family_id)" type="submit" name="submit" value="Remove from Tracking" />
+        <input class="btn btn-alt" ng-click="vm.showAddChild = true" type="button" name="add-child" value="Add New Child" />
     </div>
 </div>
-<div class="add-children-wrapper fade">
-    <div class="input-row">
-        <input class="btn btn-alt" ng-click="vm.showAddChild = true; vm.addChildBtn = false" ng-if="vm.addChildBtn" type="button" name="add-child" value="Add New Child" />
-    </div>
-    <div class="add-child" ng-if="vm.showAddChild">
-        <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-        <form class="input-form form" ng-submit="vm.addChild(vm.child, vm.selectedChild.family_id)">
-            <div class="input-row">
-                <label class="input-label" for="first_name">First Name<span class="input-required">*</span></label>
-                <input class="input" type="text" required ng-model="vm.child.first_name" placeholder="First Name" />
-            </div>
-            <div class="input-row">
-                <label class="input-label" for="dob">Born<span class="input-required">*</span></label>
-                <input class="input" type="date" required ng-model="vm.child.dob" placeholder="MM/DD/YYYY" />
-            </div>
-            <div class="input-row">
-                <label class="input-label" for="gender">Gender<span class="input-required">*</span></label>
-                <div class="input-row-select">
-                    <select class="select input" ng-model="vm.child.gender">
-                        <option value="Select Gender" disabled selected>Select Gender</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                        <option value="neutral">Neutral</option>
-                    </select>
-                    <div class="arrow">
-                        <i class="fas fa-angle-down"></i>
+<div class="add-children-wrapper fade" ng-if="vm.showAddChild">
+    <div class="add-children-inner">
+        <div class="add-child">
+            <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+            <h2 class="add-child-header">Add Child</h2>
+            <form class="input-form form" ng-submit="vm.addChild(vm.child, vm.selectedChild.family_id); vm.showAddChild=false;">
+                <div class="input-row">
+                    <label class="input-label" for="first_name">First Name<span class="input-required">*</span></label>
+                    <input class="input" type="text" required ng-model="vm.child.first_name" placeholder="First Name" />
+                </div>
+                <div class="input-row">
+                    <label class="input-label" for="dob">Born<span class="input-required">*</span></label>
+                    <input class="input" type="date" required ng-model="vm.child.dob" placeholder="MM/DD/YYYY" />
+                </div>
+                <div class="input-row">
+                    <label class="input-label" for="gender">Gender<span class="input-required">*</span></label>
+                    <div class="input-row-select">
+                        <select class="select input" ng-model="vm.child.gender">
+                            <option value="Select Gender" disabled selected>Select Gender</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="neutral">Neutral</option>
+                        </select>
+                        <div class="arrow">
+                            <i class="fas fa-angle-down"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="input-row">
-                <input class="btn btn-alt" type="submit" name="submit" value="Add Child" />
-                <input class="btn btn-warn" type="button" name="cancel" ng-click="vm.showAddChild = false;" value="Cancel" />
-            </div>
-        </form>
+                <div class="input-row">
+                    <input class="btn btn-alt" type="submit" name="submit" value="Add Child" />
+                    <input class="btn btn-warn" ng-click="vm.showAddChild=false;" type="button" name="cancel" value="Cancel" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>

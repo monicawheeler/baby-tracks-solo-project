@@ -17,24 +17,28 @@
 }
 
 .btn-default {
-    border: 2px solid $white;
+    border: 1px solid $white;
 }
 
 .btn-alt {
-    border: 2px solid $primary;
+    border: 1px solid $primary;
     color: $primary;
     &:hover {
-        background-color: transparentize($color: $primary, $amount: .95);
+        border: 1px solid transparent;
+        background: $primary-gradient;
+        color: $white;
         cursor: pointer;
     }
 }
 
 .btn-warn {
     text-transform: uppercase;
-    border: 2px solid $warn;
+    border: 1px solid $warn;
     color: $warn;
     &:hover {
-        background-color: transparentize($color: $warn, $amount: .95);
+        border: 1px solid transparent;
+        background: $warn-gradient;
+        color: $white;
         cursor: pointer;
     }
 }
