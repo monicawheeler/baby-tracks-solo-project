@@ -41,6 +41,15 @@
     & > * + * {
         margin-top: 20px;
     }
+    .input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .input-row-select .arrow {
+        right: 15px;
+        left: initial;
+        color: $primary;
+    }
 }
 
 .add-child-header {

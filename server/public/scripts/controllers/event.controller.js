@@ -5,6 +5,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
 	self.message = EventService.message;
 
     self.showEventHistory = false;
+    self.showChildTracking = false;
 
     self.showNewFeedingEvent = false;
     self.showNewSleepingEvent = false;
