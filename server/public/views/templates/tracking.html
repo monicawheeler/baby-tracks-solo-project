@@ -20,7 +20,7 @@
             <div class="inner-subtitle-child">
                 <p class="super-title">Currently Tracking:</p>
                 {{vm.trackChild.first_name}}
-                <div class="inner-subtitle-small">Born: {{vm.trackChild.dob | date: MM/dd/YYYY}}</div>
+                <div class="inner-subtitle-small">Born: {{vm.trackChild.dob | amDateFormat:'MMM D, YYYY'}}</div>
             </div>
         </div>
     </div>
