@@ -215,7 +215,7 @@ strong {
 
 .landing-wrapper {
   position: relative;
-  background: url("assets/images/baby-feet.jpg") no-repeat center center fixed;
+  background: url("assets/images/upclose-feet.jpg") no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
   overflow: hidden;
@@ -239,6 +239,9 @@ strong {
   font-size: 1.5rem;
   margin-top: 40px;
   background-color: transparent;
+}
+.landing-wrapper .btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .landing-inner {
