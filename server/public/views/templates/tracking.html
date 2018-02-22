@@ -46,6 +46,7 @@
                 <div class="event-content-body" ng-repeat="feeding in vm.categoryFeeding.list">
                     <h2 class="event-header">{{feeding.category_name}}</h2>
                     <p>Last fed: {{feeding.datetime | date:'h:mm a'}} <!--({{vm.feedingTimeDifferenceInHours}} hours ago) --></p>
+                    <span am-time-ago="feeding.datetime"></span>
                     <p class="notes-title">Notes: <p class="notes-content">{{feeding.notes}}</p> <strong ng-click="vm.editFeedingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editFeedingNotes">
                         <div class="update-notes-inner">
@@ -77,6 +78,8 @@
                 <div class="event-content-body" ng-repeat="sleeping in vm.categorySleeping.list">
                     <h2 class="event-header">{{sleeping.category_name}}</h2>
                     <p>Last slept: {{sleeping.datetime | date:'h:mm a'}} <!--({{vm.sleepingTimeDifferenceInHours}} hours ago) --></p>
+
+                    <span am-time-ago="sleeping.datetime"></span>
                     <p class="notes-title">Notes: <p class="notes-content">{{sleeping.notes}}</p> <strong ng-click="vm.editSleepingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editSleepingNotes">
                         <div class="update-notes-inner">
@@ -108,6 +111,8 @@
                 <div class="event-content-body" ng-repeat="diapering in vm.categoryDiapering.list">
                     <h2 class="event-header">{{diapering.category_name}}</h2>
                     <p>Last diaper: {{diapering.datetime | date:'h:mm a'}} <!--({{vm.diaperingTimeDifferenceInHours}} hours ago) --></p>
+
+                    <span am-time-ago="diapering.datetime"></span>
                     <p class="notes-title">Notes: <p class="notes-content">{{diapering.notes}}</p> <strong ng-click="vm.editDiaperingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editDiaperingNotes">
                         <div class="update-notes-inner">
@@ -140,6 +145,7 @@
                 <div class="event-content-body" ng-repeat="bathing in vm.categoryBathing.list">
                     <h2 class="event-header">{{bathing.category_name}}</h2>
                     <p>Last bath: {{bathing.datetime | date:'h:mm a'}} <!--({{vm.bathingTimeDifferenceInHours}} hours ago) --></p>
+                    <span am-time-ago="bathing.datetime"></span>
                     <p class="notes-title">Notes: <p class="notes-content">{{bathing.notes}}</p> <strong ng-click="vm.editBathingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editBathingNotes">
                         <div class="update-notes-inner">
@@ -172,6 +178,7 @@
                 <div class="event-content-body" ng-repeat="medication in vm.categoryMedication.list">
                     <h2 class="event-header">{{medication.category_name}}</h2>
                     <p>Last medication: {{medication.datetime | date:'h:mm a'}} <!--({{vm.medicationTimeDifferenceInHours}} hours ago) --></p>
+                    <span am-time-ago="medication.datetime"></span>
                     <p class="notes-title">Notes: <p class="notes-content">{{medication.notes}}</p> <strong ng-click="vm.editMedicationNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editMedicationNotes">
                         <div class="update-notes-inner">
@@ -203,6 +210,7 @@
                 <div class="event-content-body" ng-repeat="other in vm.categoryOther.list">
                     <h2 class="event-header">{{other.category_name}}</h2>
                     <p>Last other: {{other.datetime | date:'h:mm a'}} <!--({{vm.otherTimeDifferenceInHours}} hours ago) --></p>
+                    <span am-time-ago="other.datetime"></span>
                     <p class="notes-title">Notes: <p class="notes-content">{{other.notes}}</p> <strong ng-click="vm.editOtherNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editOtherNotes">
                         <div class="update-notes-inner">
