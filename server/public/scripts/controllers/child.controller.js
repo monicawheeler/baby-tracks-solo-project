@@ -4,8 +4,8 @@ myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', f
 
 	self.showAddChild = false;
 	self.addChildBtn = true;
-	self.showChildInfo = false;
 	self.removeChildButton = false;
+	self.showChildInfo = false;
 	self.showAddChild = ChildService.showAddChild;
 
 	self.childService = ChildService;
