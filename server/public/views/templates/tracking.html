@@ -139,7 +139,7 @@
                 <button class="btn btn-alt event-content-btn" ng-if="vm.showBathingTrackingButton" ng-click="vm.showNewBathingEvent = true;">Track New Bathing</button>
                 <div class="event-content-body" ng-repeat="bathing in vm.categoryBathing.list">
                     <h2 class="event-header">{{bathing.category_name}}</h2>
-                    <p>Last diaper: {{bathing.datetime | date:'h:mm a'}} <!--({{vm.bathingTimeDifferenceInHours}} hours ago) --></p>
+                    <p>Last bath: {{bathing.datetime | date:'h:mm a'}} <!--({{vm.bathingTimeDifferenceInHours}} hours ago) --></p>
                     <p class="notes-title">Notes: <p class="notes-content">{{bathing.notes}}</p> <strong ng-click="vm.editBathingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editBathingNotes">
                         <div class="update-notes-inner">

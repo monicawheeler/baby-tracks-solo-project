@@ -75,6 +75,7 @@ strong {
   font-family: "Lato", sans-serif;
   line-height: 1;
   transition: all 250ms;
+  background: #ffffff;
 }
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
