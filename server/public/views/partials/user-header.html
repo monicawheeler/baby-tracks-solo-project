@@ -1,8 +1,9 @@
-<div class="content-header"><h1 class="header-title">baby tracks</h1>
+<div class="content-header">
+	<h1 class="header-title">baby tracks</h1>
 	<h2>The <span class="header-subtitle">{{vm.familyObject.family_name}}</span> Family</h2>
 	
 	<div class="open-nav fade" ng-click="vm.showNav = true;"><span class="open-nav-icon"></span></div>
-</div>
+</div><!-- content-header -->
 
 <div class="overlay fade" ng-if="vm.showNav" ng-controller="NavController">
 	<div class="navbar">
@@ -19,7 +20,7 @@
 			<li class="nav-list-item">
 				<a class="nav-list-item-link" ng-click="vm.familyService.logout()">Logout</a>
 			</li>
-		</ul>
-	</div>
+		</ul><!-- .nav-list -->
+	</div><!-- .navbar -->
 	<div class="close-nav fade" ng-click="vm.showNav = false;"><span class="close-nav-icon"></span></div>
-</div>
+</div><!-- .overlay --> 

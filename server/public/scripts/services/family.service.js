@@ -1,13 +1,16 @@
 myApp.service('FamilyService', ['$http', '$location', 'ChildService', function ($http, $location, ChildService) {
     console.log('FamilyService Loaded');
     var self = this;
+
+    // Storage for familyObject
     self.familyObject = {};
 
+    // childService variables
     childService = ChildService;
-    console.log('childService variable in the family.service.js file', childService);
     
     self.message = '';
 
+    // getuser GET request
     self.getuser = function () {
         console.log('FamilyService -- getuser');
         $http.get('/api/family')
@@ -19,7 +22,7 @@ myApp.service('FamilyService', ['$http', '$location', 'ChildService', function (
                     
                     self.familyObject.username = response.data.username;
                     self.familyObject.family_name = response.data.family_name;
-                    // console.log('FamilyService -- getuser -- User Data: ', self.familyObject.username);
+                    
                     // once logged call get children
                     childService.getChildList(self.familyObject.id);
                 } else {
@@ -34,7 +37,7 @@ myApp.service('FamilyService', ['$http', '$location', 'ChildService', function (
             });
     }; // end getuser
 
-    //logout user
+    //logout user GET request
     self.logout = function () {
         $http.get('/api/family/logout')
         .then(function (response) {
@@ -42,6 +45,7 @@ myApp.service('FamilyService', ['$http', '$location', 'ChildService', function (
         });
     } //end logout
 
+    // Update user password PUT request
     self.updateUser = function (id, user) {
         if (user.password === '' || user.password === undefined || !user.password) {
             self.message = "Enter a new password!";

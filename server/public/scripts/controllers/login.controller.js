@@ -2,15 +2,18 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', 'Chi
 	console.log('LoginController created');
 	var self = this;
 
+	// User object
 	self.user = {
 		username: '',
 		family_name: '',
 		password: ''
 	};
 
+	// FamilyService variables
 	self.familyService = FamilyService;
 	self.familyObject = FamilyService.familyObject;
 
+	// login function to login users
 	self.login = function () {
 		if (self.user.username === '' || self.user.password === '') {
 			self.message = "Enter your username and password!";
@@ -31,8 +34,9 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', 'Chi
 					self.message = "Incorrect credentials. Please try again.";
 				});
 		}
-	};
+	}; // end login 
 
+	// registerUser function to register users
 	self.registerUser = function () {
 		if (self.user.username === '' || self.user.family_name === '' || self.user.password === '') {
 			self.message = "Choose a username, family name, and password!";
@@ -47,5 +51,5 @@ myApp.controller('LoginController', ['$http', '$location', 'FamilyService', 'Chi
 					self.message = "Something went wrong. Please try again."
 				});
 		}
-	};
+	}; // end registerUser
 }]);
