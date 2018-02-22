@@ -17,9 +17,9 @@
         
         <div class="inner-subtitle-child">
             {{vm.selectedChild.first_name}}
-            <div class="inner-subtitle-small">{{vm.selectedChild.dob | amDateFormat:'MMM D, YYYY'}}</div>
+            <div class="inner-subtitle-small">{{vm.selectedChild.dob | amUtc | amLocal | amDateFormat:'MMM D, YYYY'}}</div>
         </div>
-    </h2>
+    </h2>   
     <div class="input-row" ng-if="vm.removeChildButton">
         <input class="btn btn-warn" ng-click="vm.deleteChild(vm.selectedChild.id, vm.selectedChild.family_id)" type="submit" name="submit" value="Remove {{vm.selectedChild.first_name}} from Tracking" />
     </div>
