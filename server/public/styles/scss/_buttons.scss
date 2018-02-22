@@ -10,6 +10,7 @@
     font-family: $sans-serif;
     line-height: 1;
     transition: all 250ms;
+    background: $white;
     &:hover {
         background-color: transparentize($color: $white, $amount: .8);
         cursor: pointer;
