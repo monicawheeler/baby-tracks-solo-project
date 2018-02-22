@@ -2,6 +2,8 @@
 
 Baby Tracks is a full stack web application that allows parents to track the daily activities of their children. 
 
+View [Baby Tracks](https://baby-tracks.herokuapp.com)
+
 ## Built With
 
 - SQL
