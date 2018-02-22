@@ -10,8 +10,8 @@
             <div class="arrow">
                 <i class="fas fa-angle-down"></i>
             </div>
-        </div>
-    </div>
+        </div><!-- .input-row -->
+    </div><!-- conditional child list container -->
     <h2 class="inner-subtitle" ng-if="vm.showChildInfo">
         <img class="child-image" ng-src="styles/assets/images/baby-{{vm.selectedChild.gender}}.svg" alt="">
         
@@ -19,14 +19,14 @@
             {{vm.selectedChild.first_name}}
             <div class="inner-subtitle-small">{{vm.selectedChild.dob | amUtc | amLocal | amDateFormat:'MMM D, YYYY'}}</div>
         </div>
-    </h2>   
+    </h2> <!-- .inner-subtitle -->
     <div class="input-row" ng-if="vm.removeChildButton">
         <input class="btn btn-warn" ng-click="vm.deleteChild(vm.selectedChild.id, vm.selectedChild.family_id)" type="submit" name="submit" value="Remove {{vm.selectedChild.first_name}} from Tracking" />
     </div>
     <div class="input-row">
         <input class="btn btn-alt" ng-click="vm.showAddChild = true" type="button" name="add-child" value="Add New Child" />
     </div>
-</div>
+</div><!-- .select-child-wrapper -->
 <div class="add-children-wrapper fade" ng-if="vm.showAddChild">
     <div class="add-children-inner">
         <div class="add-child">
@@ -59,7 +59,7 @@
                     <input class="btn btn-alt" type="submit" name="submit" value="Add Child" />
                     <input class="btn btn-warn" ng-click="vm.showAddChild=false;" type="button" name="cancel" value="Cancel" />
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
+            </form><!-- .input-form -->
+        </div><!-- .add-child -->
+    </div><!-- .add-child-inner -->
+</div><!-- .add-children-wrapper -->
