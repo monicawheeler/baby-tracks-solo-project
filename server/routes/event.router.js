@@ -20,8 +20,7 @@ router.post('/', (req, res, next) => {
             category_id: category_id,
             datetime: datetime
         }
-        // (child_id, notes, category_id, familyId, datetime)
-        console.log('save event', saveEvent);
+        
         const queryText = 'INSERT INTO event (child_id, notes, category_id, datetime) VALUES ($1, $2, $3, $4)';
         pool.query(queryText, [saveEvent.child_id, saveEvent.notes, saveEvent.category_id, saveEvent.datetime], (err, result) => {
             if (err) {
@@ -45,11 +44,8 @@ router.get('/child/:id', (req, res) => {
         const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id=$1 ORDER BY event.datetime DESC';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
-                //console.log('error in get request for children by family id');
                 res.sendStatus(500);
             } else {
-                // console.log('success in get request for children by family id');
-                // console.log('result', result.rows);
                 res.send(result.rows);
             }
         });
@@ -167,6 +163,7 @@ router.get('/category/other/:id', (req, res) => {
     }
 });
 
+// PUT to update the notes 
 router.put('/update/:id', function(req, res) {
     // check if logged in
     if (req.isAuthenticated()) {

@@ -14,7 +14,7 @@ CREATE TABLE child (
 CREATE TABLE event (
     id SERIAL PRIMARY KEY NOT NULL,
     notes character varying(255),
-    datetime timestamp with time zone,
+    datetime timestamptz,
     child_id INT REFERENCES child ON DELETE CASCADE,
     category_id  INT REFERENCES category
 );

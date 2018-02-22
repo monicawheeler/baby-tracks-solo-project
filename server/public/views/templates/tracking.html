@@ -1,4 +1,4 @@
-<header class="header" ng-include="'/views/partials/user-header.html'"></header>
+<header class="header" ng-include="'/views/partials/user-header.html'"></header><!-- header -->
 
 <div class="track-wrapper view-wrapper fade">
     <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
@@ -22,10 +22,10 @@
                 {{vm.trackChild.first_name}}
             </div>
         </div>
-    </div>
+    </div><!-- /.select-header -->
     <div class="select-header-no-children" ng-if="vm.childList.list.length === 0">
         <a class="btn btn-alt" href="#!manage-children">Manage Children</a>
-    </div>
+    </div><!-- /.select-header-no-children -->
     <div class="events-wrapper" ng-if="vm.showEventColumns">
         <div class="event-row">
             <img ng-if="vm.showFeedingTrackingButton" class="category-image" ng-src="styles/assets/images/feeding.svg" alt="">
@@ -41,7 +41,7 @@
                     <button class="btn btn-alt" ng-if="vm.showNewFeedingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.feedingNotes, 1, date); vm.showNewFeedingNotes = false; vm.showFeedingTrackingButton = true; vm.showNewFeedingEvent = false;">Log This Feeding</button>
                     <button class="btn btn-warn" ng-click="vm.showNewFeedingEvent = false; vm.showFeedingTrackingButton = true;">Opps! Do Not Log This Feeding</button>
                 </div>
-            </div>
+            </div><!-- /FEEDING .new-event -->
             <div class="event-content">
                 <button class="btn btn-alt event-content-btn" ng-if="vm.showFeedingTrackingButton" ng-click="vm.showNewFeedingEvent = true;">Track New Feeding</button>
                 <div class="event-content-body" ng-repeat="feeding in vm.categoryFeeding.list">
@@ -63,10 +63,9 @@
                             <button class="btn btn-warn" ng-click="vm.editFeedingNotes = false">Cancel</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- .event-row -->
+                </div><!-- /FEEDING .event-content-body -->
+            </div><!-- /FEEDING .event-content -->
+        </div><!-- /FEEDING .event-row -->
         <div class="event-row">
             <img ng-if="vm.showSleepingTrackingButton" class="category-image" ng-src="styles/assets/images/sleeping.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewSleepingEvent">
@@ -81,7 +80,7 @@
                     <button class="btn btn-alt" ng-if="vm.showNewSleepingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.sleepingNotes, 2, date); vm.showNewSleepingNotes = false; vm.showSleepingTrackingButton = true; vm.showNewSleepingEvent = false;">Log This Sleeping</button>
                     <button class="btn btn-warn" ng-click="vm.showNewSleepingEvent = false; vm.showSleepingTrackingButton = true;">Opps! Do Not Log This Sleeping</button>
                 </div>
-            </div>
+            </div><!-- /SLEEPING .new-event -->
             <div class="event-content">
                 <button class="btn btn-alt event-content-btn" ng-if="vm.showSleepingTrackingButton" ng-click="vm.showNewSleepingEvent = true;">Track New Sleeping</button>
                 <div class="event-content-body" ng-repeat="sleeping in vm.categorySleeping.list">
@@ -105,10 +104,9 @@
                             <button class="btn btn-warn" ng-click="vm.editSleepingNotes = false">Cancel</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- .event-row -->
+                </div><!-- /SLEEPING .event-content-body -->
+            </div><!-- /SLEEPING .event-content -->
+        </div><!-- /SLEEPING .event-row -->
         <div class="event-row">
             <img ng-if="vm.showDiaperingTrackingButton" class="category-image" ng-src="styles/assets/images/diapering.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewDiaperingEvent">
@@ -123,7 +121,7 @@
                     <button class="btn btn-alt" ng-if="vm.showNewDiaperingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.diaperingNotes, 3, date); vm.showNewDiaperingNotes = false; vm.showDiaperingTrackingButton = true; vm.showNewDiaperingEvent = false;">Log This Diapering</button>
                     <button class="btn btn-warn" ng-click="vm.showNewDiaperingEvent = false; vm.showDiaperingTrackingButton = true;">Opps! Do Not Log This Diapering</button>
                 </div>
-            </div>
+            </div><!-- /DIAPERING .new-event -->
             <div class="event-content">
                 <button class="btn btn-alt event-content-btn" ng-if="vm.showDiaperingTrackingButton" ng-click="vm.showNewDiaperingEvent = true;">Track New Diapering</button>
                 <div class="event-content-body" ng-repeat="diapering in vm.categoryDiapering.list">
@@ -147,10 +145,9 @@
                             <button class="btn btn-warn" ng-click="vm.editDiaperingNotes = false">Cancel</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- .event-row -->
+                </div><!-- /DIAPERING .event-content-body -->
+            </div><!-- /DIAPERING .event-content -->
+        </div><!-- /DIAPERING .event-row -->
 
         <div class="event-row">
             <img ng-if="vm.showBathingTrackingButton" class="category-image" ng-src="styles/assets/images/bathing.svg" alt="">
@@ -166,7 +163,7 @@
                     <button class="btn btn-alt" ng-if="vm.showNewBathingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.bathingNotes, 6, date); vm.showNewBathingNotes = false; vm.showBathingTrackingButton = true; vm.showNewBathingEvent = false;">Log This Bathing</button>
                     <button class="btn btn-warn" ng-click="vm.showNewBathingEvent = false; vm.showBathingTrackingButton = true;">Opps! Do Not Log This Bathing</button>
                 </div>
-            </div>
+            </div><!-- /BATHING .new-event -->
             <div class="event-content">
                 <button class="btn btn-alt event-content-btn" ng-if="vm.showBathingTrackingButton" ng-click="vm.showNewBathingEvent = true;">Track New Bathing</button>
                 <div class="event-content-body" ng-repeat="bathing in vm.categoryBathing.list">
@@ -190,10 +187,9 @@
                             <button class="btn btn-warn" ng-click="vm.editBathingNotes = false">Cancel</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- .event-row -->
+                </div><!-- /BATHING .event-content-body -->
+            </div><!-- /BATHING .event-content -->
+        </div><!-- /BATHING .event-row -->
 
         <div class="event-row">
             <img class="category-image" ng-if="vm.showMedicationTrackingButton" ng-src="styles/assets/images/medication.svg" alt="">
@@ -209,7 +205,7 @@
                     <button class="btn btn-alt" ng-if="vm.showNewMedicationNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.medicationNotes, 7, date); vm.showNewMedicationNotes = false; vm.showMedicationTrackingButton = true; vm.showNewMedicationEvent = false;">Log This Medication</button>
                     <button class="btn btn-warn" ng-click="vm.showNewMedicationEvent = false; vm.showMedicationTrackingButton = true;">Opps! Do Not Log This Medication</button>
                 </div>
-            </div>
+            </div><!-- /MEDICATION .new-event -->
             <div class="event-content">
                 <button class="btn btn-alt event-content-btn" ng-if="vm.showMedicationTrackingButton" ng-click="vm.showNewMedicationEvent = true; ">Track New Medication</button>
                 <div class="event-content-body" ng-repeat="medication in vm.categoryMedication.list">
@@ -233,10 +229,9 @@
                             <button class="btn btn-warn" ng-click="vm.editMedicationNotes = false">Cancel</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- .event-row -->
+                </div><!-- /MEDICATION .event-content-body -->
+            </div><!-- /MEDICATION .event-content -->
+        </div><!-- /MEDICATION .event-row -->
         <div class="event-row">
             <img class="category-image" ng-if="vm.showOtherTrackingButton" ng-src="styles/assets/images/other.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewOtherEvent">
@@ -250,7 +245,7 @@
                     <button class="btn btn-alt" ng-if="vm.showNewOtherNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.otherNotes, 8, date); vm.showNewOtherNotes = false; vm.showOtherTrackingButton = true; vm.showNewOtherEvent = false;">Log This Event</button>
                     <button class="btn btn-warn" ng-click="vm.showNewOtherEvent = false; vm.showOtherTrackingButton = true;">Opps! Do Not Log This Event</button>
                 </div>
-            </div>
+            </div><!-- /OTHER .new-event -->
             <div class="event-content">
                 <button class="btn btn-alt event-content-btn" ng-if="vm.showOtherTrackingButton" ng-click="vm.showNewOtherEvent = true; ">Track New Other Event</button>
                 <div class="event-content-body" ng-repeat="other in vm.categoryOther.list">
@@ -274,11 +269,10 @@
                             <button class="btn btn-warn" ng-click="vm.editOtherNotes = false">Cancel</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- .event-row -->
-    </div>
+                </div><!-- /OTHER .event-content-body -->
+            </div><!-- /OTHER .event-content -->
+        </div><!-- /OTHER .event-row -->
+    </div><!-- /.events-wrapper -->
     <div class="event-history" ng-if="vm.showEventHistory && vm.childEvents.list.length > 0">
         <h2 class="subtitle">History</h2>
         <table class="event-table">
@@ -298,8 +292,6 @@
                     <td>{{childEvent.category_name}}</td>
                 </tr>
             </tbody>
-        </table>
-    </div>
-    <!-- .event-history -->
-</div>
-<!-- .track-wrapper -->
+        </table><!-- /.event-table -->
+    </div><!-- /.event-history -->
+</div><!-- /.track-wrapper -->

@@ -34,9 +34,9 @@ Copy and paste database.sql file to set up the entire basic database structure.
 
 ## Screen Shots
 
-![Landing Page](/documentation/landing.png)
+![Landing Page](/documentation/landing2.png)
 
-![Tracking View](/documentation/tracking.png)
+![Tracking View](/documentation/tracking2.png)
 
 
 ### Completed Features
