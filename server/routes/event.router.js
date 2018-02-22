@@ -66,11 +66,8 @@ router.get('/category/feeding/:id', (req, res) => {
         const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 1 ORDER BY datetime DESC LIMIT 1';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
-                console.log('error in get request for children by family id');
                 res.sendStatus(500);
             } else {
-                console.log('success in get request for children by family id - feeding');
-                // console.log('result', result.rows);
                 res.send(result.rows);
             }
         });
@@ -87,11 +84,8 @@ router.get('/category/sleeping/:id', (req, res) => {
         const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 2 ORDER BY datetime DESC LIMIT 1';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
-                //console.log('error in get request for children by family id');
                 res.sendStatus(500);
             } else {
-                // console.log('success in get request for children by family id');
-                // console.log('result', result.rows);
                 res.send(result.rows);
             }
         });
@@ -108,11 +102,26 @@ router.get('/category/diapering/:id', (req, res) => {
         const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 3 ORDER BY datetime DESC LIMIT 1';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
-                //console.log('error in get request for children by family id');
                 res.sendStatus(500);
             } else {
-                // console.log('success in get request for children by family id');
-                // console.log('result', result.rows);
+                res.send(result.rows);
+            }
+        });
+    } else {
+        // failure best handled on the server. do redirect here.
+        res.sendStatus(403);
+    }
+});
+
+// GET bathing category by child id 
+router.get('/category/bathing/:id', (req, res) => {
+    // check if logged in
+    if (req.isAuthenticated()) {
+        const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 6 ORDER BY datetime DESC LIMIT 1';
+        pool.query(queryText, [req.params.id], (err, result) => {
+            if (err) {
+                res.sendStatus(500);
+            } else {
                 res.send(result.rows);
             }
         });
@@ -126,14 +135,11 @@ router.get('/category/diapering/:id', (req, res) => {
 router.get('/category/medication/:id', (req, res) => {
     // check if logged in
     if (req.isAuthenticated()) {
-        const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 4 ORDER BY datetime DESC LIMIT 1';
+        const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 7 ORDER BY datetime DESC LIMIT 1';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
-                //console.log('error in get request for children by family id');
                 res.sendStatus(500);
             } else {
-                // console.log('success in get request for children by family id');
-                // console.log('result', result.rows);
                 res.send(result.rows);
             }
         });
@@ -147,14 +153,11 @@ router.get('/category/medication/:id', (req, res) => {
 router.get('/category/other/:id', (req, res) => {
     // check if logged in
     if (req.isAuthenticated()) {
-        const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 5 ORDER BY datetime DESC LIMIT 1';
+        const queryText = 'SELECT event.id, event.notes, event.datetime, category.category_name, event.child_id FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id = $1 AND event.category_id = 8 ORDER BY datetime DESC LIMIT 1';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
-                //console.log('error in get request for children by family id');
                 res.sendStatus(500);
             } else {
-                // console.log('success in get request for children by family id');
-                // console.log('result', result.rows);
                 res.send(result.rows);
             }
         });

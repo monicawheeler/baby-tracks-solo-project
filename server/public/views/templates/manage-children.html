@@ -17,7 +17,7 @@
         
         <div class="inner-subtitle-child">
             {{vm.selectedChild.first_name}}
-            <div class="inner-subtitle-small">Born: {{vm.selectedChild.dob | date: MM/dd/YYYY}}</div>
+            <div class="inner-subtitle-small">{{vm.selectedChild.dob | date: MM/dd/YYYY}}</div>
         </div>
     </h2>
     <div class="input-row" ng-if="vm.removeChildButton">

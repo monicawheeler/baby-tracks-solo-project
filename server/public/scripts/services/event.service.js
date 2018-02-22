@@ -6,24 +6,34 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
     // self.feedingTimeDifferenceInHours = 0;
     // self.sleepingTimeDifferenceInHours = 0;
     // self.diaperingTimeDifferenceInHours = 0;
+    // self.bathingTimeDifferenceInHours = 0;
     // self.medicationTimeDifferenceInHours = 0;
     // self.otherTimeDifferenceInHours = 0;
 
     self.childEvents = {
         list: []
     };
+
     self.categoryFeeding = {
         list: []
     };
+
     self.categorySleeping = {
         list: []
     };
+
     self.categoryDiapering = {
         list: []
     };
+
+    self.categoryBathing = {
+        list: []
+    };
+
     self.categoryMedication = {
         list: []
     };
+
     self.categoryOther = {
         list: []
     };
@@ -104,6 +114,24 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
                         console.log('error, response:', response);
                         self.message = "Something went wrong. Please try again."
                     }); // end getting diapering category
+
+
+
+                // GET bathing category content
+                $http.get(`/api/event/category/bathing/${id}`)
+                    .then(function (response) {
+                        self.categoryBathing.list = response.data;
+                        // if(self.categoryBathing.list[0].datetime != '' || self.categoryBathing.list[0].datetime != undefined || self.categoryBathing.list[0].datetime != null) {
+                        //     // calculate the hours between current time and last event
+                        //     self.bathingTimeDifferenceInHours =  Math.ceil(((((Math.abs(self.currentDateTime - new Date(self.categoryBathing.list[0].datetime))) / 1000) / 60) / 60));
+                        //     console.log('bathing time difference:', self.bathingTimeDifferenceInHours);
+                        // }
+                    })
+                    .catch(function (error) {
+                        console.log('error, response:', response);
+                        self.message = "Something went wrong. Please try again."
+                    }); // end getting bathing category
+
 
 
                 // GET medication category content
