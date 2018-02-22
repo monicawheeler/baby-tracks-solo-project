@@ -25,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installing
 
 ```sql
-CREATE DATABASE solo-project;
+CREATE DATABASE 'solo-project';
 ```
 Copy and paste database.sql file to set up the entire basic database structure.
 
