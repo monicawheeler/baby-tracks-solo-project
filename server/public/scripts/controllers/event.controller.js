@@ -11,24 +11,28 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.showNewFeedingEvent = false;
     self.showNewSleepingEvent = false;
     self.showNewDiaperingEvent = false;
+    self.showNewBathingEvent = false;
     self.showNewMedicationEvent = false;
     self.showNewOtherEvent = false;
 
     self.editFeedingNotes = false;
     self.editSleepingNotes = false;
     self.editDiaperingNotes = false;
+    self.editBathingNotes = false;
     self.editMedicationNotes = false;
     self.editOtherNotes = false;
 
     self.showNewFeedingNotes = false;
     self.showNewSleepingNotes = false;
     self.showNewDiaperingNotes = false;
+    self.showNewBathingNotes = false;
     self.showNewMedicationNotes = false;
     self.showNewOtherNotes = false;
     
     self.showFeedingTrackingButton = true;
     self.showSleepingTrackingButton = true;
     self.showDiaperingTrackingButton = true;
+    self.showBathingTrackingButton = true;
     self.showMedicationTrackingButton = true;
     self.showOtherTrackingButton = true;
     
@@ -44,6 +48,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.categoryFeeding = EventService.categoryFeeding;
     self.categorySleeping = EventService.categorySleeping;
     self.categoryDiapering = EventService.categoryDiapering;
+    self.categoryBathing = EventService.categoryBathing;
     self.categoryMedication = EventService.categoryMedication;
     self.categoryOther = EventService.categoryOther;
 
@@ -79,6 +84,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.showFeedingTrackingButton = false; 
     self.showSleepingTrackingButton = false; 
     self.showDiaperingTrackingButton = false; 
+    self.showBathingTrackingButton = false; 
     self.showMedicationTrackingButton = false; 
     self.showOtherTrackingButton = false;
 
@@ -88,6 +94,7 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
             self.showFeedingTrackingButton = true; 
             self.showSleepingTrackingButton = true; 
             self.showDiaperingTrackingButton = true; 
+            self.showBathingTrackingButton = true; 
             self.showMedicationTrackingButton = true; 
             self.showOtherTrackingButton = true;
         }

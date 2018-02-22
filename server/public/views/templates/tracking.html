@@ -31,7 +31,7 @@
             <img ng-if="vm.showFeedingTrackingButton" class="category-image" ng-src="styles/assets/images/feeding.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewFeedingEvent">
                 <div class="new-event-inner">
-                    <h2 class="new-event-header">Track More Information?</h2>
+                    <h2 class="new-event-header">Track More Feeding Information?</h2>
                     <div class="event-button-wrapper">
                         <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.feedingNotes, 1, date); vm.showNewFeedingEvent = false; vm.showFeedingTrackingButton = true;">No, track this event without notes</p>
                         <p class="event-btn event-btn-yes" ng-click="vm.showNewFeedingNotes = true">Yes, more info!</p>
@@ -46,7 +46,7 @@
                 <div class="event-content-body" ng-repeat="feeding in vm.categoryFeeding.list">
                     <h2 class="event-header">{{feeding.category_name}}</h2>
                     <p>Last fed: {{feeding.datetime | date:'h:mm a'}} <!--({{vm.feedingTimeDifferenceInHours}} hours ago) --></p>
-                    <p>Notes: {{feeding.notes}} <strong ng-click="vm.editFeedingNotes = true" class="edit-btn">Edit Notes</strong></p>
+                    <p class="notes-title">Notes: <p class="notes-content">{{feeding.notes}}</p> <strong ng-click="vm.editFeedingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editFeedingNotes">
                         <div class="update-notes-inner">
                             <h2 class="update-notes-header">Update Notes</h2>
@@ -62,7 +62,7 @@
             <img ng-if="vm.showSleepingTrackingButton" class="category-image" ng-src="styles/assets/images/sleeping.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewSleepingEvent">
                 <div class="new-event-inner">
-                    <h2 class="new-event-header">Track More Information?</h2>
+                    <h2 class="new-event-header">Track More Sleeping Information?</h2>
                     <div class="event-button-wrapper">
                         <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.sleepingNotes, 2, date); vm.showNewSleepingEvent = false; vm.showSleepingTrackingButton = true;">No, track this event without notes</p>
                         <p class="event-btn event-btn-yes" ng-click="vm.showNewSleepingNotes = true">Yes, more info!</p>
@@ -77,7 +77,7 @@
                 <div class="event-content-body" ng-repeat="sleeping in vm.categorySleeping.list">
                     <h2 class="event-header">{{sleeping.category_name}}</h2>
                     <p>Last slept: {{sleeping.datetime | date:'h:mm a'}} <!--({{vm.sleepingTimeDifferenceInHours}} hours ago) --></p>
-                    <p>Notes: {{sleeping.notes}} <strong ng-click="vm.editSleepingNotes = true" class="edit-btn">Edit Notes</strong></p>
+                    <p class="notes-title">Notes: <p class="notes-content">{{sleeping.notes}}</p> <strong ng-click="vm.editSleepingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editSleepingNotes">
                         <div class="update-notes-inner">
                             <h2 class="update-notes-header">Update Notes</h2>
@@ -93,7 +93,7 @@
             <img ng-if="vm.showDiaperingTrackingButton" class="category-image" ng-src="styles/assets/images/diapering.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewDiaperingEvent">
                 <div class="new-event-inner">
-                    <h2 class="new-event-header">Track More Information?</h2>
+                    <h2 class="new-event-header">Track More Diapering Information?</h2>
                     <div class="event-button-wrapper">
                         <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.diaperingNotes, 3, date); vm.showNewDiaperingEvent = false; vm.showDiaperingTrackingButton = true;">No, track this event without notes</p>
                         <p class="event-btn event-btn-yes" ng-click="vm.showNewDiaperingNotes = true">Yes, more info!</p>
@@ -108,7 +108,7 @@
                 <div class="event-content-body" ng-repeat="diapering in vm.categoryDiapering.list">
                     <h2 class="event-header">{{diapering.category_name}}</h2>
                     <p>Last diaper: {{diapering.datetime | date:'h:mm a'}} <!--({{vm.diaperingTimeDifferenceInHours}} hours ago) --></p>
-                    <p>Notes: {{diapering.notes}} <strong ng-click="vm.editDiaperingNotes = true" class="edit-btn">Edit Notes</strong></p>
+                    <p class="notes-title">Notes: <p class="notes-content">{{diapering.notes}}</p> <strong ng-click="vm.editDiaperingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editDiaperingNotes">
                         <div class="update-notes-inner">
                             <h2 class="update-notes-header">Update Notes</h2>
@@ -120,17 +120,50 @@
                 </div>
             </div>
         </div> <!-- .event-row -->
+
+        <div class="event-row">
+            <img ng-if="vm.showBathingTrackingButton" class="category-image" ng-src="styles/assets/images/bathing.svg" alt="">
+            <div class="new-event fade" ng-if="vm.showNewBathingEvent">
+                <div class="new-event-inner">
+                    <h2 class="new-event-header">Track More Bathing Information?</h2>
+                    <div class="event-button-wrapper">
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.bathingNotes, 6, date); vm.showNewBathingEvent = false; vm.showBathingTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-yes" ng-click="vm.showNewBathingNotes = true">Yes, more info!</p>
+                    </div>
+                    <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.bathingNotes" ng-if="vm.showNewBathingNotes"></textarea>
+                    <button class="btn btn-alt" ng-if="vm.showNewBathingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.bathingNotes, 6, date); vm.showNewBathingNotes = false; vm.showBathingTrackingButton = true; vm.showNewBathingEvent = false;">Log This Bathing</button>
+                    <button class="btn btn-warn" ng-click="vm.showNewBathingEvent = false; vm.showBathingTrackingButton = true;">Opps! Do Not Log This Bathing</button>
+                </div>
+            </div>
+            <div class="event-content">
+                <button class="btn btn-alt event-content-btn" ng-if="vm.showBathingTrackingButton" ng-click="vm.showNewBathingEvent = true;">Track New Bathing</button>
+                <div class="event-content-body" ng-repeat="bathing in vm.categoryBathing.list">
+                    <h2 class="event-header">{{bathing.category_name}}</h2>
+                    <p>Last diaper: {{bathing.datetime | date:'h:mm a'}} <!--({{vm.bathingTimeDifferenceInHours}} hours ago) --></p>
+                    <p class="notes-title">Notes: <p class="notes-content">{{bathing.notes}}</p> <strong ng-click="vm.editBathingNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
+                    <div class="update-notes" ng-if="vm.editBathingNotes">
+                        <div class="update-notes-inner">
+                            <h2 class="update-notes-header">Update Notes</h2>
+                            <textarea class="event-notes" cols="20" rows="5" ng-model="vm.bathingNotesContent" placeholder="Update current notes"></textarea>
+                            <button class="btn btn-alt" ng-click="vm.updateNotes(bathing.id, vm.bathingNotesContent, vm.trackChild.id); vm.editBathingNotes = false;">Update Notes</button>
+                            <button class="btn btn-warn" ng-click="vm.editBathingNotes = false">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .event-row -->
+
         <div class="event-row">
             <img class="category-image" ng-if="vm.showMedicationTrackingButton" ng-src="styles/assets/images/medication.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewMedicationEvent">
                 <div class="new-event-inner">
-                    <h2 class="new-event-header">Track More Information?</h2>
+                    <h2 class="new-event-header">Track More Medication Information?</h2>
                     <div class="event-button-wrapper">
-                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.medicationNotes, 4, date); vm.showNewMedicationEvent = false; vm.showMedicationTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.medicationNotes, 7, date); vm.showNewMedicationEvent = false; vm.showMedicationTrackingButton = true;">No, track this event without notes</p>
                         <p class="event-btn event-btn-yes" ng-click="vm.showNewMedicationNotes = true">Yes, more info!</p>
                     </div>
                     <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.medicationNotes" ng-if="vm.showNewMedicationNotes"></textarea>
-                    <button class="btn btn-alt" ng-if="vm.showNewMedicationNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.medicationNotes, 4, date); vm.showNewMedicationNotes = false; vm.showMedicationTrackingButton = true; vm.showNewMedicationEvent = false;">Log This Medication</button>
+                    <button class="btn btn-alt" ng-if="vm.showNewMedicationNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.medicationNotes, 7, date); vm.showNewMedicationNotes = false; vm.showMedicationTrackingButton = true; vm.showNewMedicationEvent = false;">Log This Medication</button>
                     <button class="btn btn-warn" ng-click="vm.showNewMedicationEvent = false; vm.showMedicationTrackingButton = true;">Opps! Do Not Log This Medication</button>
                 </div>
             </div>
@@ -139,7 +172,7 @@
                 <div class="event-content-body" ng-repeat="medication in vm.categoryMedication.list">
                     <h2 class="event-header">{{medication.category_name}}</h2>
                     <p>Last medication: {{medication.datetime | date:'h:mm a'}} <!--({{vm.medicationTimeDifferenceInHours}} hours ago) --></p>
-                    <p>Notes: {{medication.notes}} <strong ng-click="vm.editMedicationNotes = true" class="edit-btn">Edit Notes</strong></p>
+                    <p class="notes-title">Notes: <p class="notes-content">{{medication.notes}}</p> <strong ng-click="vm.editMedicationNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editMedicationNotes">
                         <div class="update-notes-inner">
                             <h2 class="update-notes-header">Update Notes</h2>
@@ -155,13 +188,13 @@
             <img class="category-image" ng-if="vm.showOtherTrackingButton" ng-src="styles/assets/images/other.svg" alt="">
             <div class="new-event fade" ng-if="vm.showNewOtherEvent">
                 <div class="new-event-inner">
-                    <h2 class="new-event-header">Track More Information?</h2>
+                    <h2 class="new-event-header">Track More Other Information?</h2>
                     <div class="event-button-wrapper">
-                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.otherNotes, 5, date); vm.showNewOtherEvent = false; vm.showOtherTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.otherNotes, 8, date); vm.showNewOtherEvent = false; vm.showOtherTrackingButton = true;">No, track this event without notes</p>
                         <p class="event-btn event-btn-yes" ng-click="vm.showNewOtherNotes = true">Yes, more info!</p>
                     </div>
                     <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.otherNotes" ng-if="vm.showNewOtherNotes"></textarea>
-                    <button class="btn btn-alt" ng-if="vm.showNewOtherNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.otherNotes, 5, date); vm.showNewOtherNotes = false; vm.showOtherTrackingButton = true; vm.showNewOtherEvent = false;">Log This Event</button>
+                    <button class="btn btn-alt" ng-if="vm.showNewOtherNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.otherNotes, 8, date); vm.showNewOtherNotes = false; vm.showOtherTrackingButton = true; vm.showNewOtherEvent = false;">Log This Event</button>
                     <button class="btn btn-warn" ng-click="vm.showNewOtherEvent = false; vm.showOtherTrackingButton = true;">Opps! Do Not Log This Event</button>
                 </div>
             </div>
@@ -170,7 +203,7 @@
                 <div class="event-content-body" ng-repeat="other in vm.categoryOther.list">
                     <h2 class="event-header">{{other.category_name}}</h2>
                     <p>Last other: {{other.datetime | date:'h:mm a'}} <!--({{vm.otherTimeDifferenceInHours}} hours ago) --></p>
-                    <p>Notes: {{other.notes}} <strong ng-click="vm.editOtherNotes = true" class="edit-btn">Edit Notes</strong></p>
+                    <p class="notes-title">Notes: <p class="notes-content">{{other.notes}}</p> <strong ng-click="vm.editOtherNotes = true" class="edit-btn"><i class="fas fa-edit"></i> Edit Notes </strong></p>
                     <div class="update-notes" ng-if="vm.editOtherNotes">
                         <div class="update-notes-inner">
                             <h2 class="update-notes-header">Update Notes</h2>

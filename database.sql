@@ -21,7 +21,7 @@ CREATE TABLE event (
 
 CREATE TABLE family (
     id SERIAL PRIMARY KEY NOT NULL,
-    username character varying(30) NOT NULL,
+    username character varying(30) NOT NULL UNIQUE,
     password character varying(255) NOT NULL,
     family_name character varying(100) NOT NULL
 );
