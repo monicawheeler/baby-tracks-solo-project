@@ -466,6 +466,10 @@ strong {
   }
 }
 
+.time-elapsed {
+  font-weight: 700;
+}
+
 .notes-title {
   font-size: 12px;
   margin: 10px 0 0;
