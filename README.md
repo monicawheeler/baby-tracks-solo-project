@@ -1,6 +1,6 @@
 # Baby Tracks
 
-Baby Tracks is a full stack web application that allows parents to track the daily activities of their children. 
+Baby Tracks is a full stack web application that allows families to track the daily activities of their newborns/infants. This application is designed to provide an at-a-glance summary of the most common events newborns/infants encounter and ease the burden on families to track this information.
 
 View [Baby Tracks](https://baby-tracks.herokuapp.com) on Heroku!
 
@@ -10,11 +10,11 @@ View [Baby Tracks](https://baby-tracks.herokuapp.com) on Heroku!
 - Express
 - AngularJS
 - Node.js
-- Parsley.js
 - Grunt
 - SweetAlerts
 - Passport.js
 - Sass
+- Moment.js
 
 ## Getting Started
 
