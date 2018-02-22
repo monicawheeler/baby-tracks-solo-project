@@ -8,8 +8,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       redirectTo: 'landing'
     })
     .when('/landing', {
-      templateUrl: '/views/templates/landing.html',
-      controller: 'LandingController as vm'
+      templateUrl: '/views/templates/landing.html'
     })
     .when('/login-new', {
       templateUrl: '/views/templates/login-new.html',
