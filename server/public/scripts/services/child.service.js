@@ -2,16 +2,20 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
     console.log('ChildService Loaded');
     var self = this;
 
+    // Storage for category list
     self.categoryList = {
         list: []
     };
 
+    // Storage for child list
     self.childList = {
         list: []
     };
 
+    // Booleans for view
     self.showAddChild = false;
 
+    // getCategoryList GET request
     self.getCategoryList = function () {
         $http.get('/api/child/category')
             .then(function (response) {
@@ -24,6 +28,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
             });
     }; // end getCategoryList
 
+    // getChildList GET request
     self.getChildList = function (id) {
         $http.get(`/api/child/family/${id}`)
             .then(function (response) {
@@ -36,6 +41,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
             });
     }; // end getChildList()
 
+    // addChild POST request
     self.addChild = function (child, familyId) {
         if (child.first_name === '' || child.dob === '' || child.gender === '') {
             self.message = "Enter first name, date of birth, and gender!";
@@ -54,6 +60,7 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
         }
     }; // end addChild
 
+    // deleteChild DELETE request
     self.deleteChild = function (id, familyId) {
         if(!id) {
             swal('No child selected', 'Select a child from the drop-down to stop tracking.');
@@ -83,6 +90,4 @@ myApp.service('ChildService', ['$http', '$location', function ($http, $location)
             });
         } // end if/else for child id being present
     }; // end deleteChild
-
-
 }]);
