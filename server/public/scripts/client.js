@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMessages', 'ngAnimate']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMessages', 'ngAnimate', 'angularMoment']);
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

@@ -1,6 +1,12 @@
-myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', 'EventService', function($http, FamilyService, ChildService, EventService) {
+myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', 'EventService', 'moment', function($http, FamilyService, ChildService, EventService, moment) {
     console.log('EventController created');
     var self = this;
+
+
+    self.exampleDate = moment().hour(8).minute(0).second(0).toDate();
+    console.log('exampleDate', self.exampleDate);
+    
+    
     
 	self.message = EventService.message;
 
