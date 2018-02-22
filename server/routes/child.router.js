@@ -4,7 +4,7 @@ const userStrategy = require('../strategies/sql.localstrategy');
 const pool = require('../modules/pool.js');
 const router = express.Router();
 
-// Add child to database
+// POST child to database
 router.post('/', (req, res, next) => {
     // check if logged in
     if (req.isAuthenticated()) {
@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
             family_id: family_id
         }
 
-        console.log('save child', saveChild);
+        // Insert child record into child table
         const queryText = 'INSERT INTO child (first_name, dob, gender, family_id) VALUES ($1, $2, $3, $4)';
         pool.query(queryText, [saveChild.first_name, saveChild.dob, saveChild.gender, saveChild.family_id], (err, result) => {
             if (err) {
@@ -42,6 +42,9 @@ router.post('/', (req, res, next) => {
 router.get('/family/:id', (req, res) => {
     // check if logged in
     if (req.isAuthenticated()) {
+
+        // find joined records from the child and family tables
+        // where family id key for family matches child.family_id
         const queryText = 'SELECT child.id, child.first_name, child.dob, child.gender FROM child JOIN family ON family.id = child.family_id WHERE child.family_id=$1';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
@@ -59,6 +62,7 @@ router.get('/family/:id', (req, res) => {
     }
 });
 
+// GET categories
 router.get('/category', (req, res) => {
     // check if logged in
     if (req.isAuthenticated()) {
@@ -79,7 +83,7 @@ router.get('/category', (req, res) => {
     }
 });
 
-
+// DELETE child from child table
 router.delete('/:id', function (req, res) {
     // check if logged in
     if (req.isAuthenticated()) {
@@ -88,30 +92,6 @@ router.delete('/:id', function (req, res) {
             // runs on successful query
             .then((result) => {
                 //console.log('query results: ', result);            
-                res.sendStatus(200);
-            })
-            // error handling
-            .catch((err) => {
-                console.log('error making select query:', err);
-                res.sendStatus(500);
-            });
-    } else {
-        // failure best handled on the server. do redirect here.
-        res.sendStatus(403);
-    }
-});
-
-
-router.put('/update/:id', function (req, res) {
-    // check if logged in
-    if (req.isAuthenticated()) {
-        console.log('req.body', req.body);
-
-        const queryText = 'UPDATE child SET first_name=$1, dob=$2, gender=$3 WHERE id=$4;';
-        pool.query(queryText, [req.body.first_name, req.body.dob, req.body.gender, req.params.id])
-            // runs on successful query
-            .then((result) => {
-                console.log('query results: ', result);
                 res.sendStatus(200);
             })
             // error handling
