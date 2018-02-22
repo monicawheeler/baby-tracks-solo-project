@@ -475,11 +475,12 @@ strong {
   justify-content: center;
   align-items: center;
   width: 130px;
+  min-width: 130px;
   padding: 5px;
   border-width: 1px;
   border-style: solid;
   border-radius: 50%;
-  margin: 0 50px;
+  margin: 0 30px;
   height: 130px;
   font-size: 16px;
   font-weight: 400;
@@ -505,6 +506,9 @@ strong {
   cursor: pointer;
 }
 
+.new-event-inner {
+  max-width: 350px;
+}
 .new-event-inner .btn {
   display: block;
   width: 100%;
