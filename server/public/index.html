@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Solo Project</title>
-        <link rel="stylesheet" href="styles/style.css">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Baby Tracks - Tracking your babies everyday activities</title>
 
-        <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
-        <script type="text/javascript" src="vendors/angular-route/angular-route.min.js"></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="styles/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Playfair+Display" rel="stylesheet">
+
+        <!-- Vendors -->
+        <script type="text/javascript" src="vendors/angular.min.js"></script>
+        <script type="text/javascript" src="vendors/angular-route.min.js"></script>
+        <script type="text/javascript" src="vendors/angular-animate.min.js"></script>
+        <script type="text/javascript" src="vendors/angular-messages.min.js"></script>
+        <script type="text/javascript" src="vendors/sweetalert.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+        <!-- Scripts -->
         <script type="text/javascript" src="scripts/client.js"></script>
-        <script type="text/javascript" src="scripts/controllers/info.controller.js"></script>
+
+        <!-- Controllers -->
+        <script type="text/javascript" src="scripts/controllers/nav.controller.js"></script>
+        <script type="text/javascript" src="scripts/controllers/account.controller.js"></script>
         <script type="text/javascript" src="scripts/controllers/login.controller.js"></script>
-        <script type="text/javascript" src="scripts/controllers/user.controller.js"></script>
-        <script type="text/javascript" src="scripts/services/user.service.js"></script>
+        <script type="text/javascript" src="scripts/controllers/family.controller.js"></script>
+        <script type="text/javascript" src="scripts/controllers/landing.controller.js"></script>
+        <script type="text/javascript" src="scripts/controllers/child.controller.js"></script>
+        <script type="text/javascript" src="scripts/controllers/event.controller.js"></script>
+
+        <!-- Services -->
+        <script type="text/javascript" src="scripts/services/family.service.js"></script>
+        <script type="text/javascript" src="scripts/services/child.service.js"></script>
+        <script type="text/javascript" src="scripts/services/event.service.js"></script>
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <link rel="manifest" href="favicon/site.webmanifest">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
     </head>
 
     <body ng-app="myApp">
-      <header ng-include="'/views/partials/header.html'"></header>
-
-      <main ng-view></main>
-
+        <main ng-view></main>
     </body>
 </html>

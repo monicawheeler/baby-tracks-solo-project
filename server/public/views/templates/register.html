@@ -1,17 +1,26 @@
-<div class="container">
-  <h1 class="lead">Register User</h1>
-  <h1 class="lead alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-  <form ng-submit="vm.registerUser()">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" ng-model="vm.user.username" />
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" ng-model="vm.user.password" />
-    </div>
-    <input class="btn btn-default" type="submit" name="submit" value="Register" />
-    <a href="#!home">Cancel</a>
-  </form>
+<header class="header" ng-include="'/views/partials/header.html'"></header>
 
+<div class="input-container view-wrapper fade">
+    <div class="input-inner">
+        <h1 class="input-header">Register Family</h1>
+        <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+        <form class="input-form form" ng-submit="vm.registerUser()">
+            <div class="input-row">
+                <label class="input-label" for="username">Username<span class="input-required">*</span></label>
+                <input class="input" type="text" ng-model="vm.user.username" placeholder="Username" />
+            </div>
+            <div class="input-row">
+                <label class="input-label" for="family_name">Family Name<span class="input-required">*</span></label>
+                <input class="input" type="family_name" ng-model="vm.user.family_name" placeholder="Family Name (Smith)" />
+            </div>
+            <div class="input-row">
+                <label class="input-label" for="password">Password<span class="input-required">*</span></label>
+                <input class="input" type="password" ng-model="vm.user.password" placeholder="Password" />
+            </div>
+            <div class="input-row">
+                <input class="btn btn-alt" type="submit" name="submit" value="Register" />
+                <a class="btn btn-alt" href="#!login">Cancel</a>
+            </div>
+        </form>
+    </div>
 </div>

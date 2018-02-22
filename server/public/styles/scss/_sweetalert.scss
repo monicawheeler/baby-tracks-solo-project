@@ -1,0 +1,37 @@
+.swal-button {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    font-family: lato;
+    font-weight: 400;
+}
+
+.swal-button--danger {
+    background: $white;
+    color: $warn;
+    border-color: $warn;
+    &:hover {
+        background: $warn-gradient;
+        color: $white;
+    }
+}
+
+.swal-button--cancel {
+    background: $white;
+    color: $confirm;
+    border-color: $confirm;
+    &:hover {
+        background: $confirm-gradient;
+        color: $white;
+    }
+}
+
+.swal-button--confirm {
+    background: $white;
+    color: $primary;
+    border-color: $primary;
+    &:hover {
+        background: $primary-gradient;
+        color: $white;
+    }
+}

@@ -1,0 +1,21 @@
+<header class="header" ng-include="'/views/partials/header.html'"></header>
+<div class="input-container view-wrapper fade">
+    <div class="input-inner">
+        <h1 class="input-header">Login</h1>
+        <h2 class="input-alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+        <form class="input-form form" ng-submit="vm.login()">
+            <div class="input-row">
+                <label class="input-label" for="username">Username</label>
+                <input class="input" type="text" required ng-model="vm.user.username" placeholder="Username" />
+            </div>
+            <div class="input-row">
+                <label class="input-label" for="password">Password</label>
+                <input class="input" type="password" required ng-model="vm.user.password" placeholder="Password" />
+            </div>
+            <div class="input-row">
+                <input class="btn btn-alt" type="submit" name="submit" value="Log In" />
+                <a class="btn btn-alt" href="#!register">Register</a>
+            </div>
+        </form>
+    </div>
+</div>

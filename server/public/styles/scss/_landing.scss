@@ -1,0 +1,59 @@
+.landing-wrapper {
+    position: relative;
+    background: url("assets/images/baby-feet.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    &:after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background-color: transparentize($color: $black, $amount: .5);
+    }
+    .btn {
+        font-weight: 300;
+        font-size: 1.5rem;
+        margin-top: 40px;
+    }
+}
+
+.landing-inner {
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: $white;
+    & * + * {
+        margin-top: 20px;
+    }
+}
+
+.landing-header,
+.landing-tagline {
+    flex: 0 1 100%;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.landing-header {
+    font-size: 100px;
+    font-family: $serif;
+}
+
+.landing-tagline {
+    font-size: 24px;
+}
+
+.landing-subtag {
+    font-size: 18px;
+}

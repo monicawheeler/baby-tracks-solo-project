@@ -1,39 +1,56 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMessages', 'ngAnimate']);
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   console.log('myApp -- config')
   $routeProvider
     .when('/', {
-      redirectTo: 'home'
+      redirectTo: 'landing'
     })
-    .when('/home', {
-      templateUrl: '/views/templates/home.html',
-      controller: 'LoginController as vm',
+    .when('/landing', {
+      templateUrl: '/views/templates/landing.html',
+      controller: 'LandingController as vm'
+    })
+    .when('/login-new', {
+      templateUrl: '/views/templates/login-new.html',
+      controller: 'LoginController as vm'
+    })
+    .when('/login', {
+      templateUrl: '/views/templates/login.html',
+      controller: 'LoginController as vm'
     })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
       controller: 'LoginController as vm'
     })
-    .when('/user', {
-      templateUrl: '/views/templates/user.html',
-      controller: 'UserController as vm',
+    .when('/account', {
+      templateUrl: '/views/templates/account.html',
+      controller: 'AccountController as vm',
       resolve: {
-        getuser : function(UserService){
-          return UserService.getuser();
+        getuser : function(FamilyService){
+          return FamilyService.getuser();
         }
       }
     })
-    .when('/info', {
-      templateUrl: '/views/templates/info.html',
-      controller: 'InfoController as vm',
+    .when('/manage-children', {
+      templateUrl: '/views/templates/manage-children.html',
+      controller: 'ChildController as vm',
       resolve: {
-        getuser : function(UserService){
-          return UserService.getuser();
+        getuser : function(FamilyService){
+          return FamilyService.getuser();
+        }
+      }
+    })
+    .when('/tracking', {
+      templateUrl: '/views/templates/tracking.html',
+      controller: 'EventController as vm',
+      resolve: {
+        getuser : function(FamilyService){
+          return FamilyService.getuser();
         }
       }
     })
     .otherwise({
-      template: '<h1>404</h1>'
+      templateUrl: '/views/templates/404.html'
     });
 }]);
