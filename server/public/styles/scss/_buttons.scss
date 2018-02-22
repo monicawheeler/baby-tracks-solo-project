@@ -33,7 +33,6 @@
 }
 
 .btn-warn {
-    text-transform: uppercase;
     border: 1px solid $warn;
     color: $warn;
     &:hover {
@@ -41,5 +40,16 @@
         background: $warn-gradient;
         color: $white;
         cursor: pointer;
+    }
+}
+
+
+.btn-confirm {
+    background: $white;
+    color: $confirm;
+    border: 1px solid $confirm;
+    &:hover {
+        background: $confirm-gradient;
+        color: $white;
     }
 }

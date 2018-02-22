@@ -98,15 +98,24 @@ strong {
 }
 
 .btn-warn {
-  text-transform: uppercase;
-  border: 1px solid #ff0844;
-  color: #ff0844;
+  border: 1px solid #e82c0c;
+  color: #e82c0c;
 }
 .btn-warn:hover {
   border: 1px solid transparent;
-  background: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background: linear-gradient(to bottom, #f85032 0%, #e82c0c 100%);
   color: #ffffff;
   cursor: pointer;
+}
+
+.btn-confirm {
+  background: #ffffff;
+  color: #50c9c3;
+  border: 1px solid #50c9c3;
+}
+.btn-confirm:hover {
+  background: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
+  color: #ffffff;
 }
 
 .content-header {
@@ -209,7 +218,7 @@ strong {
 .alert-message {
   text-align: center;
   margin: 15px 0;
-  color: #ff0844;
+  color: #e82c0c;
   font-size: 18px;
 }
 
@@ -285,6 +294,9 @@ strong {
   box-sizing: border-box;
   text-align: center;
 }
+.input-container .input {
+  padding: 15px 100px 15px 20px;
+}
 
 .input-header {
   margin: 5px 0 40px;
@@ -339,7 +351,7 @@ strong {
 }
 
 .input-required {
-  color: #ff0844;
+  color: #e82c0c;
 }
 
 ::-webkit-input-placeholder {
@@ -516,9 +528,9 @@ strong {
 }
 
 .event-btn-no {
-  border-color: #ff0844;
+  border-color: #e82c0c;
   font-weight: 700;
-  color: #ff0844;
+  color: #e82c0c;
 }
 .event-btn-no:hover {
   cursor: pointer;
@@ -834,11 +846,11 @@ th, td {
 
 .swal-button--danger {
   background: #ffffff;
-  color: #ff0844;
-  border-color: #ff0844;
+  color: #e82c0c;
+  border-color: #e82c0c;
 }
 .swal-button--danger:hover {
-  background: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background: linear-gradient(to bottom, #f85032 0%, #e82c0c 100%);
   color: #ffffff;
 }
 
