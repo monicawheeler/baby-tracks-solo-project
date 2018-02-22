@@ -3,7 +3,7 @@
 <div class="track-wrapper view-wrapper fade">
     <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
     <div class="select-header">
-        <div class="select-wrapper">
+        <div class="select-wrapper" ng-if="vm.childList.list.length > 0">
             <h2 class="subtitle">Select a child to track:</h2>
             <div class="input-row input-row-select">
                 <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); vm.showEventHistory = true; vm.showChildTracking = true; vm.showAllButtons(vm.trackChild.id); vm.showEventColumns = true;" ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
@@ -22,6 +22,9 @@
                 <div class="inner-subtitle-small">Born: {{vm.trackChild.dob | date: MM/dd/YYYY}}</div>
             </div>
         </div>
+    </div>
+    <div class="select-header-no-children" ng-if="vm.childList.list.length === 0">
+        <a class="btn btn-alt" href="#!manage-children">Manage Children</a>
     </div>
     <div class="events-wrapper" ng-if="vm.showEventColumns">
         <div class="event-row">

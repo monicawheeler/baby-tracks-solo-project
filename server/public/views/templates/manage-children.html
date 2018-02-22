@@ -1,13 +1,15 @@
 <header class="header" ng-include="'/views/partials/user-header.html'"></header>
 
 <div class="select-child-wrapper view-wrapper">
-    <h2 class="subtitle">Select a child to manage:</h2>
-    <div class="input-row input-row-select">
-        <select class="select input" ng-change="vm.showChildInfo = true; vm.removeChildButton = true;" ng-model="vm.selectedChild" ng-options="child as child.first_name for child in vm.childList.list">
-            <option value="" disabled selected>Select Child</option>
-        </select>
-        <div class="arrow">
-            <i class="fas fa-angle-down"></i>
+    <div ng-if="vm.childList.list.length > 0">
+        <h2 class="subtitle">Select a child to manage:</h2>
+        <div class="input-row input-row-select">
+            <select class="select input" ng-change="vm.showChildInfo = true; vm.removeChildButton = true;" ng-model="vm.selectedChild" ng-options="child as child.first_name for child in vm.childList.list">
+                <option value="" disabled selected>Select Child</option>
+            </select>
+            <div class="arrow">
+                <i class="fas fa-angle-down"></i>
+            </div>
         </div>
     </div>
     <h2 class="inner-subtitle" ng-if="vm.showChildInfo">
