@@ -63,6 +63,12 @@ strong {
   font-weight: 700;
 }
 
+textarea,
+input {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
+
 .btn {
   display: inline-block;
   position: relative;
@@ -545,14 +551,6 @@ strong {
   cursor: pointer;
 }
 
-.new-event-inner {
-  max-width: 350px;
-}
-.new-event-inner .btn {
-  display: block;
-  width: 100%;
-}
-
 .new-event,
 .update-notes {
   position: fixed;
@@ -585,6 +583,15 @@ strong {
 .new-event-inner > * + *,
 .update-notes-inner > * + * {
   margin-top: 20px;
+}
+
+.new-event-inner {
+  max-width: 350px;
+  padding: 30px 20px;
+}
+.new-event-inner .btn {
+  display: block;
+  width: 100%;
 }
 
 .new-event-header,

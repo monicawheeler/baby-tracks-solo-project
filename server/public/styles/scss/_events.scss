@@ -158,14 +158,6 @@
     }
 }
 
-.new-event-inner {
-    max-width: 350px;
-    & .btn {
-        display: block;
-        width: 100%;
-    }
-}
-
 // Modal type view
 .new-event,
 .update-notes {
@@ -195,6 +187,15 @@
     text-align: center;
     & > * + * {
         margin-top: 20px;
+    }
+}
+
+.new-event-inner {
+    max-width: 350px;
+    padding: 30px 20px;
+    & .btn {
+        display: block;
+        width: 100%;
     }
 }
 
