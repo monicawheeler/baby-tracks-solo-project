@@ -48,6 +48,8 @@ Copy and paste database.sql file to set up the entire basic database structure.
 ### Next Steps
 
 - [ ] Create an emergency contact list for the family.
+- [ ] Create a vitals list with important child information
+  - [ ] Birthday, blood type, clothing sizes
 - [ ] Filter historical event information.
 - [ ] Create event reports based on dates selected.
 
