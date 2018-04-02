@@ -10,6 +10,7 @@ const sessionConfig = require('./modules/session-middleware');
 const familyRouter = require('./routes/family.router');
 const childRouter = require('./routes/child.router');
 const eventRouter = require('./routes/event.router');
+const contactsRouter = require('./routes/contacts.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +27,7 @@ app.use(passport.session());
 app.use('/api/family', familyRouter);
 app.use('/api/child', childRouter);
 app.use('/api/event', eventRouter);
+app.use('/api/contacts', contactsRouter);
 
 // Serve static files
 app.use(express.static('server/public'));

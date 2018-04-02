@@ -7,4 +7,22 @@ myApp.service('ContactsService', ['$http', '$location', function ($http, $locati
         list: []
     };
 
+    // addContact POST request
+    self.addContact = function (contact) {
+        if (contact.name === '') {
+            self.message = "Enter name of contact!";
+        } else {
+            $http.post('/api/contact', contact)
+                .then(function (response) {
+                    console.log('success adding contact');
+                    // self.getContactList(familyId);
+                    swal('The contact was sucessfully added!');
+                })
+                .catch(function (error) {
+                    console.log('error, response:', response);
+                    self.message = "Something went wrong. Please try again."
+                });
+        }
+    }; // end addContact
+
 }]);

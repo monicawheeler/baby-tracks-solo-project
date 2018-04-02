@@ -356,6 +356,10 @@ input {
   padding: 10px 40px 10px 10px;
 }
 
+.input-row-flex {
+  display: flex;
+}
+
 .input-required {
   color: #e82c0c;
 }
@@ -845,6 +849,10 @@ th, td {
 
 .isHidden {
   display: none;
+}
+
+.hasHover:hover {
+  cursor: pointer;
 }
 
 .swal-button {
