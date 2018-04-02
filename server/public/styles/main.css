@@ -843,6 +843,10 @@ th, td {
   transform: rotate(-45deg);
 }
 
+.isHidden {
+  display: none;
+}
+
 .swal-button {
   border-width: 1px;
   border-style: solid;
