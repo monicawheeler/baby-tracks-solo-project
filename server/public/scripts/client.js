@@ -40,6 +40,15 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
 				}
 			}
 		})
+		.when('/emergency-contacts', {
+			templateUrl: '/views/templates/emergency-contacts.html',
+			controller: 'ContactsController as vm',
+			resolve: {
+				getuser: function (FamilyService) {
+					return FamilyService.getuser();
+				}
+			}
+		})
 		.when('/tracking', {
 			templateUrl: '/views/templates/tracking.html',
 			controller: 'EventController as vm',
