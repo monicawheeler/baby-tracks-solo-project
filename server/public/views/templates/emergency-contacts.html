@@ -13,12 +13,10 @@
                 <i class="fas fa-angle-up"></i>
         </span>
     </h1>
-    {{vm.familyObject.id}}
-    {{vm.newContact}}
     <div class="input-container input-container-wide">
         <div class="input-inner">
             <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-            <form class="input-form form fade" ng-if="showContactForm" ng-submit="vm.addContact()">
+            <form class="input-form form fade" ng-if="showContactForm" ng-submit="vm.addContact(vm.newContact)">
                 <div class="input-row input-row-flex input-row-flex">
                     <div class="input-col">
                         <label class="input-label" for="name">Name<span class="input-required">*</span></label>
@@ -69,3 +67,5 @@
 
 
 <p>Contact List Here:</p>
+
+{{vm.contactList.list}}

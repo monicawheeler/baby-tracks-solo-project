@@ -52,4 +52,30 @@ router.post('/', (req, res, next) => {
 });
 
 
+
+// GET contacts based on family id
+router.get('/family/:id', (req, res) => {
+    // check if logged in
+    if (req.isAuthenticated()) {
+
+        // find joined records from the contacts and family tables
+        // where family id key for family matches contacts.family_id
+        const queryText = 'SELECT emergencycontacts.id, emergencycontacts.name, emergencycontacts.type, emergencycontacts.telephone, emergencycontacts.address1, emergencycontacts.address2, emergencycontacts.city, emergencycontacts.state, emergencycontacts.zip, emergencycontacts.notes FROM emergencycontacts JOIN family ON family.id = emergencycontacts.family_id WHERE emergencycontacts.family_id=$1';
+        pool.query(queryText, [req.params.id], (err, result) => {
+            if (err) {
+                //console.log('error in get request for contacts by family id');
+                res.sendStatus(500);
+            } else {
+                // console.log('success in get request for contacts by family id');
+                // console.log('result', result.rows);
+                res.send(result.rows);
+            }
+        });
+    } else {
+        // failure best handled on the server. do redirect here.
+        res.sendStatus(403);
+    }
+});
+
+
 module.exports = router;

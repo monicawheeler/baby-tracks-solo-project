@@ -12,10 +12,10 @@ myApp.service('ContactsService', ['$http', '$location', function ($http, $locati
         if (contact.name === '') {
             self.message = "Enter name of contact!";
         } else {
-            $http.post('/api/contact', contact)
+            $http.post('/api/contacts', contact)
                 .then(function (response) {
                     console.log('success adding contact');
-                    // self.getContactList(familyId);
+                    self.getContactList(familyId);
                     swal('The contact was sucessfully added!');
                 })
                 .catch(function (error) {
@@ -24,5 +24,18 @@ myApp.service('ContactsService', ['$http', '$location', function ($http, $locati
                 });
         }
     }; // end addContact
+
+
+    // getContactList GET request
+    self.getContactList = function (id) {
+        $http.get(`/api/contacts/family/${id}`)
+            .then(function (response) {
+                self.contactList.list = response.data;
+            })
+            .catch(function (error) {
+                console.log('error, response:', response);
+                self.message = "Something went wrong. Please try again."
+            });
+    }; // end getContactList()
 
 }]);

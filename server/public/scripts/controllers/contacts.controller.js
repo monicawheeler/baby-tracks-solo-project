@@ -30,10 +30,22 @@ myApp.controller('ContactsController', ['$http', '$location', 'FamilyService', '
 		family_id: self.familyObject.id
     };
 
+
+
     // Add contact
     self.addContact = function(newContact) {
         console.log('newContact', newContact);
         
         ContactsService.addContact(newContact);
     }
+
+	// ContactsSerivce to get the list of children
+	self.getContactList = function (familyId) {
+		ContactsService.getContactList(self.familyObject.id);
+	}
+
+	// Run the getContactList function
+	self.getContactList(self.familyObject.id);
+
+
 }]);
