@@ -68,4 +68,20 @@
 
 <p>Contact List Here:</p>
 
-{{vm.contactList.list}}
+<ul class="contact-list">
+    <li ng-repeat="contact in vm.contactList.list">
+        <h3>{{contact.name}}</h3>
+        <p>{{contact.type}}</p>
+        <a ng-href="tel:{{contact.telephone}}"><i class="fas fa-phone"></i>{{contact.telephone}}</a>
+        <a ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}"><i class="fas fa-location-arrow"></i>Directions</a>
+        
+        
+        <p>Notes:
+        {{contact.notes}}
+        </p>
+        <div class="manage-list-bar">
+            <button ng-click="vm.deleteContact(contact.id, vm.familyObject.id)">Delete</button>
+            <button ng-click="vm.editContact()">Edit</button>
+        </div>
+    </li>
+</ul>

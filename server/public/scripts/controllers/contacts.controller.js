@@ -41,11 +41,17 @@ myApp.controller('ContactsController', ['$http', '$location', 'FamilyService', '
 
 	// ContactsSerivce to get the list of children
 	self.getContactList = function (familyId) {
-		ContactsService.getContactList(self.familyObject.id);
+        ContactsService.getContactList(self.familyObject.id);   
 	}
 
 	// Run the getContactList function
 	self.getContactList(self.familyObject.id);
 
+	// Get the contactList variable
+	self.contactList = ContactsService.contactList;
 
+	// ContactsSerivce to remove a child
+	self.deleteContact = function (id, familyId) {
+		ContactsService.deleteContact(id, self.familyObject.id);
+	}
 }]);

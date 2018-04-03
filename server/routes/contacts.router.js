@@ -57,7 +57,6 @@ router.post('/', (req, res, next) => {
 router.get('/family/:id', (req, res) => {
     // check if logged in
     if (req.isAuthenticated()) {
-
         // find joined records from the contacts and family tables
         // where family id key for family matches contacts.family_id
         const queryText = 'SELECT emergencycontacts.id, emergencycontacts.name, emergencycontacts.type, emergencycontacts.telephone, emergencycontacts.address1, emergencycontacts.address2, emergencycontacts.city, emergencycontacts.state, emergencycontacts.zip, emergencycontacts.notes FROM emergencycontacts JOIN family ON family.id = emergencycontacts.family_id WHERE emergencycontacts.family_id=$1';
@@ -77,5 +76,28 @@ router.get('/family/:id', (req, res) => {
     }
 });
 
+
+
+// DELETE contact from contact table
+router.delete('/:id', function (req, res) {
+    // check if logged in
+    if (req.isAuthenticated()) {
+        const queryText = 'DELETE FROM emergencycontacts WHERE id=$1';
+        pool.query(queryText, [req.params.id])
+            // runs on successful query
+            .then((result) => {
+                //console.log('query results: ', result);            
+                res.sendStatus(200);
+            })
+            // error handling
+            .catch((err) => {
+                console.log('error making select query:', err);
+                res.sendStatus(500);
+            });
+    } else {
+        // failure best handled on the server. do redirect here.
+        res.sendStatus(403);
+    }
+});
 
 module.exports = router;

@@ -38,4 +38,30 @@ myApp.service('ContactsService', ['$http', '$location', function ($http, $locati
             });
     }; // end getContactList()
 
+    // deleteContact DELETE request
+    self.deleteContact = function (id, familyId) {
+            swal({
+                text: "Are you sure you want to delete this emergency contact?",
+                icon: "warning",
+                buttons: ['Nevermind', 'Yes, delete.'],
+                dangerMode: true,
+                closeOnClickOutside: false
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const contactId = id;
+                    $http.delete(`/api/contacts/${contactId}`)
+                        .then(function (response) {
+                            swal('The contact has been removed from tracking.');
+                            self.getContactList(familyId);
+                        })
+                        .catch(function (error) {
+                            console.log('error, response:', response);
+                            self.message = "Something went wrong. Please try again."
+                        });
+                } else {
+                    swal('This emergency contact will NOT be deleted.');
+                } // end willDelete if statement
+            });
+    }; // end deleteContact
 }]);
