@@ -25,3 +25,18 @@ CREATE TABLE family (
     password character varying(255) NOT NULL,
     family_name character varying(100) NOT NULL
 );
+
+-- Emergency Contacts
+CREATE TABLE emergencycontacts (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(150) NOT NULL,
+	type VARCHAR(200),
+	telephone VARCHAR(11),
+	address1 VARCHAR(255),
+	address2 VARCHAR(255),
+	city VARCHAR(100),
+	state VARCHAR(50),
+	zip VARCHAR(10),
+	notes VARCHAR(255),
+	family_id INT REFERENCES family
+);

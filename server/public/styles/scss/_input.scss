@@ -62,6 +62,10 @@
     padding: 10px 40px 10px 10px;
 }
 
+.input-row-flex {
+    display: flex;
+}
+
 .input-required {
     color: $warn;
 }

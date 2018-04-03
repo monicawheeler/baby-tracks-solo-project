@@ -1,0 +1,9 @@
+.isHidden {
+    display: none;
+}
+
+.hasHover {
+    &:hover {
+        cursor: pointer;
+    }
+}

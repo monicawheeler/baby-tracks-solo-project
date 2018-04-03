@@ -4,6 +4,7 @@
 	
 	<div class="open-nav fade" ng-click="vm.showNav = true;"><span class="open-nav-icon"></span></div>
 </div><!-- content-header -->
+<a href="#!emergency-contacts" ng-class="vm.getClass('/emergency-contacts')">Emergency Contacts</a>
 
 <div class="overlay fade" ng-if="vm.showNav" ng-controller="NavController">
 	<div class="navbar">
@@ -16,6 +17,9 @@
 			</li>
 			<li class="nav-list-item">
 				<a class="nav-list-item-link" ng-click="vm.showNav = false;" href="#!tracking">Track Events</a>
+			</li>
+			<li class="nav-list-item">
+				<a class="nav-list-item-link" ng-click="vm.showNav = false;" href="#!emergency-contacts">Emergency Contacts</a>
 			</li>
 			<li class="nav-list-item">
 				<a class="nav-list-item-link" ng-click="vm.familyService.logout()">Logout</a>
