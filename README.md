@@ -45,9 +45,11 @@ Copy and paste database.sql file to set up the entire basic database structure.
 - [x] **Account**: Allow users to modify their password.
 - [x] **Tracking**: Allows users to track events, edit notes to the most recent event, and view the historical data of tracking events.
 
-### Next Steps
+### In Development
+- [ ] Crrate an emergency contact list for the family.
 
-- [ ] Create an emergency contact list for the family.
+### Next Steps
+- [ ] Migrate application to a Progressive Web Application
 - [ ] Create a vitals list with important child information
   - [ ] Birthday, blood type, clothing sizes
 - [ ] Filter historical event information.
