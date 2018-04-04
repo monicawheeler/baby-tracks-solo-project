@@ -1,86 +1,87 @@
 <header class="header" ng-include="'/views/partials/user-header.html'"></header> <!-- header -->
 
 
-<h2 class="header-title">{{vm.familyObject.family_name}} Family Emergency Contacts</h2>
-
 <div class="view-wrapper fade">
-    <h1 class="input-header hasHover" ng-click="showContactForm = !showContactForm">
-        Add Emergency Contact
-        <span ng-if="!showContactForm">
-            <i class="fas fa-angle-down"></i>
-        </span>
-        <span ng-if="showContactForm">
-                <i class="fas fa-angle-up"></i>
-        </span>
-    </h1>
-    <div class="input-container input-container-wide">
-        <div class="input-inner">
-            <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-            <form class="input-form form fade" ng-if="showContactForm" ng-submit="vm.addContact(vm.newContact)">
-                <div class="input-row input-row-flex input-row-flex">
-                    <div class="input-col">
-                        <label class="input-label" for="name">Name<span class="input-required">*</span></label>
-                        <input class="input" type="text" ng-model="vm.newContact.name" placeholder="Name" required />
-                    </div>
-                    <div class="input-col">
-                        <label class="input-label" for="type">Contact Type</label>
-                        <input class="input" type="type" ng-model="vm.newContact.type" placeholder="Contact Type" />
-                    </div>
-                    <div class="input-col">
-                        <label class="input-label" for="telephone">Telephone</label>
-                        <input class="input" type="telephone" ng-model="vm.newContact.telephone" placeholder="Telephone" />
-                    </div>
-                </div>
-                <div class="input-row input-row-flex">
-                    <div class="input-col">
-                        <label class="input-label" for="address1">Street Address 1</label>
-                        <input class="input" type="address1" ng-model="vm.newContact.address1" placeholder="Street Address 1" />
-                    </div>
-                    <div class="input-col">
-                        <label class="input-label" for="address2">Street Address 2</label>
-                        <input class="input" type="address2" ng-model="vm.newContact.address2" placeholder="Street Address 2" />
-                    </div>
-                    <div class="input-col">
-                        <label class="input-label" for="city">City</label>
-                        <input class="input" type="city" ng-model="vm.newContact.city" placeholder="City" />
-                    </div>
-                    <div class="input-col">
-                        <label class="input-label" for="state">State</label>
-                        <input class="input" type="state" ng-model="vm.newContact.state" placeholder="State" />
-                    </div>
-                    <div class="input-col">
-                        <label class="input-label" for="zip">Zip</label>
-                        <input class="input" type="zip" ng-model="vm.newContact.zip" placeholder="Zip" />
-                    </div>
-                </div>
-                <div class="input-row input-row-flex">
-                    <label for="notes" class="input-label">Notes</label>
-                    <textarea class="textarea" ng-model="vm.newContact.notes" placeholder="Notes"></textarea>
-                </div>
-                <div class="input-row input-row-flex">
-                    <input class="btn btn-alt" type="submit" name="submit" value="Submit New Contact" />
-                </div>
-            </form><!-- .input-form -->
-        </div><!-- .input-inner -->
-    </div><!-- .input-container -->
-</div>
-
-
-<p>Contact List Here:</p>
-
-<ul class="contact-list">
-    <li ng-repeat="contact in vm.contactList.list">
-        <h3>{{contact.name}}</h3>
-        <p>{{contact.type}}</p>
-        <a ng-href="tel:{{contact.telephone}}"><i class="fas fa-phone"></i>{{contact.telephone}}</a>
-        <a ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}"><i class="fas fa-location-arrow"></i>Directions</a>
+    <h2 class="header-title">{{vm.familyObject.family_name}} Family Emergency Contacts</h2>
         
-        
-        <p>Notes:
-        {{contact.notes}}
-        </p>
-        <div class="manage-list-bar">
-            <button ng-click="vm.deleteContact(contact.id, vm.familyObject.id)">Delete</button>
+    <div class="block hasDivider">
+        <h2 class="hasHover" ng-click="showContactForm = !showContactForm">
+            Add New Emergency Contact
+            <span ng-if="!showContactForm">
+                <i class="fas fa-angle-down"></i>
+            </span>
+            <span ng-if="showContactForm">
+                    <i class="fas fa-angle-up"></i>
+            </span>
+        </h2>
+        <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+        <form class="input-form form fade" ng-if="showContactForm" ng-submit="vm.addContact(vm.newContact)">
+            <div class="input-row input-row-flex input-row-flex">
+                <div class="input-col">
+                    <label class="input-label" for="name">Name<span class="input-required">*</span></label>
+                    <input class="input" type="text" ng-model="vm.newContact.name" placeholder="Name" required />
+                </div>
+                <div class="input-col">
+                    <label class="input-label" for="type">Contact Type</label>
+                    <input class="input" type="type" ng-model="vm.newContact.type" placeholder="Contact Type" />
+                </div>
+                <div class="input-col">
+                    <label class="input-label" for="telephone">Telephone</label>
+                    <input class="input" type="telephone" ng-model="vm.newContact.telephone" placeholder="Telephone" />
+                </div>
+            </div>
+            <div class="input-row input-row-flex">
+                <div class="input-col">
+                    <label class="input-label" for="address1">Street Address 1</label>
+                    <input class="input" type="address1" ng-model="vm.newContact.address1" placeholder="Street Address 1" />
+                </div>
+                <div class="input-col">
+                    <label class="input-label" for="address2">Street Address 2</label>
+                    <input class="input" type="address2" ng-model="vm.newContact.address2" placeholder="Street Address 2" />
+                </div>
+                <div class="input-col">
+                    <label class="input-label" for="city">City</label>
+                    <input class="input" type="city" ng-model="vm.newContact.city" placeholder="City" />
+                </div>
+                <div class="input-col">
+                    <label class="input-label" for="state">State</label>
+                    <input class="input" type="state" ng-model="vm.newContact.state" placeholder="State" />
+                </div>
+                <div class="input-col">
+                    <label class="input-label" for="zip">Zip</label>
+                    <input class="input" type="zip" ng-model="vm.newContact.zip" placeholder="Zip" />
+                </div>
+            </div>
+            <div class="input-row input-row-textarea">
+                <label for="notes" class="input-label">Notes</label>
+                <textarea rows="6" class="textarea" ng-model="vm.newContact.notes" placeholder="Notes"></textarea>
+            </div>
+            <div class="input-row input-row-flex">
+                <input class="btn btn-alt" type="submit" name="submit" value="Submit New Contact" />
+            </div>
+        </form><!-- .input-form -->
+    </div><!-- .block -->
+
+    <div class="block hasDivider">
+        <table class="responsive-table responsive-table-contacts">
+            <thead>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Contact Number</th>
+                <th>Directions</th>
+                <th>Notes</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contact in vm.contactList.list">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.type}}</td>
+                    <td><a ng-href="tel:{{contact.telephone}}">{{contact.telephone}}<i class="fas fa-phone"></i></a></td>
+                    <td><a ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}"><i class="fas fa-location-arrow"></i>Directions</a></td>
+                    <td>{{contact.notes}}</td>
+                    <td><button class="btn btn-warn" ng-click="vm.deleteContact(contact.id, vm.familyObject.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
         </div>
-    </li>
-</ul>
+</div>
