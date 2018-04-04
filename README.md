@@ -46,7 +46,7 @@ Copy and paste database.sql file to set up the entire basic database structure.
 - [x] **Tracking**: Allows users to track events, edit notes to the most recent event, and view the historical data of tracking events.
 
 ### In Development
-- [ ] Crrate an emergency contact list for the family.
+- [ ] Create an emergency contact list for the family.
 
 ### Next Steps
 - [ ] Migrate application to a Progressive Web Application
