@@ -63,7 +63,7 @@
     </div><!-- .block -->
 
     <div class="block hasDivider">
-        <table class="responsive-table responsive-table-contacts">
+        <table class="responsive-table responsive-table-contacts contacts-table">
             <thead>
                 <th>Name</th>
                 <th>Type</th>
@@ -76,8 +76,8 @@
                 <tr ng-repeat="contact in vm.contactList.list">
                     <td>{{contact.name}}</td>
                     <td>{{contact.type}}</td>
-                    <td><a ng-href="tel:{{contact.telephone}}">{{contact.telephone}}<i class="fas fa-phone"></i></a></td>
-                    <td><a ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}"><i class="fas fa-location-arrow"></i>Directions</a></td>
+                    <td><a class="link link-telphone" ng-href="tel:{{contact.telephone}}">{{contact.telephone}}<i class="fas fa-phone"></i></a></td>
+                    <td><a class="link link-direction" ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}"><i class="fas fa-location-arrow"></i>Directions</a></td>
                     <td>{{contact.notes}}</td>
                     <td><button class="btn btn-warn" ng-click="vm.deleteContact(contact.id, vm.familyObject.id)">Delete</button></td>
                 </tr>
