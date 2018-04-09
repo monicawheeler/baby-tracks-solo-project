@@ -15,7 +15,6 @@ myApp.controller('ContactsController', ['$http', '$location', 'FamilyService', '
         }
     }
 
-
 	// Contact object 
 	self.newContact = {
         name: '',
@@ -30,15 +29,6 @@ myApp.controller('ContactsController', ['$http', '$location', 'FamilyService', '
 		family_id: self.familyObject.id
     };
 
-
-
-    // Add contact
-    self.addContact = function(newContact) {
-        console.log('newContact', newContact);
-        
-        ContactsService.addContact(newContact);
-    }
-
 	// ContactsSerivce to get the list of children
 	self.getContactList = function (familyId) {
         ContactsService.getContactList(self.familyObject.id);   
@@ -50,8 +40,18 @@ myApp.controller('ContactsController', ['$http', '$location', 'FamilyService', '
 	// Get the contactList variable
 	self.contactList = ContactsService.contactList;
 
+    // Add contact
+    self.addContact = function(newContact) {
+        ContactsService.addContact(newContact);
+    }
 	// ContactsSerivce to remove a child
 	self.deleteContact = function (id, familyId) {
 		ContactsService.deleteContact(id, self.familyObject.id);
-	}
+    }
+
+    self.formatPhoneNumber = function(s) {
+        var s2 = (""+s).replace(/\D/g, '');
+        var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+        return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+      }
 }]);

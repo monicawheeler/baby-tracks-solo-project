@@ -6,26 +6,6 @@ myApp.service('ContactsService', ['$http', '$location', function ($http, $locati
     self.contactList = {
         list: []
     };
-
-    // addContact POST request
-    self.addContact = function (contact) {
-        if (contact.name === '') {
-            self.message = "Enter name of contact!";
-        } else {
-            $http.post('/api/contacts', contact)
-                .then(function (response) {
-                    console.log('success adding contact');
-                    self.getContactList(familyId);
-                    swal('The contact was sucessfully added!');
-                })
-                .catch(function (error) {
-                    console.log('error, response:', response);
-                    self.message = "Something went wrong. Please try again."
-                });
-        }
-    }; // end addContact
-
-
     // getContactList GET request
     self.getContactList = function (id) {
         $http.get(`/api/contacts/family/${id}`)
@@ -37,6 +17,27 @@ myApp.service('ContactsService', ['$http', '$location', function ($http, $locati
                 self.message = "Something went wrong. Please try again."
             });
     }; // end getContactList()
+
+
+    // addContact POST request
+    self.addContact = function (contact) {
+        const contactFamilyId = contact.family_id;
+
+        if (contact.name === '') {
+            self.message = "Enter name of contact!";
+        } else {
+            $http.post('/api/contacts', contact)
+                .then(function (response) {
+                    self.getContactList(contactFamilyId);
+                    swal('The contact was sucessfully added!');
+                })
+                .catch(function (error) {
+                    console.log('error, response:', response);
+                    self.message = "Something went wrong. Please try again."
+                });
+        }
+    }; // end addContact
+
 
     // deleteContact DELETE request
     self.deleteContact = function (id, familyId) {

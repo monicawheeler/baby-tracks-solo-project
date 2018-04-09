@@ -2,7 +2,7 @@
 
 
 <div class="view-wrapper fade">
-    <h2 class="header-title">{{vm.familyObject.family_name}} Family Emergency Contacts</h2>
+    <h2 class="header-title">{{vm.familyObject.family_name}} Family Emergency Contact List</h2>
         
     <div class="block hasDivider">
         <h2 class="hasHover" ng-click="showContactForm = !showContactForm">
@@ -14,6 +14,7 @@
                     <i class="fas fa-angle-up"></i>
             </span>
         </h2>
+
         <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
         <form class="input-form form fade" ng-if="showContactForm" ng-submit="vm.addContact(vm.newContact)">
             <div class="input-row input-row-flex input-row-flex">
@@ -27,7 +28,12 @@
                 </div>
                 <div class="input-col">
                     <label class="input-label" for="telephone">Telephone</label>
-                    <input class="input" type="telephone" ng-model="vm.newContact.telephone" placeholder="Telephone" />
+                    <input 
+                        class="input" 
+                        type="telephone" 
+                        ng-model="vm.newContact.telephone" 
+                        placeholder="Telephone" 
+                    />
                 </div>
             </div>
             <div class="input-row input-row-flex">
@@ -62,8 +68,13 @@
         </form><!-- .input-form -->
     </div><!-- .block -->
 
+    <div class="block hasDivider input-col">
+        <label class="input-label">Contact Type Search:</label>
+        <input class="input" placeholder="Enter Type (Doctor, Police, etc)" ng-model="userFilter.type">
+    </div>
+
     <div class="block hasDivider">
-        <table class="responsive-table responsive-table-contacts">
+        <table class="responsive-table responsive-table-contacts contacts-table">
             <thead>
                 <th>Name</th>
                 <th>Type</th>
@@ -73,11 +84,21 @@
                 <th>Delete</th>
             </thead>
             <tbody>
-                <tr ng-repeat="contact in vm.contactList.list">
+                <tr ng-repeat="contact in vm.contactList.list | filter:userFilter">
                     <td>{{contact.name}}</td>
                     <td>{{contact.type}}</td>
-                    <td><a ng-href="tel:{{contact.telephone}}">{{contact.telephone}}<i class="fas fa-phone"></i></a></td>
-                    <td><a ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}"><i class="fas fa-location-arrow"></i>Directions</a></td>
+                    <td><a class="link link-telphone" ng-href="tel:{{contact.telephone}}">{{vm.formatPhoneNumber(contact.telephone)}}</a></td>
+                    <td>
+                        <div ng-if="contact.address1">
+                            <a 
+                                class="link link-direction" 
+                                ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}">
+                                <div>{{contact.address1}}</div>
+                                <div>{{contact.address2}}</div>
+                                <div>{{contact.city}}, {{contact.state}} {{contact.zip}}</div>
+                            </a>
+                        </div>
+                    </td>
                     <td>{{contact.notes}}</td>
                     <td><button class="btn btn-warn" ng-click="vm.deleteContact(contact.id, vm.familyObject.id)">Delete</button></td>
                 </tr>
