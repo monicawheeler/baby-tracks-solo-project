@@ -360,22 +360,26 @@ input {
 ::-webkit-input-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
-  font-weight: 300; }
+  font-weight: 300;
+  color: #d3d3d3; }
 
 ::-moz-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
-  font-weight: 300; }
+  font-weight: 300;
+  color: #d3d3d3; }
 
 :-ms-input-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
-  font-weight: 300; }
+  font-weight: 300;
+  color: #d3d3d3; }
 
 :-moz-placeholder {
   font-family: "Lato", sans-serif;
   font-size: 16px;
-  font-weight: 300; }
+  font-weight: 300;
+  color: #d3d3d3; }
 
 .select-header {
   display: flex;
@@ -650,7 +654,15 @@ th, td {
   table-layout: fixed; }
 
 .link {
-  color: #764ba2; }
+  display: block;
+  color: #764ba2;
+  text-decoration: none; }
+
+.contact-link {
+  padding: 10px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 300; }
 
 .overlay {
   position: fixed;

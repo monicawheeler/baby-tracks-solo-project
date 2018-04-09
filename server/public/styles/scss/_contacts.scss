@@ -3,5 +3,14 @@
 }
 
 .link {
+    display: block;
     color: $primary;
+    text-decoration: none;
+}
+
+.contact-link {
+    padding: 10px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 300;
 }
