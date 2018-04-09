@@ -1,0 +1,15 @@
+.isHidden {
+    display: none;
+}
+
+.hasHover {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.hasDivider {
+    padding-top: 20px;
+    border-top: 1px solid $gray;
+    margin-top: 20px;
+}

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "build-css": "node-sass --include-path scss server/public/styles/scss/style.scss server/public/styles/style.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "license": "ISC",
   "dependencies": {
@@ -29,6 +31,7 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-watch": "^1.0.0",
+    "node-sass": "^4.8.3"
   }
 }
