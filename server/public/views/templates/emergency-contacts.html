@@ -28,7 +28,12 @@
                 </div>
                 <div class="input-col">
                     <label class="input-label" for="telephone">Telephone</label>
-                    <input class="input" type="telephone" ng-model="vm.newContact.telephone" placeholder="Telephone" />
+                    <input 
+                        class="input" 
+                        type="telephone" 
+                        ng-model="vm.newContact.telephone" 
+                        placeholder="Telephone" 
+                    />
                 </div>
             </div>
             <div class="input-row input-row-flex">
@@ -82,15 +87,17 @@
                 <tr ng-repeat="contact in vm.contactList.list | filter:userFilter">
                     <td>{{contact.name}}</td>
                     <td>{{contact.type}}</td>
-                    <td><a class="link link-telphone" ng-href="tel:{{contact.telephone}}">{{contact.telephone}}</a></td>
+                    <td><a class="link link-telphone" ng-href="tel:{{contact.telephone}}">{{vm.formatPhoneNumber(contact.telephone)}}</a></td>
                     <td>
-                        <a 
-                            class="link link-direction" 
-                            ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}">
-                            <div>{{contact.address1}}</div>
-                            <div>{{contact.address2}}</div>
-                            <div>{{contact.city}}, {{contact.state}} {{contact.zip}}</div>
-                        </a>
+                        <div ng-if="contact.address1">
+                            <a 
+                                class="link link-direction" 
+                                ng-href="https://www.google.com/maps/dir/Current+Location/{{contact.address1}}+{{contact.address2}}+{{contact.city}}+{{contact.state}}+{{contact.zip}}">
+                                <div>{{contact.address1}}</div>
+                                <div>{{contact.address2}}</div>
+                                <div>{{contact.city}}, {{contact.state}} {{contact.zip}}</div>
+                            </a>
+                        </div>
                     </td>
                     <td>{{contact.notes}}</td>
                     <td><button class="btn btn-warn" ng-click="vm.deleteContact(contact.id, vm.familyObject.id)">Delete</button></td>

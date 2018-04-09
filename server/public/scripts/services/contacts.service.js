@@ -28,8 +28,6 @@ myApp.service('ContactsService', ['$http', '$location', function ($http, $locati
         } else {
             $http.post('/api/contacts', contact)
                 .then(function (response) {
-                    console.log('success adding contact');
-                    
                     self.getContactList(contactFamilyId);
                     swal('The contact was sucessfully added!');
                 })
