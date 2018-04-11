@@ -59,7 +59,7 @@ router.get('/family/:id', (req, res) => {
     if (req.isAuthenticated()) {
         // find joined records from the contacts and family tables
         // where family id key for family matches contacts.family_id
-        const queryText = 'SELECT emergencycontacts.id, emergencycontacts.name, emergencycontacts.type, emergencycontacts.telephone, emergencycontacts.address1, emergencycontacts.address2, emergencycontacts.city, emergencycontacts.state, emergencycontacts.zip, emergencycontacts.notes FROM emergencycontacts JOIN family ON family.id = emergencycontacts.family_id WHERE emergencycontacts.family_id=$1';
+        const queryText = 'SELECT emergencycontacts.id, emergencycontacts.name, emergencycontacts.type, emergencycontacts.telephone, emergencycontacts.address1, emergencycontacts.address2, emergencycontacts.city, emergencycontacts.state, emergencycontacts.zip, emergencycontacts.notes FROM emergencycontacts JOIN family ON family.id = emergencycontacts.family_id WHERE emergencycontacts.family_id=$1 ORDER BY emergencycontacts.type';
         pool.query(queryText, [req.params.id], (err, result) => {
             if (err) {
                 //console.log('error in get request for contacts by family id');
