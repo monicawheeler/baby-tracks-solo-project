@@ -1,6 +1,6 @@
 # Baby Tracks
 
-Baby Tracks is a full stack web application that allows families to track the daily activities of their newborns/infants. This application is designed to provide an at-a-glance summary of the most common events newborns/infants encounter and ease the burden on families to track this information.
+Baby Tracks is a full-stack responsive web application that allows families to track the daily activities of their newborns/infants. This application is designed to provide an at-a-glance summary of the most common events newborns/infants encounter and ease the burden on families to track this information.
 
 View [Baby Tracks](https://baby-tracks.herokuapp.com) on Heroku!
 
@@ -41,13 +41,16 @@ Copy and paste database.sql file to set up the entire basic database structure.
 
 ### Completed Features
 
-- [x] **Manage Children**: Allows users to add and remove children.
-- [x] **Account**: Allow users to modify their password.
-- [x] **Tracking**: Allows users to track events, edit notes to the most recent event, and view the historical data of tracking events.
+- [x] **Manage Children**: Allows families to add and remove children.
+- [x] **Account**: Allows families to modify their password.
+- [x] **Tracking**: Allows families to track events, edit notes to the most recent event, and view the historical data of tracking events.
+- [X] **Emergency Contacts** Allows families to create a comprehensive list of contacts for the family. Telephone numbers dial from mobile phones and addresses generate directions from your location. 
+
 
 ### Next Steps
-
-- [ ] Create an emergency contact list for the family.
+- [ ] Migrate application to a Progressive Web Application
+- [ ] Create a vitals list with important child information
+  - [ ] Birthday, blood type, clothing sizes
 - [ ] Filter historical event information.
 - [ ] Create event reports based on dates selected.
 

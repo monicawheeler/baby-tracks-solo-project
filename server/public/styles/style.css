@@ -103,6 +103,10 @@ input {
     background: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
     color: #ffffff; }
 
+.btn-small {
+  padding: 5px 8px;
+  font-size: 10px; }
+
 .content-header {
   display: flex;
   justify-content: space-between;
@@ -209,8 +213,10 @@ input {
 
 @media screen and (max-width: 800px) {
   .responsive-table-contacts td:before {
+    display: block;
     font-weight: bold;
-    font-size: .9em; }
+    font-size: .7em;
+    padding-bottom: 3px; }
   .responsive-table-contacts td:nth-of-type(1) {
     text-transform: uppercase; }
     .responsive-table-contacts td:nth-of-type(1):before {
@@ -663,6 +669,9 @@ th, td {
   text-align: right;
   font-size: 14px;
   font-weight: 300; }
+
+.cell-button {
+  text-align: right; }
 
 .overlay {
   position: fixed;
