@@ -1,4 +1,4 @@
-myApp.controller('ReportController', ['FamilyService', function (FamilyService) {
+myApp.controller('ReportController', ['FamilyService', 'ReportService', function (FamilyService, ReportService) {
     console.log('ReportController created');
     var self = this;
 
