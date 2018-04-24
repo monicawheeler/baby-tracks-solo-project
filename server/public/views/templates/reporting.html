@@ -2,5 +2,27 @@
 
 <div class="report-wrapper view-wrapper fade">
     <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-    <h2 class="header-title header-title--centered header-title--big">Reports</h2>
+    <h2 class="header-title header-title--centered header-title--big header-title--spacer">Reports</h2>
+
+
+    <div class="event-history">
+        <table class="event-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Notes</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="childEvent in vm.childEvents.list">
+                    <td>{{childEvent.datetime | date: MM/dd/YYYY}}</td>
+                    <td>{{childEvent.datetime | date:'h:mm a'}}</td>
+                    <td>{{childEvent.notes}}</td>
+                    <td>{{childEvent.category_name}}</td>
+                </tr>
+            </tbody>
+        </table><!-- /.event-table -->
+    </div><!-- /.event-history -->
 </div> <!-- .account-wrapper -->

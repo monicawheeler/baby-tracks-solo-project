@@ -48,6 +48,10 @@
     font-weight: 700;
 }
 
+.header-title--spacer {
+    margin-bottom: $spacer;
+}
+
 .header-subtitle {
     text-transform: capitalize;
 }

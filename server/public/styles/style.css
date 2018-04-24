@@ -150,6 +150,9 @@ input {
   font-size: 1.2em;
   font-weight: 700; }
 
+.header-title--spacer {
+  margin-bottom: 30px; }
+
 .header-subtitle {
   text-transform: capitalize; }
 
