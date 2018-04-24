@@ -2,6 +2,6 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', function
     console.log('ReportController created');
     var self = this;
 
-    // FamilyService variables
-	self.familyService = FamilyService;
+    self.familyService = FamilyService;
+    self.familyObject = FamilyService.familyObject;
 }]);
