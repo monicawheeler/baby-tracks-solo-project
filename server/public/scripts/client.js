@@ -58,6 +58,15 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
 				}
 			}
 		})
+		.when('/reporting', {
+			templateUrl: '/views/templates/reporting.html',
+			controller: 'ReportController as vm',
+			resolve: {
+				getuser: function (FamilyService) {
+					return FamilyService.getuser();
+				}
+			}
+		})
 		.otherwise({
 			templateUrl: '/views/templates/404.html'
 		});
