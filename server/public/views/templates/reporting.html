@@ -3,26 +3,40 @@
 <div class="report-wrapper view-wrapper fade">
     <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
     <h2 class="header-title header-title--centered header-title--big header-title--spacer">Reports</h2>
+    
+    <h2 class="subtitle">Select child to review reports:</h2>
+    <div class="input-row input-row-select">
+        <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true;"
+            ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+            <option value="" selected disabled>Select a Child</option>
+        </select>
+        <div class="arrow">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
 
-
-    <div class="event-history">
+    <div class="event-history" ng-if="vm.childEvents.list.length > 0">
         <table class="event-table">
             <thead>
                 <tr>
+                    <th>Category</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Notes</th>
-                    <th>Category</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="childEvent in vm.childEvents.list">
+                    <td>{{childEvent.category_name}}</td>
                     <td>{{childEvent.datetime | date: MM/dd/YYYY}}</td>
                     <td>{{childEvent.datetime | date:'h:mm a'}}</td>
                     <td>{{childEvent.notes}}</td>
-                    <td>{{childEvent.category_name}}</td>
                 </tr>
             </tbody>
         </table><!-- /.event-table -->
     </div><!-- /.event-history -->
+    <div ng-if="showAlert && vm.childEvents.list.length == 0">
+        <h3 class="alert">This child does not have any events to report!</h3>
+        <a href="/#!tracking" class="btn btn-alt">Start Tracking!</a>
+    </div>
 </div> <!-- .account-wrapper -->
