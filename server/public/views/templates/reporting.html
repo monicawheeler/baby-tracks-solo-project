@@ -1,25 +1,26 @@
 <header class="header" ng-include="'/views/partials/user-header.html'"></header> <!-- header -->
 
+<h2 class="header-title header-title--centered header-title--big header-title--spacer">Reports</h2>
 <div class="report-wrapper view-wrapper fade">
     <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
-    <h2 class="header-title header-title--centered header-title--big header-title--spacer">Reports</h2>
     
-    <h2 class="subtitle">Select child to review reports:</h2>
-    <div class="input-row input-row-select">
-        <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true;"
-            ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
-            <option value="" selected disabled>Select a Child</option>
-        </select>
-        <div class="arrow">
-            <i class="fas fa-angle-down"></i>
+    <h2 class="subtitle header-title--centered">Select child to review reports:</h2>
+    <div class="select-header">
+        <div class="input-row input-row-select">
+            <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true;"
+                ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+                <option value="" selected disabled>Select a Child</option>
+            </select>
+            <div class="arrow">
+                <i class="fas fa-angle-down"></i>
+            </div>
         </div>
     </div>
-
     <div class="event-history" ng-if="vm.childEvents.list.length > 0">
         <table class="event-table">
             <thead>
                 <tr>
-                    <th>Category</th>
+                    <th ng-click="vm.sortDesc">Category</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Notes</th>
@@ -28,7 +29,7 @@
             <tbody>
                 <tr ng-repeat="childEvent in vm.childEvents.list">
                     <td>{{childEvent.category_name}}</td>
-                    <td>{{childEvent.datetime | date: MM/dd/YYYY}}</td>
+                    <td><span class="date-desktop">{{childEvent.datetime | date: MM/dd/YYYY}}</span></td>
                     <td>{{childEvent.datetime | date:'h:mm a'}}</td>
                     <td>{{childEvent.notes}}</td>
                 </tr>
