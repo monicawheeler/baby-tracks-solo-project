@@ -24,4 +24,10 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
         EventService.getChildEventList(id);
     }
 
+    // TODO use onchange to grab the picked date from datepicker
+    // run a function that displays only events from current date
+
+    // function that queries with a get request based on a 
+    // conditional greater than the picked date
+
 }]);
