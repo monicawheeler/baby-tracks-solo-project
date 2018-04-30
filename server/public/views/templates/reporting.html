@@ -37,7 +37,9 @@
         </table><!-- /.event-history-table -->
     </div><!-- /.event-history -->
     <div ng-if="showAlert && vm.childEvents.list.length == 0">
-        <h3 class="alert">This child does not have any events to report!</h3>
-        <a href="/#!tracking" class="btn btn-alt">Start Tracking!</a>
+        <h3 class="alert header-title--centered">This child does not have any events to report!</h3>
+        <div class="btn-wrapper-spaced">
+            <a href="/#!tracking" class="btn btn-alt">Start Tracking!</a>
+        </div>
     </div>
 </div> <!-- .account-wrapper -->
