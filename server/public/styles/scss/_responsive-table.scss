@@ -61,3 +61,19 @@
         }
     }
 }
+
+.event-history-table {
+    .cell-date,
+    .cell-time {
+        @media (max-width: 500px) {
+            font-size: 12px;
+        }
+    }
+
+    .cel-category,
+    .cell-date,
+    .cell-time,
+    .cell-notes {
+        padding: 5px;
+    }
+}
