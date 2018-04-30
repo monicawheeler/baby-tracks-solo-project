@@ -233,5 +233,10 @@ th {
 th, td {
     padding: 8px;
     text-align: left;
+    vertical-align: middle;
     border-bottom: 1px solid #ddd;
+}
+
+.cell-category {
+    font-weight: 400;
 }

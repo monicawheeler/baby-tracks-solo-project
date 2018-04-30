@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="event-history" ng-if="vm.childEvents.list.length > 0">
-        <table class="event-table">
+        <table class="event-history-table">
             <thead>
                 <tr>
                     <th ng-click="vm.sortDesc">Category</th>
@@ -28,13 +28,13 @@
             </thead>
             <tbody>
                 <tr ng-repeat="childEvent in vm.childEvents.list">
-                    <td>{{childEvent.category_name}}</td>
-                    <td><span class="date-desktop">{{childEvent.datetime | date: MM/dd/YYYY}}</span></td>
-                    <td>{{childEvent.datetime | date:'h:mm a'}}</td>
-                    <td>{{childEvent.notes}}</td>
+                    <td class="cell-category">{{childEvent.category_name}}</td>
+                    <td class="cell-date">{{childEvent.datetime | date: 'EEEE'}} <br/> {{childEvent.datetime | date: 'M/dd'}}</td>
+                    <td class="cell-time">{{childEvent.datetime | date:'h:mm a'}}</td>
+                    <td class="cell-notes">{{childEvent.notes}}</td>
                 </tr>
             </tbody>
-        </table><!-- /.event-table -->
+        </table><!-- /.event-history-table -->
     </div><!-- /.event-history -->
     <div ng-if="showAlert && vm.childEvents.list.length == 0">
         <h3 class="alert">This child does not have any events to report!</h3>

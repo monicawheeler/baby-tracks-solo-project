@@ -244,6 +244,17 @@ input {
   .responsive-table-contacts td:nth-of-type(5):before {
     content: "Notes: "; } }
 
+@media (max-width: 500px) {
+  .event-history-table .cell-date,
+  .event-history-table .cell-time {
+    font-size: 12px; } }
+
+.event-history-table .cel-category,
+.event-history-table .cell-date,
+.event-history-table .cell-time,
+.event-history-table .cell-notes {
+  padding: 5px; }
+
 .landing-wrapper {
   position: relative;
   background: url("assets/images/upclose-feet.jpg") no-repeat center center fixed;
@@ -596,7 +607,11 @@ th {
 th, td {
   padding: 8px;
   text-align: left;
+  vertical-align: middle;
   border-bottom: 1px solid #ddd; }
+
+.cell-category {
+  font-weight: 400; }
 
 .account-wrapper {
   text-align: center;
