@@ -5,7 +5,7 @@
     <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
     
     <h2 class="subtitle header-title--centered">Select child to review reports:</h2>
-    <div class="select-header">
+    <div class="select-header select-header-spaced-small">
         <div class="input-row input-row-select">
             <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true;"
                 ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
@@ -16,8 +16,13 @@
             </div>
         </div>
     </div>
+    <div class="date-picker">
+        <p>Show events from date:</p>
+        <md-datepicker ng-model="vm.selectedDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+    </div>
+    {{vm.selectedDate}}
     <div class="event-history" ng-if="vm.childEvents.list.length > 0">
-        <table class="event-history-table">
+        <table class="event-history-table standard-table">
             <thead>
                 <tr>
                     <th ng-click="vm.sortDesc">Category</th>

@@ -37,6 +37,10 @@
     text-align: center;
 }
 
+.select-header-spaced-small {
+    margin-bottom: 15px;
+}
+
 .event-header {
     font-weight: 700;
     text-transform: uppercase;
@@ -219,24 +223,4 @@
     @media screen and (min-width: 900px) {
         height: 65px;
     }
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th {
-    font-weight: 700;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    vertical-align: middle;
-    border-bottom: 1px solid #ddd;
-}
-
-.cell-category {
-    font-weight: 400;
 }
