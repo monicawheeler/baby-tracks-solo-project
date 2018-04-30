@@ -107,6 +107,10 @@ input {
   padding: 5px 8px;
   font-size: 10px; }
 
+.btn-wrapper-spaced {
+  padding: 25px 0;
+  text-align: center; }
+
 .content-header {
   display: flex;
   justify-content: space-between;
@@ -142,6 +146,16 @@ input {
 
 .header-title {
   font-family: "Playfair Display", serif; }
+
+.header-title--centered {
+  text-align: center; }
+
+.header-title--big {
+  font-size: 1.2em;
+  font-weight: 700; }
+
+.header-title--spacer {
+  margin-bottom: 30px; }
 
 .header-subtitle {
   text-transform: capitalize; }
@@ -229,6 +243,17 @@ input {
     content: "Directions: "; }
   .responsive-table-contacts td:nth-of-type(5):before {
     content: "Notes: "; } }
+
+@media (max-width: 500px) {
+  .event-history-table .cell-date,
+  .event-history-table .cell-time {
+    font-size: 12px; } }
+
+.event-history-table .cel-category,
+.event-history-table .cell-date,
+.event-history-table .cell-time,
+.event-history-table .cell-notes {
+  padding: 5px; }
 
 .landing-wrapper {
   position: relative;
@@ -582,7 +607,11 @@ th {
 th, td {
   padding: 8px;
   text-align: left;
+  vertical-align: middle;
   border-bottom: 1px solid #ddd; }
+
+.cell-category {
+  font-weight: 400; }
 
 .account-wrapper {
   text-align: center;

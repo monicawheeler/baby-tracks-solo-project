@@ -42,7 +42,6 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
         // get category events based on child
         $http.get(`/api/event/child/${id}`)
             .then(function (response) {
-                console.log('success get child event list');
                 self.childEvents.list = response.data;
                 
                 // GET feeding category content

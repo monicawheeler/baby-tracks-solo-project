@@ -273,25 +273,7 @@
             </div><!-- /OTHER .event-content -->
         </div><!-- /OTHER .event-row -->
     </div><!-- /.events-wrapper -->
-    <div class="event-history" ng-if="vm.showEventHistory && vm.childEvents.list.length > 0">
-        <h2 class="subtitle">History</h2>
-        <table class="event-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Notes</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="childEvent in vm.childEvents.list">
-                    <td>{{childEvent.datetime | date: MM/dd/YYYY}}</td>
-                    <td>{{childEvent.datetime | date:'h:mm a'}}</td>
-                    <td>{{childEvent.notes}}</td>
-                    <td>{{childEvent.category_name}}</td>
-                </tr>
-            </tbody>
-        </table><!-- /.event-table -->
-    </div><!-- /.event-history -->
+    <div class="btn-wrapper-spaced">
+        <a class="btn btn-alt" href="#!reporting">View Reporting</a>
+    </div>
 </div><!-- /.track-wrapper -->
