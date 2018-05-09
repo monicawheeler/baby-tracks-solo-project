@@ -20,12 +20,13 @@
         <p>Show events from date:</p>
         <md-datepicker 
             ng-model="vm.today" 
-            ng-change="vm.selectedDate(vm.today);" 
+            ng-change="vm.sortBySelectedDate(vm.today);" 
             md-placeholder="Enter date" 
             md-open-on-focus>
         </md-datepicker>
         <button class="btn btn-alt" ng-click="vm.getChildEventList(vm.trackChild.id)">Show All</button>
     </div>
+    {{vm.today}}
     <div class="event-history" ng-if="vm.childEvents.list.length > 0">
         <table class="event-history-table standard-table">
             <thead>
