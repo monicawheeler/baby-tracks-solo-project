@@ -2,8 +2,6 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
     console.log('ReportController created');
     var self = this;
 
-    self.today = new Date();
-
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;
 
@@ -24,6 +22,7 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
     // EventService to get the event list for the current child
     self.getChildEventList = function (id) {
         EventService.getChildEventList(id);
+        
     }
 
     // TODO use onchange to grab the picked date from datepicker
