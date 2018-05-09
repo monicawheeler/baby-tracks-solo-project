@@ -2,6 +2,8 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
     console.log('ReportController created');
     var self = this;
 
+    self.today = new Date();
+
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;
 
@@ -26,6 +28,9 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
 
     // TODO use onchange to grab the picked date from datepicker
     // run a function that displays only events from current date
+    self.selectedDate = function(today) {
+        console.log('date', today)
+    }
 
     // function that queries with a get request based on a 
     // conditional greater than the picked date

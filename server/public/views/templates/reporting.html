@@ -16,13 +16,16 @@
             </div>
         </div>
     </div>
-
-    <!-- TODO use onchange event to grab get the vm.selectedDate to run a function -->
     <div class="date-picker">
         <p>Show events from date:</p>
-        <md-datepicker ng-model="vm.selectedDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+        <md-datepicker 
+            ng-model="vm.today" 
+            ng-change="vm.selectedDate(vm.today);" 
+            md-placeholder="Enter date" 
+            md-open-on-focus>
+        </md-datepicker>
     </div>
-    {{vm.selectedDate}}
+    {{vm.today}}
     <div class="event-history" ng-if="vm.childEvents.list.length > 0">
         <table class="event-history-table standard-table">
             <thead>
