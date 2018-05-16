@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="date-picker">
-        <p>Show events from date:</p>
+        <p>Show events from selected date to current day:</p>
         <md-datepicker 
             ng-model="vm.today" 
             ng-change="vm.sortBySelectedDate(vm.trackChild.id, vm.today);" 
@@ -53,3 +53,5 @@
         </div>
     </div>
 </div> <!-- .account-wrapper -->
+
+<div ng-repeat="item in vm.sortedEvents.list">{{ item }}</div>

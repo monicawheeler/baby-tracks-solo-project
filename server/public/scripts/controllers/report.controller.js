@@ -34,4 +34,6 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
         // TODO
         // Get the updated list of events from the service and update the dom
     }
+
+    self.sortedEvents = ReportService.sortedEvents;
 }]);
