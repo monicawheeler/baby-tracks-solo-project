@@ -11,9 +11,9 @@ router.get('/:childId/:theDay', (req, res) => {
 if (req.isAuthenticated()) {
     let childId = req.params.childId;
     let theDay = req.params.theDay;
-    
-    // find joined records from the child and family tables
-    // where family id key for family matches child.family_id
+
+    // use multiple params (child and date) to query based
+    // on child id and the date greater than or equal to the one selected
     const queryText = 'SELECT category.category_name, event.id, event.notes, event.datetime FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id=$1 AND event.datetime >=$2 ORDER BY event.datetime DESC';
     pool.query(queryText, [req.params.childId, req.params.theDay])
     .then((results) => {
@@ -30,6 +30,3 @@ if (req.isAuthenticated()) {
 });
 
 module.exports = router;
-
-
-// $http.get(`/api/report/${familyId}/${childId}/${theDay}`)

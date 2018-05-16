@@ -29,5 +29,9 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
         let formattedDate = moment(theDay, 'MM-DD-YYYY', true).format('YYYY-MM-DD');
 
         ReportService.sortBySelectedDate(childId, formattedDate);
+
+
+        // TODO
+        // Get the updated list of events from the service and update the dom
     }
 }]);
