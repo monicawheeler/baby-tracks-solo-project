@@ -29,7 +29,7 @@ app.use('/api/family', familyRouter);
 app.use('/api/child', childRouter);
 app.use('/api/event', eventRouter);
 app.use('/api/contacts', contactsRouter);
-app.use('/api/report', contactsRouter);
+app.use('/api/report', reportRouter);
 
 // Serve static files
 app.use(express.static('server/public'));

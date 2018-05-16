@@ -20,7 +20,7 @@
         <p>Show events from date:</p>
         <md-datepicker 
             ng-model="vm.today" 
-            ng-change="vm.sortBySelectedDate(vm.today);" 
+            ng-change="vm.sortBySelectedDate(vm.trackChild.id, vm.today);" 
             md-placeholder="Enter date" 
             md-open-on-focus>
         </md-datepicker>

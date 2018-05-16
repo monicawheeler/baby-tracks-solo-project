@@ -6,27 +6,30 @@ const router = express.Router();
 
 
 // GET children based on family id
-router.get('/family/:id', (req, res) => {
-  // check if logged in
-  if (req.isAuthenticated()) {
+router.get('/:childId/:theDay', (req, res) => {    
+// check if logged in
+if (req.isAuthenticated()) {
+    let childId = req.params.childId;
+    let theDay = req.params.theDay;
+    
+    // find joined records from the child and family tables
+    // where family id key for family matches child.family_id
+    const queryText = 'SELECT category.category_name, event.id, event.notes, event.datetime FROM event JOIN child ON child.id = event.child_id JOIN category ON category.id = event.category_id WHERE event.child_id=$1 AND event.datetime >=$2 ORDER BY event.datetime DESC';
+    pool.query(queryText, [req.params.childId, req.params.theDay])
+    .then((results) => {
+        res.send(results.rows);
+    })
+    .catch((error) => {
+        res.sendStatus(500);
+    })
 
-      // find joined records from the child and family tables
-      // where family id key for family matches child.family_id
-      const queryText = 'SELECT child.id, child.first_name, child.dob, child.gender FROM child JOIN family ON family.id = child.family_id WHERE child.family_id=$1';
-      pool.query(queryText, [req.params.id], (err, result) => {
-          if (err) {
-              //console.log('error in get request for children by family id');
-              res.sendStatus(500);
-          } else {
-              // console.log('success in get request for children by family id');
-              // console.log('result', result.rows);
-              res.send(result.rows);
-          }
-      });
-  } else {
-      // failure best handled on the server. do redirect here.
-      res.sendStatus(403);
-  }
+    } else {
+        // failure best handled on the server. do redirect here.
+        res.sendStatus(403);
+}
 });
 
 module.exports = router;
+
+
+// $http.get(`/api/report/${familyId}/${childId}/${theDay}`)

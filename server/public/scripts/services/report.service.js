@@ -7,15 +7,14 @@ myApp.service('ReportService', ['$http', '$location', function ($http, $location
         list: []
     };
 
-    // TODO figure out how to send a date and in what format
-    // in order to store and use as a get request
-
     //get request to get the children events 
-    self.sortBySelectedDate = function(theDay, id) {
-        console.log('theDay', theDay);
+    self.sortBySelectedDate = function(childId, theDay) {
+        console.log('theDay', theDay, 'theChild', childId);
         
-        $http.get(`/api/report/family/${id}`)
+        $http.get(`/api/report/${childId}/${theDay}`)
             .then(function (response) {
+                console.log('response in report get request', response);
+                
                 self.sortedEvents.list = response.data;
             })
             .catch(function (error) {
