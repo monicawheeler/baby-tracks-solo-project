@@ -21,14 +21,15 @@
     <div ng-if="vm.showEvents">
         <div ng-if="vm.childEvents.list.length > 0">
             <div class="date-picker">
-                <p>Show events from selected date to current day:</p>
+                <p class="date-picker__label">Show events from selected date to current day:</p>
                 <md-datepicker 
+                    class="date-picker__picker"
                     ng-model="vm.today" 
                     ng-change="vm.sortBySelectedDate(vm.trackChild.id, vm.today); showSorted = true; showAll = false;" 
                     md-placeholder="Enter date" 
                     md-open-on-focus>
                 </md-datepicker>
-                <button class="btn btn-alt" ng-click="vm.getChildEventList(vm.trackChild.id); showAll = true;">Show All</button>
+                <button class="btn btn-bare btn-small" ng-click="vm.getChildEventList(vm.trackChild.id); showAll = true;">Show All</button>
             </div>
             <div class="event-history" ng-if="!showSorted || showAll">
                 <table class="event-history-table standard-table">
