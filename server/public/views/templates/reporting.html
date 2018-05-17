@@ -29,8 +29,10 @@
                     md-placeholder="Enter date" 
                     md-open-on-focus>
                 </md-datepicker>
-                <button class="btn btn-bare btn-small" ng-click="vm.getChildEventList(vm.trackChild.id); showAll = true;">Show All</button>
+                <button class="btn btn-bare btn-small" ng-click="vm.getChildEventList(vm.trackChild.id); showSorted = false; showAll = true;">Show All</button>
             </div>
+            <h2 class="header-title header-title--centered header-title--big header-title--spacer header-title--underlined">Showing <span ng-if="showAll">All Events</span><span ng-if="showSorted">{{vm.today | date: 'longDate'}} to current</span></h2>
+            <!-- All events table -->
             <div class="event-history" ng-if="!showSorted || showAll">
                 <table class="event-history-table standard-table">
                     <thead>
@@ -51,6 +53,7 @@
                     </tbody>
                 </table><!-- /.event-history-table -->
             </div><!-- /.event-history -->
+            <!-- Sorted events table -->
             <div class="event-history event-history--sorted" ng-if="!showAll">
                 <table class="event-history-table standard-table">
                     <thead>

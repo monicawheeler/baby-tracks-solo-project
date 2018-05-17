@@ -43,6 +43,21 @@
     text-align: center;
 }
 
+.header-title--underlined {
+    padding-top: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    &:after {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        background-color: $primary;
+        content: "";
+    }
+}
+
 .header-title--big {
     font-size: 1.2em;
     font-weight: 700;
