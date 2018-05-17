@@ -7,8 +7,10 @@
     <h2 class="subtitle header-title--centered">Select child to review reports:</h2>
     <div class="select-header select-header-spaced-small">
         <div class="input-row input-row-select">
-            <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true;"
-                ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+            <select class="select input" 
+                ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true;"
+                ng-model="vm.trackChild" 
+                ng-options="child as child.first_name for child in vm.childList.list">
                 <option value="" selected disabled>Select a Child</option>
             </select>
             <div class="arrow">
@@ -16,36 +18,38 @@
             </div>
         </div>
     </div>
-    <div class="date-picker">
-        <p>Show events from selected date to current day:</p>
-        <md-datepicker 
-            ng-model="vm.today" 
-            ng-change="vm.sortBySelectedDate(vm.trackChild.id, vm.today);" 
-            md-placeholder="Enter date" 
-            md-open-on-focus>
-        </md-datepicker>
-        <button class="btn btn-alt" ng-click="vm.getChildEventList(vm.trackChild.id)">Show All</button>
+    <div ng-if="vm.childEvents.list.length > 0">
+        <div class="date-picker">
+            <p>Show events from selected date to current day:</p>
+            <md-datepicker 
+                ng-model="vm.today" 
+                ng-change="vm.sortBySelectedDate(vm.trackChild.id, vm.today);" 
+                md-placeholder="Enter date" 
+                md-open-on-focus>
+            </md-datepicker>
+            <button class="btn btn-alt" ng-click="vm.getChildEventList(vm.trackChild.id)">Show All</button>
+        </div>
+        <div class="event-history">
+            <table class="event-history-table standard-table">
+                <thead>
+                    <tr>
+                        <th ng-click="vm.sortDesc">Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="childEvent in vm.childEvents.list">
+                        <td class="cell-category">{{childEvent.category_name}}</td>
+                        <td class="cell-date">{{childEvent.datetime | date: 'EEEE'}} <br/> {{childEvent.datetime | date: 'M/dd'}}</td>
+                        <td class="cell-time">{{childEvent.datetime | date:'h:mm a'}}</td>
+                        <td class="cell-notes">{{childEvent.notes}}</td>
+                    </tr>
+                </tbody>
+            </table><!-- /.event-history-table -->
+        </div><!-- /.event-history -->
     </div>
-    <div class="event-history" ng-if="vm.childEvents.list.length > 0">
-        <table class="event-history-table standard-table">
-            <thead>
-                <tr>
-                    <th ng-click="vm.sortDesc">Category</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="childEvent in vm.childEvents.list">
-                    <td class="cell-category">{{childEvent.category_name}}</td>
-                    <td class="cell-date">{{childEvent.datetime | date: 'EEEE'}} <br/> {{childEvent.datetime | date: 'M/dd'}}</td>
-                    <td class="cell-time">{{childEvent.datetime | date:'h:mm a'}}</td>
-                    <td class="cell-notes">{{childEvent.notes}}</td>
-                </tr>
-            </tbody>
-        </table><!-- /.event-history-table -->
-    </div><!-- /.event-history -->
     <div ng-if="showAlert && vm.childEvents.list.length == 0">
         <h3 class="alert header-title--centered">This child does not have any events to report!</h3>
         <div class="btn-wrapper-spaced">
