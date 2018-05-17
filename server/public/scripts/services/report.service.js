@@ -13,10 +13,7 @@ myApp.service('ReportService', ['$http', '$location', function ($http, $location
     self.sortBySelectedDate = function(childId, theDay) {
         $http.get(`/api/report/${childId}/${theDay}`)
             .then(function (response) {
-                console.log('response in report get request', response);
-                
                 self.sortedEvents.list = response.data;
-                console.log('after response.data: self.sortedEvents.list', self.sortedEvents.list);
             })
             .catch(function (error) {
                 console.log('error, response:', response);

@@ -8,7 +8,7 @@
     <div class="select-header select-header-spaced-small">
         <div class="input-row input-row-select">
             <select class="select input" 
-                ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true;"
+                ng-change="vm.getChildEventList(vm.trackChild.id); showAlert = true; showAll = true; showSorted = false;"
                 ng-model="vm.trackChild" 
                 ng-options="child as child.first_name for child in vm.childList.list">
                 <option value="" selected disabled>Select a Child</option>
@@ -23,13 +23,13 @@
             <p>Show events from selected date to current day:</p>
             <md-datepicker 
                 ng-model="vm.today" 
-                ng-change="vm.sortBySelectedDate(vm.trackChild.id, vm.today);" 
+                ng-change="vm.sortBySelectedDate(vm.trackChild.id, vm.today); showSorted = true; showAll = false;" 
                 md-placeholder="Enter date" 
                 md-open-on-focus>
             </md-datepicker>
-            <button class="btn btn-alt" ng-click="vm.getChildEventList(vm.trackChild.id)">Show All</button>
+            <button class="btn btn-alt" ng-click="vm.getChildEventList(vm.trackChild.id); showAll = true;">Show All</button>
         </div>
-        <div class="event-history">
+        <div class="event-history" ng-if="!showSorted || showAll">
             <table class="event-history-table standard-table">
                 <thead>
                     <tr>
@@ -49,6 +49,26 @@
                 </tbody>
             </table><!-- /.event-history-table -->
         </div><!-- /.event-history -->
+        <div class="event-history event-history--sorted" ng-if="!showAll">
+            <table class="event-history-table standard-table">
+                <thead>
+                    <tr>
+                        <th ng-click="vm.sortDesc">Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sortedEvent in vm.sortedEvents.list">
+                        <td class="cell-category">{{sortedEvent.category_name}}</td>
+                        <td class="cell-date">{{sortedEvent.datetime | date: 'EEEE'}} <br/> {{sortedEvent.datetime | date: 'M/dd'}}</td>
+                        <td class="cell-time">{{sortedEvent.datetime | date:'h:mm a'}}</td>
+                        <td class="cell-notes">{{sortedEvent.notes}}</td>
+                    </tr>
+                </tbody>
+            </table><!-- /.event-history-table -->
+        </div>
     </div>
     <div ng-if="showAlert && vm.childEvents.list.length == 0">
         <h3 class="alert header-title--centered">This child does not have any events to report!</h3>
@@ -57,5 +77,3 @@
         </div>
     </div>
 </div> <!-- .account-wrapper -->
-
-<div ng-repeat="item in vm.sortedEvents.list">{{ item }}</div>
