@@ -1,5 +1,4 @@
 myApp.service('FamilyService', ['$http', '$location', 'ChildService', function ($http, $location, ChildService) {
-    console.log('FamilyService Loaded');
     var self = this;
 
     // Storage for familyObject

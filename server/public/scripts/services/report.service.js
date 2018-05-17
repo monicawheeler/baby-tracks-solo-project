@@ -1,13 +1,10 @@
 myApp.service('ReportService', ['$http', '$location', function ($http, $location) {
-    console.log('ReportService Loaded');
     var self = this;
 
     // Storage for sorted events
     self.sortedEvents = {
         list: []
     };
-    console.log('when service loads: self.sortedEvents.list', self.sortedEvents.list);
-    
 
     //get request to get the children events by date
     self.sortBySelectedDate = function(childId, theDay) {

@@ -1,5 +1,4 @@
 myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventService', 'ChildService', 'moment', function (FamilyService, ReportService, EventService, ChildService, moment) {
-    console.log('ReportController created');
     var self = this;
 
     self.familyService = FamilyService;
