@@ -1,6 +1,7 @@
-myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventService', 'ChildService', function (FamilyService, ReportService, EventService, ChildService) {
-    console.log('ReportController created');
+myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventService', 'ChildService', 'moment', function (FamilyService, ReportService, EventService, ChildService, moment) {
     var self = this;
+
+    self.showEvents = false;
 
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;
@@ -24,4 +25,12 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
         EventService.getChildEventList(id);
     }
 
+    self.sortBySelectedDate = function(childId, theDay) {
+        // theDay = theDay.toLocaleString();
+        let formattedDate = moment(theDay, 'MM-DD-YYYY', true).format('YYYY-MM-DD');
+
+        ReportService.sortBySelectedDate(childId, formattedDate);
+    }
+
+    self.sortedEvents = ReportService.sortedEvents;
 }]);

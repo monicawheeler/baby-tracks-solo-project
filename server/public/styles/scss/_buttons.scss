@@ -32,6 +32,12 @@
     }
 }
 
+.btn-bare {
+    background-color: transparent;
+    color: $primary;
+    border: none;
+}
+
 .btn-warn {
     border: 1px solid $warn;
     color: $warn;

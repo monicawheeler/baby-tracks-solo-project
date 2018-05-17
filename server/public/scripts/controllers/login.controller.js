@@ -1,5 +1,4 @@
 myApp.controller('LoginController', ['$http', '$location', 'FamilyService', 'ChildService', function ($http, $location, FamilyService, ChildService) {
-	console.log('LoginController created');
 	var self = this;
 
 	// User object

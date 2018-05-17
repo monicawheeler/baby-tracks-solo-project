@@ -1,5 +1,4 @@
 myApp.controller('ChildController', ['$http', 'FamilyService', 'ChildService', function ($http, FamilyService, ChildService) {
-	console.log('ChildController created');
 	var self = this;
 
 	// booleans to toggle content in the view
