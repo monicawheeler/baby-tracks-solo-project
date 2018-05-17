@@ -1,5 +1,4 @@
 myApp.controller('ContactsController', ['$http', '$location', 'FamilyService', 'ContactsService', function($http, $location, FamilyService, ContactsService) {
-    console.log('ContactsController created');
     var self = this;
     
     self.familyService = FamilyService;

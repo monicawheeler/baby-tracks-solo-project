@@ -1,5 +1,4 @@
 myApp.service('EventService', ['$http', '$location', function ($http, $location) {
-    console.log('EventService Loaded');
     var self = this;
     self.message ='';
 
@@ -25,7 +24,6 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
         
         $http.post('/api/event', eventObjectToSend) 
             .then(function (response) {
-                console.log('success posting even');
                 self.getChildEventList(child_id);
             })
             .catch(function (error) {

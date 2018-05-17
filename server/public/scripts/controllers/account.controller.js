@@ -1,5 +1,4 @@
 myApp.controller('AccountController', ['$http', 'FamilyService', function($http, FamilyService) {
-    console.log('AccountController created');
     var self = this;
     
     self.message = FamilyService.message;

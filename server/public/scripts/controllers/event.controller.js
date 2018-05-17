@@ -3,32 +3,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     var self = this;
 
 	self.message = EventService.message;
-
-    // Boolean variables to show and hide views
-    self.showEventHistory = false;
-    self.showChildTracking = false;
-    self.showEventColumns = false;
-
-    self.showNewFeedingEvent = false;
-    self.showNewSleepingEvent = false;
-    self.showNewDiaperingEvent = false;
-    self.showNewBathingEvent = false;
-    self.showNewMedicationEvent = false;
-    self.showNewOtherEvent = false;
-
-    self.editFeedingNotes = false;
-    self.editSleepingNotes = false;
-    self.editDiaperingNotes = false;
-    self.editBathingNotes = false;
-    self.editMedicationNotes = false;
-    self.editOtherNotes = false;
-
-    self.showNewFeedingNotes = false;
-    self.showNewSleepingNotes = false;
-    self.showNewDiaperingNotes = false;
-    self.showNewBathingNotes = false;
-    self.showNewMedicationNotes = false;
-    self.showNewOtherNotes = false;
     
     self.showFeedingTrackingButton = true;
     self.showSleepingTrackingButton = true;
@@ -36,13 +10,6 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.showBathingTrackingButton = true;
     self.showMedicationTrackingButton = true;
     self.showOtherTrackingButton = true;
-
-    self.showFeedingTrackingButton = false; 
-    self.showSleepingTrackingButton = false; 
-    self.showDiaperingTrackingButton = false; 
-    self.showBathingTrackingButton = false; 
-    self.showMedicationTrackingButton = false; 
-    self.showOtherTrackingButton = false;
 
     // Show all of the "Track New" buttons when selecting the child
     self.showAllButtons = function(childId) {

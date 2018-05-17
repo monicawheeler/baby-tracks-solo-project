@@ -1,3 +1,24 @@
+.standard-table,
+.contacts-table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th {
+        font-weight: 700;
+    }
+    
+    th, td {
+        padding: 8px;
+        text-align: left;
+        vertical-align: middle;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+.cell-category {
+    font-weight: 400;
+}
+
 .responsive-table {
     @media screen and (max-width: 800px) {
         table, 
