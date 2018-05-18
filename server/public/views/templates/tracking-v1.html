@@ -1,0 +1,412 @@
+<header class="header" ng-include="'/views/partials/user-header.html'"></header><!-- header -->
+
+<div class="track-wrapper view-wrapper fade">
+    <h2 class="input-alert alert-message" role="alert" ng-if="vm.message != ''">{{vm.message}}</h2>
+    <div class="select-header">
+        <div class="select-wrapper" ng-if="vm.childList.list.length > 0">
+            <h2 class="subtitle">Select a child to track:</h2>
+            <div class="input-row input-row-select">
+                <select class="select input" ng-change="vm.getChildEventList(vm.trackChild.id); vm.showEventHistory = true; vm.showChildTracking = true; vm.showAllButtons(vm.trackChild.id); vm.showEventColumns = true;"
+                    ng-model="vm.trackChild" ng-options="child as child.first_name for child in vm.childList.list">
+                    <option value="" selected disabled>Select a Child</option>
+                </select>
+                <div class="arrow">
+                    <i class="fas fa-angle-down"></i>
+                </div>
+            </div>
+        </div>
+        <div class="child-selected-wrapper" ng-if="vm.showChildTracking">
+            <span class="child-image" ng-if="vm.trackChild.gender === 'female'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-55" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                    <g id="Layer_x0020_1">
+                        <path d="M3.68 1.96h.02l.1.01V2l.33.07h.02c.36.15.67.39.88.7a1.76 1.76 0 0 1-.25 2.33c-.35.34-.85.54-1.4.54-.54 0-1.03-.2-1.39-.54a1.76 1.76 0 0 1-.25-2.34c.22-.3.53-.54.89-.68h.01L2.98 2v-.03l.1-.01h.04l.05-.01.03.03h.4l.03-.03h.05zm-.01.23H3.1l-.41.09c-.32.13-.6.34-.78.6a1.55 1.55 0 0 0 .22 2.07c.32.3.76.48 1.25.48s.93-.18 1.25-.48a1.55 1.55 0 0 0 .22-2.06 1.75 1.75 0 0 0-.78-.61l-.41-.09z" class="icon--fill-white"/>
+                        <path d="M5.4 3.25c.16 0 .3.06.4.16.1.1.17.23.17.38s-.06.29-.17.38a.58.58 0 0 1-.63.11l-.08-.03.02-.1a1.53 1.53 0 0 0 0-.73l-.02-.09.08-.03a.59.59 0 0 1 .23-.05zm.26.31a.37.37 0 0 0-.32-.09 1.72 1.72 0 0 1 0 .64.37.37 0 0 0 .32-.1c.06-.05.1-.13.1-.22a.31.31 0 0 0-.1-.23zM1.42 3.25a.6.6 0 0 1 .18.03l.1.03-.03.1a1.54 1.54 0 0 0 0 .76l.03.1-.1.03a.6.6 0 0 1-.58-.13.52.52 0 0 1-.17-.38c0-.15.07-.29.17-.38.1-.1.25-.16.4-.16zm.02.22h-.02c-.1 0-.19.03-.25.1a.31.31 0 0 0-.1.22c0 .09.04.17.1.23a.37.37 0 0 0 .27.1 1.74 1.74 0 0 1 0-.65zM4.22 4.62a.92.92 0 0 1-1.69 0l.2-.08a.7.7 0 0 0 1.3 0l.2.08zM2.91 3.54a.23.23 0 0 0-.46 0h-.2a.44.44 0 0 1 .31-.42.44.44 0 0 1 .57.41H2.9zM4.32 3.54a.23.23 0 0 0-.12-.2.23.23 0 0 0-.3.09.23.23 0 0 0-.04.12h-.21a.44.44 0 0 1 .05-.22.44.44 0 0 1 .6-.18.44.44 0 0 1 .23.38h-.2zM3.19 1.2h.42a.18.18 0 0 1 .18.18v.63a.18.18 0 0 1-.18.18h-.42A.18.18 0 0 1 3 2.01v-.63a.18.18 0 0 1 .19-.18zm.4.21h-.37v.57h.36v-.57z" class="icon--fill-white"/>
+                        <path d="M4.55 1.44l-.76.16V2l.76.16v-.72zm-.88-.03l.96-.2.13-.04V2.43l-.13-.03-.96-.2-.09-.03V1.43l.09-.02zM2.14 1.2l.97.2.09.03V2.17l-.09.02-.97.2-.12.04V1.17l.12.03zm.84.4l-.75-.16v.72L2.98 2v-.4z" class="icon--fill-white"/>
+                        <g id="_321133672">
+                        <path id="_321134584" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                        <path id="_321133840" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span class="child-image" ng-if="vm.trackChild.gender === 'male'"><svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                <g id="Layer_x0020_1">
+                  <g id="_321134032">
+                    <path id="_321133888" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                    <path id="_321134344" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                  </g>
+                  <g id="_321133240">
+                    <path id="_321132832" d="M3.39 1.89c.54 0 1.04.2 1.4.54.35.34.58.8.58 1.31 0 .52-.23.98-.59 1.32-.35.33-.85.54-1.4.54-.54 0-1.03-.21-1.39-.54a1.8 1.8 0 0 1-.58-1.32c0-.51.22-.97.58-1.31.36-.33.85-.54 1.4-.54zm1.25.7c-.32-.3-.76-.49-1.25-.49-.5 0-.93.19-1.25.49-.32.3-.52.7-.52 1.15 0 .45.2.86.52 1.16.32.3.76.48 1.25.48s.93-.18 1.25-.48c.32-.3.51-.7.51-1.16 0-.45-.2-.86-.51-1.15z" class="icon--fill-white"/>
+                    <path id="_321133384" d="M5.4 3.2c.16 0 .3.06.4.16.1.1.17.23.17.38s-.06.29-.17.39a.58.58 0 0 1-.63.1l-.08-.03.02-.09a1.53 1.53 0 0 0 0-.74l-.02-.08.08-.04a.59.59 0 0 1 .23-.05zm.26.32a.37.37 0 0 0-.32-.1 1.72 1.72 0 0 1 0 .64.37.37 0 0 0 .32-.1c.06-.05.1-.13.1-.22a.31.31 0 0 0-.1-.22z" class="icon--fill-white"/>
+                    <path id="_321133096" d="M1.42 3.2a.6.6 0 0 1 .18.03l.1.03-.03.1a1.54 1.54 0 0 0 0 .77l.03.1-.1.02a.6.6 0 0 1-.58-.12.52.52 0 0 1-.17-.39c0-.15.07-.28.17-.38.1-.1.25-.16.4-.16zm.02.22h-.02c-.1 0-.19.03-.25.1a.31.31 0 0 0-.1.22c0 .1.04.17.1.23a.37.37 0 0 0 .27.1 1.74 1.74 0 0 1 0-.65z" class="icon--fill-white"/>
+                    <path id="_321133072" d="M4.22 4.57a.92.92 0 0 1-1.69 0l.2-.08a.7.7 0 0 0 1.3 0l.2.08z" class="icon--fill-white"/>
+                    <path id="_321133528" d="M3.55 2.5c-.27.03-.54-.06-.74-.21a.99.99 0 0 1-.43-.63l.21-.03c.02.16.15.35.34.49.17.12.38.2.6.17l.02.22z" class="icon--fill-white"/>
+                    <path id="_321133504" d="M3.35 2.08a.63.63 0 0 1-.37-.33 1.3 1.3 0 0 1-.12-.43l.21-.02c.02.12.04.25.1.36.05.1.12.18.25.22l-.07.2z" class="icon--fill-white"/>
+                    <path id="_321132904" d="M3.86 2.16c-.32-.1-.33-.45-.35-.74v-.17l.2-.02.02.18c0 .22.02.49.2.55l-.07.2z" class="icon--fill-white"/>
+                    <path id="_321133336" d="M2.91 3.49a.23.23 0 0 0-.46 0l-.2.01a.44.44 0 0 1 .31-.43.44.44 0 0 1 .57.42H2.9z" class="icon--fill-white"/>
+                    <path id="_321133000" d="M4.32 3.49a.23.23 0 0 0-.12-.2.23.23 0 0 0-.3.1.23.23 0 0 0-.04.1l-.21.01a.44.44 0 0 1 .05-.22.44.44 0 0 1 .6-.17.44.44 0 0 1 .23.38h-.2z" class="icon--fill-white"/>
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <span class="child-image" ng-if="vm.trackChild.gender === 'neutral'">
+                <svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                <g id="Layer_x0020_1">
+                  <path d="M3.39 1.94c.54 0 1.04.2 1.4.54.35.33.58.8.58 1.31s-.23.98-.59 1.31c-.35.34-.85.54-1.4.54-.54 0-1.03-.2-1.39-.54a1.8 1.8 0 0 1-.58-1.31c0-.51.22-.98.58-1.31.36-.34.85-.54 1.4-.54zm1.25.7c-.32-.3-.76-.49-1.25-.49-.5 0-.93.18-1.25.48-.32.3-.52.7-.52 1.16 0 .45.2.86.52 1.16.32.3.76.48 1.25.48s.93-.18 1.25-.48c.32-.3.51-.7.51-1.16 0-.45-.2-.86-.51-1.16z" class="icon--fill-white"/>
+                  <path d="M5.4 3.25c.16 0 .3.06.4.16.1.1.17.23.17.38s-.06.29-.17.38a.58.58 0 0 1-.63.11l-.08-.03.02-.1a1.53 1.53 0 0 0 0-.73l-.02-.09.08-.03a.59.59 0 0 1 .23-.05zm.26.31a.37.37 0 0 0-.32-.09 1.72 1.72 0 0 1 0 .64.37.37 0 0 0 .32-.1c.06-.05.1-.13.1-.22a.31.31 0 0 0-.1-.23zM1.42 3.25a.6.6 0 0 1 .18.03l.1.03-.03.1a1.54 1.54 0 0 0 0 .76l.03.1-.1.03a.6.6 0 0 1-.58-.13.52.52 0 0 1-.17-.38c0-.15.07-.29.17-.38.1-.1.25-.16.4-.16zm.02.22h-.02c-.1 0-.19.03-.25.1a.31.31 0 0 0-.1.22c0 .09.04.17.1.23a.37.37 0 0 0 .27.1 1.74 1.74 0 0 1 0-.65zM4.3 4.5a.97.97 0 0 1-.91.62.97.97 0 0 1-.92-.6l-.06-.16H4.37l-.07.15zm-.6.35a.76.76 0 0 0 .33-.28H2.75c.08.13.2.22.33.28a.8.8 0 0 0 .61 0zM3.55 2.55c-.27.03-.54-.07-.74-.21a.99.99 0 0 1-.43-.64l.21-.02c.02.16.15.35.34.48.17.12.38.2.6.18l.02.21zM3.35 2.13a.63.63 0 0 1-.37-.33 1.3 1.3 0 0 1-.12-.43l.21-.03c.02.13.04.26.1.37.05.1.12.18.25.22l-.07.2zM3.86 2.2c-.32-.1-.33-.45-.35-.73V1.3l.2-.02.02.18c0 .22.02.49.2.55l-.07.2z" class="icon--fill-white"/>
+                  <g id="_321122368">
+                    <path id="_321122704" d="M4.12 3.1a.32.32 0 0 1 .23.54.32.32 0 0 1-.55-.23.32.32 0 0 1 .32-.32zm.08.24a.1.1 0 0 0-.18.07.1.1 0 0 0 .18.08.1.1 0 0 0 0-.15z" class="icon--fill-white"/>
+                    <path id="_321122152" d="M2.63 3.1a.32.32 0 0 1 .23.54.32.32 0 0 1-.55-.23.32.32 0 0 1 .32-.32zm.08.24a.1.1 0 0 0-.19.07.1.1 0 0 0 .19.08.1.1 0 0 0 0-.15z" class="icon--fill-white"/>
+                  </g>
+                  <g id="_321121456">
+                    <path id="_321122728" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                    <path id="_321121672" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <div class="inner-subtitle-child">
+                <p class="super-title">Currently Tracking:</p>
+                {{vm.trackChild.first_name}}
+            </div>
+        </div>
+    </div><!-- /.select-header -->
+    <div class="select-header-no-children" ng-if="vm.childList.list.length === 0">
+        <a class="btn btn-alt" href="#!manage-children">Manage Children</a>
+    </div><!-- /.select-header-no-children -->
+    <div class="events-wrapper" ng-if="vm.showEventColumns">
+        <div class="event-row">
+            <span ng-if="vm.showFeedingTrackingButton" class="category-image">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-55" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                    <g id="Layer_x0020_1">
+                        <path d="M2.28 2.54H3.87l.37-1.6.1.02-.1-.02a.1.1 0 0 1 .1-.09H5a.1.1 0 0 1 .1.14l-.54 2.32-.1-.02.1.02a.1.1 0 0 1-.1.09H2.99l-.17.41-.1-.04.1.04a.1.1 0 0 1-.1.07h-.64a.1.1 0 0 1-.1-.13l.2-1.12a.1.1 0 0 1 .1-.09zm.64.21h-.55l-.16.91h.44l.17-.4a.1.1 0 0 1 .1-.08h1.44l.5-2.11h-.43l-.37 1.6a.1.1 0 0 1-.1.08H2.92z" class="icon--fill-white"/>
+                        <path d="M2.5 2.65v-.73h.2v.73z" class="icon--fill-white"/>
+                        <path d="M2.04 1.74a.1.1 0 0 0 0 .21h2.11a.1.1 0 0 0 0-.21H2.04zM2.5 3.8a.1.1 0 0 0-.2-.06l-.56 2.1a.1.1 0 0 0 .2.05l.56-2.1zM4.07 3.26a.1.1 0 0 0-.2.06l.7 2.57a.1.1 0 0 0 .2-.05l-.7-2.58z" class="icon--fill-white"/>
+                        <path d="M2.19 4.6H4.3v.22H2.19z" class="icon--fill-white"/>
+                        <g id="_321117616">
+                        <path id="_321118024" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                        <path id="_321117928" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <div class="new-event fade" ng-if="vm.showNewFeedingEvent">
+                <div class="new-event-inner">
+                    <h2 class="new-event-header">Track More Feeding Information?</h2>
+                    <div class="event-button-wrapper">
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.feedingNotes, 1, date); vm.showNewFeedingEvent = false; vm.showFeedingTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-yes" ng-click="vm.showNewFeedingNotes = true">Yes, more info!</p>
+                    </div>
+                    <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.feedingNotes"
+                        ng-if="vm.showNewFeedingNotes"></textarea>
+                    <button class="btn btn-alt" ng-if="vm.showNewFeedingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.feedingNotes, 1, date); vm.showNewFeedingNotes = false; vm.showFeedingTrackingButton = true; vm.showNewFeedingEvent = false;">Log This Feeding</button>
+                    <button class="btn btn-warn" ng-click="vm.showNewFeedingEvent = false; vm.showFeedingTrackingButton = true;">Oops! Do Not Log This Feeding</button>
+                </div>
+            </div><!-- /FEEDING .new-event -->
+            <div class="event-content">
+                <button class="btn btn-alt event-content-btn" ng-if="vm.showFeedingTrackingButton" ng-click="vm.showNewFeedingEvent = true;">Track New Feeding</button>
+                <div class="event-content-body" ng-repeat="feeding in vm.categoryFeeding.list">
+                    <h2 class="event-header">{{feeding.category_name}}</h2>
+                    <p>Last fed:
+                        <span class="time-elapsed" am-time-ago="feeding.datetime"></span>
+                    </p>
+                    <p>at {{feeding.datetime | date:'h:mm a'}}</p>
+                    <p class="notes-title">Notes:
+                        <p class="notes-content">{{feeding.notes}}</p>
+                        <strong ng-click="vm.editFeedingNotes = true" class="edit-btn">
+                            <i class="fas fa-edit"></i> Edit Notes </strong>
+                    </p>
+                    <div class="update-notes" ng-if="vm.editFeedingNotes">
+                        <div class="update-notes-inner">
+                            <h2 class="update-notes-header">Update Notes</h2>
+                            <textarea class="event-notes" cols="20" rows="5" ng-model="vm.feedingNotesContent" placeholder="Update current notes"></textarea>
+                            <button class="btn btn-alt" ng-click="vm.updateNotes(feeding.id, vm.feedingNotesContent, vm.trackChild.id); vm.editFeedingNotes = false;">Update Notes</button>
+                            <button class="btn btn-warn" ng-click="vm.editFeedingNotes = false">Cancel</button>
+                        </div>
+                    </div>
+                </div><!-- /FEEDING .event-content-body -->
+            </div><!-- /FEEDING .event-content -->
+        </div><!-- /FEEDING .event-row -->
+        <div class="event-row">
+            <span ng-if="vm.showSleepingTrackingButton" class="category-image">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-55" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                    <g id="Layer_x0020_1">
+                        <path d="M3.41.96a2.48 2.48 0 0 1 .26.01v.11-.1a.1.1 0 0 1 0 .2 1.77 1.77 0 1 0 1.97 1.97l.1.02-.1-.02a.1.1 0 0 1 .21.01 2.49 2.49 0 0 1-.7 1.99A2.45 2.45 0 0 1 .96 3.4 2.45 2.45 0 0 1 3.41.96zm-1.01.67a2 2 0 0 1 .46-.39A2.24 2.24 0 1 0 5.6 3.96a2 2 0 0 1-3.11.39 1.98 1.98 0 0 1-.08-2.72z" class="icon--fill-white"/>
+                        <path d="M3.92 2.55l.16.38.4.03.27.02-.2.17-.32.27.1.4.06.25-.22-.14-.35-.22-.35.22-.22.14.06-.25.1-.4-.32-.27-.2-.17.26-.02.42-.03.15-.38.1-.24.1.24zm-.01.52l-.09-.2-.08.2-.03.06h-.06l-.22.02.16.14.05.04-.01.07-.05.21.18-.11.06-.04.05.04.2.11-.06-.2L4 3.33l.04-.04.17-.15L4 3.14h-.07l-.02-.07zM5.1 1.03l.13.31.34.03.26.02-.2.16-.26.23.08.33.06.25-.22-.14L5 2.04l-.29.18-.22.14.06-.25.08-.34-.26-.21-.2-.17.26-.02.35-.03.12-.31.1-.24.1.24zm-.04.46L5 1.35l-.05.13-.03.06h-.06l-.15.02.11.1.05.04-.02.06-.03.15.12-.08.06-.04.06.04.12.08-.03-.14-.02-.07.05-.04.12-.1h-.15l-.06-.01-.03-.06z" class="icon--fill-white"/>
+                        <path d="M3.16 1.85l.08.17.18.01-.14.12.04.18-.16-.1-.15.1.04-.18-.14-.12.19-.01zM5.55 5.28l.07.17.18.01-.14.12.04.18-.15-.1-.16.1.04-.18-.14-.12.19-.01zM1.35 5.28l.07.17.18.01-.14.12.04.18-.15-.1-.16.1.04-.18-.14-.12.19-.01z" class="icon--fill-white"/>
+                        <g id="_420795568">
+                        <path id="_420795784" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                        <path id="_420795592" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                        </g>
+                    </g>
+                    </svg>
+            </span>
+            <div class="new-event fade" ng-if="vm.showNewSleepingEvent">
+                <div class="new-event-inner">
+                    <h2 class="new-event-header">Track More Sleeping Information?</h2>
+                    <div class="event-button-wrapper">
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.sleepingNotes, 2, date); vm.showNewSleepingEvent = false; vm.showSleepingTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-yes" ng-click="vm.showNewSleepingNotes = true">Yes, more info!</p>
+                    </div>
+                    <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.sleepingNotes"
+                        ng-if="vm.showNewSleepingNotes"></textarea>
+                    <button class="btn btn-alt" ng-if="vm.showNewSleepingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.sleepingNotes, 2, date); vm.showNewSleepingNotes = false; vm.showSleepingTrackingButton = true; vm.showNewSleepingEvent = false;">Log This Sleeping</button>
+                    <button class="btn btn-warn" ng-click="vm.showNewSleepingEvent = false; vm.showSleepingTrackingButton = true;">Oops! Do Not Log This Sleeping</button>
+                </div>
+            </div><!-- /SLEEPING .new-event -->
+            <div class="event-content">
+                <button class="btn btn-alt event-content-btn" ng-if="vm.showSleepingTrackingButton" ng-click="vm.showNewSleepingEvent = true;">Track New Sleeping</button>
+                <div class="event-content-body" ng-repeat="sleeping in vm.categorySleeping.list">
+                    <h2 class="event-header">{{sleeping.category_name}}</h2>
+
+                    <p>Last slept:
+                        <span class="time-elapsed" am-time-ago="sleeping.datetime"></span>
+                    </p>
+                    <p>at {{sleeping.datetime | date:'h:mm a'}}</p>
+
+                    <p class="notes-title">Notes:
+                        <p class="notes-content">{{sleeping.notes}}</p>
+                        <strong ng-click="vm.editSleepingNotes = true" class="edit-btn">
+                            <i class="fas fa-edit"></i> Edit Notes </strong>
+                    </p>
+                    <div class="update-notes" ng-if="vm.editSleepingNotes">
+                        <div class="update-notes-inner">
+                            <h2 class="update-notes-header">Update Notes</h2>
+                            <textarea class="event-notes" cols="20" rows="5" ng-model="vm.sleepingNotesContent" placeholder="Update current notes"></textarea>
+                            <button class="btn btn-alt" ng-click="vm.updateNotes(sleeping.id, vm.sleepingNotesContent, vm.trackChild.id); vm.editSleepingNotes = false;">Update Notes</button>
+                            <button class="btn btn-warn" ng-click="vm.editSleepingNotes = false">Cancel</button>
+                        </div>
+                    </div>
+                </div><!-- /SLEEPING .event-content-body -->
+            </div><!-- /SLEEPING .event-content -->
+        </div><!-- /SLEEPING .event-row -->
+        <div class="event-row">
+            <span ng-if="vm.showDiaperingTrackingButton" class="category-image">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-55" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                    <g id="Layer_x0020_1">
+                        <g id="_420780304">
+                        <path id="_420780568" d="M.96 1.5H5.97v2.17l-.09.01c-.57.1-.94.23-1.2.47-.25.24-.4.6-.54 1.1l-.02.07H2.71l-.02-.08a1.98 1.98 0 0 0-.5-1.01 2.58 2.58 0 0 0-1.25-.55l-.09-.02V1.51h.11zm4.8.22h-4.7v1.77c.62.15 1 .33 1.28.59.27.25.41.58.53 1.03h1.09c.14-.5.3-.85.58-1.11.27-.26.65-.41 1.22-.51V1.72z" class="icon--fill-white"/>
+                        <path id="_420780832" d="M1.13 2.04h.86c.08 0 .15.04.2.1.05.06.07.13.07.22v.06c0 .08-.02.16-.07.22a.25.25 0 0 1-.2.1H.86v-.38c0-.09.02-.16.06-.22.05-.06.13-.1.2-.1zm.86.2h-.86l-.04.03a.14.14 0 0 0-.02.09v.17h.92l.04-.02a.14.14 0 0 0 .02-.09v-.06a.14.14 0 0 0-.02-.09l-.04-.02z" class="icon--fill-white"/>
+                        <path id="_420780640" d="M5.7 2.25h-.87s-.02 0-.03.02a.14.14 0 0 0-.02.09v.06c0 .04 0 .07.02.09l.03.02h.93v-.17a.14.14 0 0 0-.03-.09l-.03-.02zm-.87-.21h.87c.08 0 .15.04.2.1.05.06.07.13.07.22v.38H4.83a.25.25 0 0 1-.2-.1.35.35 0 0 1-.07-.22v-.06c0-.09.03-.16.07-.22.05-.06.12-.1.2-.1z" class="icon--fill-white"/>
+                        <path id="_420780712" d="M.96 3.2h4.9v.22H.97z" class="icon--fill-white"/>
+                        </g>
+                        <g id="_420780064">
+                        <path id="_420780184" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                        <path id="_420779512" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                        </g>
+                    </g>
+                    </svg>
+            </span>
+            <div class="new-event fade" ng-if="vm.showNewDiaperingEvent">
+                <div class="new-event-inner">
+                    <h2 class="new-event-header">Track More Diapering Information?</h2>
+                    <div class="event-button-wrapper">
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.diaperingNotes, 3, date); vm.showNewDiaperingEvent = false; vm.showDiaperingTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-yes" ng-click="vm.showNewDiaperingNotes = true">Yes, more info!</p>
+                    </div>
+                    <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.diaperingNotes"
+                        ng-if="vm.showNewDiaperingNotes"></textarea>
+                    <button class="btn btn-alt" ng-if="vm.showNewDiaperingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.diaperingNotes, 3, date); vm.showNewDiaperingNotes = false; vm.showDiaperingTrackingButton = true; vm.showNewDiaperingEvent = false;">Log This Diapering</button>
+                    <button class="btn btn-warn" ng-click="vm.showNewDiaperingEvent = false; vm.showDiaperingTrackingButton = true;">Oops! Do Not Log This Diapering</button>
+                </div>
+            </div><!-- /DIAPERING .new-event -->
+            <div class="event-content">
+                <button class="btn btn-alt event-content-btn" ng-if="vm.showDiaperingTrackingButton" ng-click="vm.showNewDiaperingEvent = true;">Track New Diapering</button>
+                <div class="event-content-body" ng-repeat="diapering in vm.categoryDiapering.list">
+                    <h2 class="event-header">{{diapering.category_name}}</h2>
+
+                    <p>Last diaper:
+                        <span class="time-elapsed" am-time-ago="diapering.datetime"></span>
+                    </p>
+                    <p>at {{diapering.datetime | date:'h:mm a'}}</p>
+
+                    <p class="notes-title">Notes:
+                        <p class="notes-content">{{diapering.notes}}</p>
+                        <strong ng-click="vm.editDiaperingNotes = true" class="edit-btn">
+                            <i class="fas fa-edit"></i> Edit Notes </strong>
+                    </p>
+                    <div class="update-notes" ng-if="vm.editDiaperingNotes">
+                        <div class="update-notes-inner">
+                            <h2 class="update-notes-header">Update Notes</h2>
+                            <textarea class="event-notes" cols="20" rows="5" ng-model="vm.diaperingNotesContent" placeholder="Update current notes"></textarea>
+                            <button class="btn btn-alt" ng-click="vm.updateNotes(diapering.id, vm.diaperingNotesContent, vm.trackChild.id); vm.editDiaperingNotes = false;">Update Notes</button>
+                            <button class="btn btn-warn" ng-click="vm.editDiaperingNotes = false">Cancel</button>
+                        </div>
+                    </div>
+                </div><!-- /DIAPERING .event-content-body -->
+            </div><!-- /DIAPERING .event-content -->
+        </div><!-- /DIAPERING .event-row -->
+
+        <div class="event-row">
+            <span class="category-image" ng-if="vm.showBathingTrackingButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-55" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.8267 6.8267">
+                    <g class="icon--fill-white">
+                    <path d="M2.4779 1.7067a.1888.1888 0 1 0 0 .3776.1888.1888 0 0 0 0-.3776z"/>
+                    <path d="M5.1747 2.5043c.0708-.0934.1376-.124.2397-.0466.2867.2174.4748.5886.5365 1.0065.059.4.0029.8455-.1933 1.2394-.2496.501-.6805.8197-1.1911 1.007-.618.2266-1.3533.259-2.0189.1895-.4515-.0473-.8619-.236-1.1545-.5285-.2795-.2795-.4519-.6527-.4519-1.088 0-.274.0687-.5328.1899-.7598a1.624 1.624 0 0 1 .5269-.583l-.0002-.0002a.2207.2207 0 0 0 .032-.025.2072.2072 0 0 0-.0298-.0166c-.2274-.1073-.4347-.238-.5805-.381-.1403-.1374-.2262-.2883-.2262-.4456 0-.1866.075-.2874.2024-.335.105-.0391.24-.0313.3941-.005a.1822.1822 0 0 0 .122-.0244.2522.2522 0 0 0 .0997-.1108v-.0004a1.2284 1.2284 0 0 1 .4524-.5131 1.217 1.217 0 0 1 .6545-.19c.3377 0 .6433.1368.8645.358s.358.5268.358.8645a1.2216 1.2216 0 0 1-.3346.8395c-.0183.0195-.0299.0364-.0343.0498a.1208.1208 0 0 0 .032.0112c.105.0246.216.0434.3332.052A1.949 1.949 0 0 0 4.37 3.061c.4973-.0584.6598-.3247.751-.4742.0197-.0322.0366-.06.0537-.0825zm.1513.1556a2.0042 2.0042 0 0 0-.0233.0377c-.1107.1814-.3078.5046-.9085.575a2.1632 2.1632 0 0 1-.412.0087 2.3643 2.3643 0 0 1-.3665-.057c-.0574-.0136-.1023-.037-.1348-.0677a.1973.1973 0 0 1-.0561-.092.207.207 0 0 1-.0014-.1036c.0119-.0503.0416-.102.088-.1511l.0004-.0005a1.007 1.007 0 0 0 .205-.3199 1.0065 1.0065 0 0 0 .0708-.3733c0-.2788-.113-.531-.2955-.7137a1.006 1.006 0 0 0-.7137-.2954c-.1988 0-.3842.0574-.5403.1565a1.0153 1.0153 0 0 0-.3741.424h-.0002a.4676.4676 0 0 1-.1854.2046.3925.3925 0 0 1-.2636.0501c-.1216-.0207-.2227-.0289-.285-.0057-.0397.0149-.0631.055-.0631.1358 0 .095.0615.1956.162.294.1277.1251.3145.2421.5221.3401.0585.0276.1008.0616.127.1004a.1864.1864 0 0 1 .0325.0922.188.188 0 0 1-.0185.0948c-.0209.0441-.0593.0859-.1148.1234h-.0004a1.4106 1.4106 0 0 0-.458.5065 1.3972 1.3972 0 0 0-.164.6598c0 .3749.1485.6964.3893.9371.2587.2587.6232.4256 1.0254.4677.6376.0666 1.3391.0366 1.9238-.1778.4623-.1695.8512-.4554 1.0737-.902.176-.3535.2264-.7538.1732-1.1136-.0507-.3439-.1954-.6484-.414-.835z"/>
+                    </g>
+                    <g class="icon--bkgd">
+                    <path d="M0 0h6.8267v6.8267H0z"/>
+                    <path d="M.8533.8533h5.12v5.12h-5.12z"/>
+                    </g>
+                </svg>
+            </span>
+            <div class="new-event fade" ng-if="vm.showNewBathingEvent">
+                <div class="new-event-inner">
+                    <h2 class="new-event-header">Track More Bathing Information?</h2>
+                    <div class="event-button-wrapper">
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.bathingNotes, 6, date); vm.showNewBathingEvent = false; vm.showBathingTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-yes" ng-click="vm.showNewBathingNotes = true">Yes, more info!</p>
+                    </div>
+                    <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.bathingNotes"
+                        ng-if="vm.showNewBathingNotes"></textarea>
+                    <button class="btn btn-alt" ng-if="vm.showNewBathingNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.bathingNotes, 6, date); vm.showNewBathingNotes = false; vm.showBathingTrackingButton = true; vm.showNewBathingEvent = false;">Log This Bathing</button>
+                    <button class="btn btn-warn" ng-click="vm.showNewBathingEvent = false; vm.showBathingTrackingButton = true;">Oops! Do Not Log This Bathing</button>
+                </div>
+            </div><!-- /BATHING .new-event -->
+            <div class="event-content">
+                <button class="btn btn-alt event-content-btn" ng-if="vm.showBathingTrackingButton" ng-click="vm.showNewBathingEvent = true;">Track New Bathing</button>
+                <div class="event-content-body" ng-repeat="bathing in vm.categoryBathing.list">
+                    <h2 class="event-header">{{bathing.category_name}}</h2>
+
+                    <p>Last bath:
+                        <span class="time-elapsed" am-time-ago="bathing.datetime"></span>
+                    </p>
+                    <p>at {{bathing.datetime | date:'h:mm a'}}</p>
+
+                    <p class="notes-title">Notes:
+                        <p class="notes-content">{{bathing.notes}}</p>
+                        <strong ng-click="vm.editBathingNotes = true" class="edit-btn">
+                            <i class="fas fa-edit"></i> Edit Notes </strong>
+                    </p>
+                    <div class="update-notes" ng-if="vm.editBathingNotes">
+                        <div class="update-notes-inner">
+                            <h2 class="update-notes-header">Update Notes</h2>
+                            <textarea class="event-notes" cols="20" rows="5" ng-model="vm.bathingNotesContent" placeholder="Update current notes"></textarea>
+                            <button class="btn btn-alt" ng-click="vm.updateNotes(bathing.id, vm.bathingNotesContent, vm.trackChild.id); vm.editBathingNotes = false;">Update Notes</button>
+                            <button class="btn btn-warn" ng-click="vm.editBathingNotes = false">Cancel</button>
+                        </div>
+                    </div>
+                </div><!-- /BATHING .event-content-body -->
+            </div><!-- /BATHING .event-content -->
+        </div><!-- /BATHING .event-row -->
+
+        <div class="event-row">
+            <span class="category-image" ng-if="vm.showMedicationTrackingButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-55" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                    <g id="Layer_x0020_1">
+                        <g id="_420787984">
+                        <path id="_420788560" d="M5.2 3.78a.48.48 0 0 0-.76-.38l-.07.05-.07-.06a1.2 1.2 0 0 0-.21-.18l-.12-.07.1-.1a.95.95 0 0 0 .25-.92l-.04-.11.12-.02a.46.46 0 1 0-.53-.57l-.03.11-.1-.04a.98.98 0 0 0-.34-.06.92.92 0 0 0-.3.05l-.11.04-.03-.11a.47.47 0 0 0-.45-.34.46.46 0 0 0-.36.75c.06.09.16.14.26.17l.12.02-.03.1a.97.97 0 0 0-.04.26.94.94 0 0 0 .29.69l.1.09-.12.07a1.32 1.32 0 0 0-.2.17l-.07.06-.07-.05a.48.48 0 0 0-.3-.1.48.48 0 0 0-.03.95l.1.01v.1a1.47 1.47 0 0 0 .02.16l.02.07-.06.04a.47.47 0 0 0-.18.34c-.02.15.02.32.12.47.1.15.24.25.39.3.14.04.28.03.4-.05A.4.4 0 0 0 3 5.55l.04-.07.08.02a1.36 1.36 0 0 0 .45.02l.15-.02.07-.02.04.07a.45.45 0 0 0 .14.14c.11.08.26.09.4.05a.73.73 0 0 0 .38-.3c.1-.15.14-.32.13-.47a.47.47 0 0 0-.19-.35l-.05-.04.01-.06a1.13 1.13 0 0 0 .02-.17v-.09h.1a.48.48 0 0 0 .44-.48zm.02-.49a.69.69 0 0 1-.35 1.16v.04c.13.12.2.28.22.47.02.2-.03.4-.16.6a.94.94 0 0 1-.5.38c-.2.06-.41.04-.58-.07a.62.62 0 0 1-.16-.15 1.53 1.53 0 0 1-.55 0 .64.64 0 0 1-.16.15.67.67 0 0 1-.57.07.94.94 0 0 1-.5-.38.94.94 0 0 1-.17-.6.7.7 0 0 1 .22-.46v-.04a.7.7 0 1 1 .48-1.28 1.43 1.43 0 0 1 .08-.06 1.16 1.16 0 0 1-.25-.96.68.68 0 0 1-.24-1.1.68.68 0 0 1 1.1.2 1.14 1.14 0 0 1 .27-.04 1.13 1.13 0 0 1 .3.04.68.68 0 0 1 1.1-.2.68.68 0 0 1-.26 1.11 1.15 1.15 0 0 1-.24.94 1.42 1.42 0 0 1 .1.07.69.69 0 0 1 .82.11z" class="icon--fill-white"/>
+                        <circle id="_420788488" cx="2.95" cy="1.96" r=".11" class="icon--fill-white"/>
+                        <circle id="_420788368" cx="3.84" cy="1.96" r=".11" class="icon--fill-white"/>
+                        <path id="_420788176" d="M3.41 2.5l.19-.18a.32.32 0 0 0-.37 0l.18.19zm.3-.14l-.26.26a.05.05 0 0 1-.07 0l-.27-.26v-.02l-.01-.01.01-.05a.42.42 0 0 1 .6 0c.02.02.02.06 0 .08z" class="icon--fill-white"/>
+                        <path id="_420787912" d="M3.2 3.04a.07.07 0 0 0 .12.05.07.07 0 0 0 .02-.05v-.25h.11v.25a.17.17 0 0 1-.3.12.17.17 0 0 1-.05-.12h.1z" class="icon--fill-white"/>
+                        <path id="_420788224" d="M3.7 3.04a.17.17 0 0 1-.3.12.17.17 0 0 1-.06-.12v-.25h.11v.25a.07.07 0 0 0 .12.05.07.07 0 0 0 .02-.05h.1z" class="icon--fill-white"/>
+                        </g>
+                        <g id="_420787528">
+                        <path id="_420788344" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                        <path id="_420787360" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                        </g>
+                    </g>
+                    </svg>
+            </span>
+            <div class="new-event fade" ng-if="vm.showNewMedicationEvent">
+                <div class="new-event-inner">
+                    <h2 class="new-event-header">Track More Medication Information?</h2>
+                    <div class="event-button-wrapper">
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.medicationNotes, 7, date); vm.showNewMedicationEvent = false; vm.showMedicationTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-yes" ng-click="vm.showNewMedicationNotes = true">Yes, more info!</p>
+                    </div>
+                    <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.medicationNotes"
+                        ng-if="vm.showNewMedicationNotes"></textarea>
+                    <button class="btn btn-alt" ng-if="vm.showNewMedicationNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.medicationNotes, 7, date); vm.showNewMedicationNotes = false; vm.showMedicationTrackingButton = true; vm.showNewMedicationEvent = false;">Log This Medication</button>
+                    <button class="btn btn-warn" ng-click="vm.showNewMedicationEvent = false; vm.showMedicationTrackingButton = true;">Oops! Do Not Log This Medication</button>
+                </div>
+            </div><!-- /MEDICATION .new-event -->
+            <div class="event-content">
+                <button class="btn btn-alt event-content-btn" ng-if="vm.showMedicationTrackingButton" ng-click="vm.showNewMedicationEvent = true; ">Track New Medication</button>
+                <div class="event-content-body" ng-repeat="medication in vm.categoryMedication.list">
+                    <h2 class="event-header">{{medication.category_name}}</h2>
+
+                    <p>Last medication:
+                        <span class="time-elapsed" am-time-ago="medication.datetime"></span>
+                    </p>
+                    <p>at {{medication.datetime | date:'h:mm a'}}</p>
+
+                    <p class="notes-title">Notes:
+                        <p class="notes-content">{{medication.notes}}</p>
+                        <strong ng-click="vm.editMedicationNotes = true" class="edit-btn">
+                            <i class="fas fa-edit"></i> Edit Notes </strong>
+                    </p>
+                    <div class="update-notes" ng-if="vm.editMedicationNotes">
+                        <div class="update-notes-inner">
+                            <h2 class="update-notes-header">Update Notes</h2>
+                            <textarea class="event-notes" cols="20" rows="5" ng-model="vm.medicationNotesContent" placeholder="Update current notes"></textarea>
+                            <button class="btn btn-alt" ng-click="vm.updateNotes(medication.id, vm.medicationNotesContent, vm.trackChild.id); vm.editMedicationNotes = false;">Update Notes</button>
+                            <button class="btn btn-warn" ng-click="vm.editMedicationNotes = false">Cancel</button>
+                        </div>
+                    </div>
+                </div><!-- /MEDICATION .event-content-body -->
+            </div><!-- /MEDICATION .event-content -->
+        </div><!-- /MEDICATION .event-row -->
+        <div class="event-row">
+            <span class="category-image" ng-if="vm.showOtherTrackingButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-55" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                    <g id="Layer_x0020_1">
+                        <g id="_420792760">
+                        <path id="_420793048" d="M1.17 3.46h1.6a.32.32 0 0 1 .33.32v1.6a.32.32 0 0 1-.32.32h-1.6a.32.32 0 0 1-.33-.32v-1.6a.32.32 0 0 1 .32-.32zm1.6.21h-1.6a.1.1 0 0 0-.07.03.1.1 0 0 0-.03.08v1.6c0 .03 0 .06.03.08a.1.1 0 0 0 .07.03h1.6a.1.1 0 0 0 .08-.03.1.1 0 0 0 .03-.08v-1.6a.1.1 0 0 0-.03-.08.1.1 0 0 0-.07-.03z" class="icon--fill-white"/>
+                        <path id="_420792976" d="M1.44 5.15L1.88 4h.16l.47 1.14h-.18L2.2 4.8h-.47l-.13.35h-.16zm.33-.47h.39l-.12-.31a3.1 3.1 0 0 1-.08-.24l-.06.22-.13.33z" class="icon--fill-white"/>
+                        <path id="_420792880" d="M4.05 3.46h1.6a.32.32 0 0 1 .32.32v1.6a.32.32 0 0 1-.31.32H4.05a.32.32 0 0 1-.32-.32v-1.6a.32.32 0 0 1 .32-.32zm1.6.21h-1.6a.1.1 0 0 0-.08.03.1.1 0 0 0-.03.08v1.6c0 .03.02.06.03.08a.1.1 0 0 0 .08.03h1.6a.1.1 0 0 0 .08-.03.1.1 0 0 0 .03-.08v-1.6a.1.1 0 0 0-.03-.08.1.1 0 0 0-.07-.03z" class="icon--fill-white"/>
+                        <path id="_420792448" d="M4.42 5.15V4h.43c.09 0 .16.01.2.04.06.02.1.06.13.1.03.05.05.1.05.15 0 .05-.02.1-.04.14a.28.28 0 0 1-.12.1.3.3 0 0 1 .15.1c.04.06.06.11.06.18a.33.33 0 0 1-.12.25.35.35 0 0 1-.12.06.75.75 0 0 1-.18.02h-.44zm.15-.66h.25l.14-.01a.16.16 0 0 0 .09-.06.16.16 0 0 0 .03-.1c0-.04-.01-.07-.03-.1a.14.14 0 0 0-.08-.06.65.65 0 0 0-.17-.01h-.23v.34zm0 .52h.39c.03 0 .06-.02.08-.03a.16.16 0 0 0 .06-.07.2.2 0 0 0 .02-.1.19.19 0 0 0-.03-.1.17.17 0 0 0-.09-.07.57.57 0 0 0-.16-.02h-.27v.4z" class="icon--fill-white"/>
+                        <path id="_420792616" d="M2.61 1.12h1.6a.32.32 0 0 1 .32.32v1.61a.32.32 0 0 1-.31.32H2.6a.32.32 0 0 1-.32-.32v-1.6a.32.32 0 0 1 .32-.33zm1.6.22h-1.6a.1.1 0 0 0-.07.03.1.1 0 0 0-.03.07v1.61c0 .03 0 .05.03.07a.1.1 0 0 0 .07.03h1.6a.1.1 0 0 0 .08-.03.1.1 0 0 0 .03-.07v-1.6a.1.1 0 0 0-.03-.08.1.1 0 0 0-.07-.03z" class="icon--fill-white"/>
+                        <path id="_420792568" d="M3.76 2.42l.15.03a.5.5 0 0 1-.17.29.47.47 0 0 1-.3.1.54.54 0 0 1-.3-.08.47.47 0 0 1-.17-.22.78.78 0 0 1 0-.61c.05-.09.12-.16.2-.2a.56.56 0 0 1 .28-.07c.11 0 .2.03.28.09.08.05.13.14.17.24l-.15.04a.35.35 0 0 0-.12-.19.3.3 0 0 0-.19-.05.37.37 0 0 0-.21.06c-.06.04-.1.1-.13.17a.67.67 0 0 0-.03.22c0 .1.01.18.04.25s.07.13.13.16c.06.04.12.05.2.05.08 0 .15-.02.2-.07.06-.05.1-.12.12-.21z" class="icon--fill-white"/>
+                        </g>
+                        <g id="_420791824">
+                        <path id="_420792232" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                        <path id="_420791944" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <div class="new-event fade" ng-if="vm.showNewOtherEvent">
+                <div class="new-event-inner">
+                    <h2 class="new-event-header">Track More Other Information?</h2>
+                    <div class="event-button-wrapper">
+                        <p class="event-btn event-btn-no" ng-click="vm.trackEvent(vm.trackChild.id, vm.otherNotes, 8, date); vm.showNewOtherEvent = false; vm.showOtherTrackingButton = true;">No, track this event without notes</p>
+                        <p class="event-btn event-btn-yes" ng-click="vm.showNewOtherNotes = true">Yes, more info!</p>
+                    </div>
+                    <textarea class="new-event-notes event-notes" cols="20" rows="5" placeholder="Optional notes" ng-model="vm.otherNotes" ng-if="vm.showNewOtherNotes"></textarea>
+                    <button class="btn btn-alt" ng-if="vm.showNewOtherNotes" ng-click="vm.trackEvent(vm.trackChild.id, vm.otherNotes, 8, date); vm.showNewOtherNotes = false; vm.showOtherTrackingButton = true; vm.showNewOtherEvent = false;">Log This Event</button>
+                    <button class="btn btn-warn" ng-click="vm.showNewOtherEvent = false; vm.showOtherTrackingButton = true;">Oops! Do Not Log This Event</button>
+                </div>
+            </div><!-- /OTHER .new-event -->
+            <div class="event-content">
+                <button class="btn btn-alt event-content-btn" ng-if="vm.showOtherTrackingButton" ng-click="vm.showNewOtherEvent = true; ">Track New Other Event</button>
+                <div class="event-content-body" ng-repeat="other in vm.categoryOther.list">
+                    <h2 class="event-header">{{other.category_name}}</h2>
+
+                    <p>Last other:
+                        <span class="time-elapsed" am-time-ago="other.datetime"></span>
+                    </p>
+                    <p>at {{other.datetime | date:'h:mm a'}}</p>
+
+                    <p class="notes-title">Notes:
+                        <p class="notes-content">{{other.notes}}</p>
+                        <strong ng-click="vm.editOtherNotes = true" class="edit-btn">
+                            <i class="fas fa-edit"></i> Edit Notes </strong>
+                    </p>
+                    <div class="update-notes" ng-if="vm.editOtherNotes">
+                        <div class="update-notes-inner">
+                            <h2 class="update-notes-header">Update Notes</h2>
+                            <textarea class="event-notes" cols="20" rows="5" ng-model="vm.otherNotesContent" placeholder="Update current notes"></textarea>
+                            <button class="btn btn-alt" ng-click="vm.updateNotes(other.id, vm.otherNotesContent, vm.trackChild.id); vm.editOtherNotes = false;">Update Notes</button>
+                            <button class="btn btn-warn" ng-click="vm.editOtherNotes = false">Cancel</button>
+                        </div>
+                    </div>
+                </div><!-- /OTHER .event-content-body -->
+            </div><!-- /OTHER .event-content -->
+        </div><!-- /OTHER .event-row -->
+    </div><!-- /.events-wrapper -->
+    <div class="btn-wrapper-spaced">
+        <a class="btn btn-alt" href="#!reporting">View Reporting</a>
+    </div>
+</div><!-- /.track-wrapper -->
