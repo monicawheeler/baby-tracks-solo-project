@@ -32,7 +32,14 @@
                 <button class="btn btn-bare btn-small" ng-click="vm.getChildEventList(vm.trackChild.id); showSorted = false; showAll = true;">Show All</button>
             </div>
 
-            <input type="text" ng-model="vm.searchEvents" placeholder="Type category or notes to search">
+            <div class="search-input-container">
+                <p class="search-label">Search by Category or Notes:</p>
+                <div class="search-input-inner">
+                    <i class="fas fa-search search-icon magnifying-icon"></i>
+                    <input class="input input--full input--search" type="text" ng-model="vm.searchEvents" placeholder="Type category or notes to search">
+                    <i class="fas fa-times clear-icon search-icon" ng-click="vm.searchEvents = undefined"></i>
+                </div>
+            </div>
 
             <h2 class="header-title header-title--centered header-title--big header-title--spacer header-title--underlined">Showing <span ng-if="showAll">All Events</span><span ng-if="showSorted">{{vm.today | date: 'longDate'}} to current</span></h2>
             <!-- All events table -->

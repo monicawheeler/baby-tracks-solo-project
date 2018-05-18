@@ -436,6 +436,44 @@ input {
   .input[disabled] {
     color: rgba(0, 0, 0, 0.5); }
 
+.input--full {
+  width: 100%;
+  box-sizing: border-box; }
+  @media screen and (min-width: 700px) {
+    .input--full {
+      width: 33%; } }
+
+.input--search {
+  padding: 10px 40px; }
+
+.search-input-inner {
+  position: relative; }
+
+.search-icon {
+  padding: 0 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d3d3d3; }
+
+.magnifying-icon {
+  padding: 0 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  color: #d3d3d3; }
+
+.clear-icon {
+  right: 0; }
+  @media screen and (min-width: 700px) {
+    .clear-icon {
+      right: initial;
+      left: calc(33% - 35px); } }
+
+.search-label {
+  margin-bottom: 10px; }
+
 .input-col {
   width: 100%;
   margin: 10px 0; }
