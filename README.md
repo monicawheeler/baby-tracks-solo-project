@@ -34,9 +34,9 @@ Copy and paste database.sql file to set up the entire basic database structure.
 
 ## Screen Shots
 
-![Landing Page](/documentation/landing2.png)
-
-![Tracking View](/documentation/tracking2.png)
+![Landing Page Responsive](/documentation/landing-view.png)
+![Tracking View Responsive](/documentation/tracking-view.png)
+![Reports View Responsive](/documentation/reports-view.png)
 
 
 ### Completed Features
@@ -46,9 +46,10 @@ Copy and paste database.sql file to set up the entire basic database structure.
 - [x] **Tracking**: Allows families to track events, edit notes to the most recent event, and view the historical data of tracking events.
 - [X] **Emergency Contacts**: Allows families to create a comprehensive list of contacts for the family. Telephone numbers dial from mobile phones and addresses generate directions from your location. 
 - [X] **Reports View**: Move reports to its own view and allow for sorting reports by date.
+- [X] **Filtering Report Data**: Filter report table data by Category name and notes detail
 
 ### In Development
-- [ ] Filter historical event information.
+- [ ] Tracking page redesign
 
 ### Next Steps
 - [ ] Create a vitals list with important child information
