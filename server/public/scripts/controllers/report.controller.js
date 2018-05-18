@@ -1,6 +1,8 @@
 myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventService', 'ChildService', 'moment', function (FamilyService, ReportService, EventService, ChildService, moment) {
     var self = this;
 
+    self.searchEvents = "";
+    
     self.showEvents = false;
 
     self.familyService = FamilyService;
