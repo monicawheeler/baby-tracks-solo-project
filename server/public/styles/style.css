@@ -334,6 +334,12 @@ input {
 .md-calendar-date-selection-indicator:hover {
   background-color: rgba(118, 75, 162, 0.15); }
 
+.icon--bkgd {
+  fill: transparent; }
+
+.icon---fill {
+  fill: #764ba2; }
+
 .landing-wrapper {
   position: relative;
   background: url("assets/images/upclose-feet.jpg") no-repeat center center fixed;

@@ -16,6 +16,19 @@
             </div>
         </div>
         <div class="child-selected-wrapper" ng-if="vm.showChildTracking">
+            {{vm.trackChild.gender}}
+            <span ng-if="vm.trackChild.gender === 'female'">
+                
+                
+            </span>
+            <span ng-if="vm.trackChild.gender === 'male'">
+                
+                
+            </span>
+            <span ng-if="vm.trackChild.gender === 'neutral'">
+               
+                
+            </span>
             <img class="child-image" ng-src="styles/assets/images/baby-{{vm.trackChild.gender}}.svg" alt="">
             <div class="inner-subtitle-child">
                 <p class="super-title">Currently Tracking:</p>
