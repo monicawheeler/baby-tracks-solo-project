@@ -1,9 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="655.36" height="655.36" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
   <defs>
     <style>
-      .fil0{fill:none} <!-- makes background clear -->
-      .fil1{fill:blue}
-      
       .icon--bkgd{fill:none}
       .icon--fill{fill:#212121}
     </style>
