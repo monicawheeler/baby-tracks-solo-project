@@ -3,10 +3,19 @@
   height: 100px;
 }
 
+.icon-55 {
+  width: 55px;
+  height: 55px;
+}
+
 .icon--bkgd {
   fill: transparent;
 }
 
-.icon--fill {
+.icon--fill-primary {
   fill: $primary;
+}
+
+.icon--fill-white {
+  fill: $white;
 }
