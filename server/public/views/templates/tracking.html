@@ -77,8 +77,12 @@
     <a class="btn btn-alt" href="#!manage-children">Manage Children</a>
 </div><!-- /.select-header-no-children -->
 
+<div class="modal" ng-if="vm.showNewFeedingEvent">
+    <div class="modal__inner">Hi <button ng-click="vm.showNewFeedingEvent = false">Close</button> </div>
+</div>
+
 <div class="events-wrapper" ng-if="vm.showEventColumns">
-    <div class="event-tile event-tile--shade1" ng-repeat="feeding in vm.categoryFeeding.list">
+    <div class="event-tile event-tile--shade1" ng-repeat="feeding in vm.categoryFeeding.list" ng-click="vm.showNewFeedingEvent = true;">
         <span class="event-tile__icon">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
                 <g id="Layer_x0020_1">
