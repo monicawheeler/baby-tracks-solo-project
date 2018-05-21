@@ -77,31 +77,52 @@
     <a class="btn btn-alt" href="#!manage-children">Manage Children</a>
 </div><!-- /.select-header-no-children -->
 
-<div class="modal" ng-if="vm.showNewFeedingEvent">
-    <div class="modal__inner">Hi <button ng-click="vm.showNewFeedingEvent = false">Close</button> </div>
-</div>
-
 <div class="events-wrapper" ng-if="vm.showEventColumns">
-    <div class="event-tile event-tile--shade1" ng-repeat="feeding in vm.categoryFeeding.list" ng-click="vm.showNewFeedingEvent = true;">
-        <span class="event-tile__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
-                <g id="Layer_x0020_1">
-                    <path d="M2.28 2.54H3.87l.37-1.6.1.02-.1-.02a.1.1 0 0 1 .1-.09H5a.1.1 0 0 1 .1.14l-.54 2.32-.1-.02.1.02a.1.1 0 0 1-.1.09H2.99l-.17.41-.1-.04.1.04a.1.1 0 0 1-.1.07h-.64a.1.1 0 0 1-.1-.13l.2-1.12a.1.1 0 0 1 .1-.09zm.64.21h-.55l-.16.91h.44l.17-.4a.1.1 0 0 1 .1-.08h1.44l.5-2.11h-.43l-.37 1.6a.1.1 0 0 1-.1.08H2.92z" class="icon--fill-primary-dark"/>
-                    <path d="M2.5 2.65v-.73h.2v.73z" class="icon--fill-primary-dark"/>
-                    <path d="M2.04 1.74a.1.1 0 0 0 0 .21h2.11a.1.1 0 0 0 0-.21H2.04zM2.5 3.8a.1.1 0 0 0-.2-.06l-.56 2.1a.1.1 0 0 0 .2.05l.56-2.1zM4.07 3.26a.1.1 0 0 0-.2.06l.7 2.57a.1.1 0 0 0 .2-.05l-.7-2.58z" class="icon--fill-primary-dark"/>
-                    <path d="M2.19 4.6H4.3v.22H2.19z" class="icon--fill-primary-dark"/>
-                    <g id="_321117616">
-                    <path id="_321118024" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
-                    <path id="_321117928" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+    <div class="event-tile event-tile--shade1" ng-repeat="feeding in vm.categoryFeeding.list" ng-if="vm.showFeedingTile">
+        <div class="event-tile__inner" ng-click="vm.feedingModal = true;">
+            <span class="event-tile__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
+                    <g id="Layer_x0020_1">
+                        <path d="M2.28 2.54H3.87l.37-1.6.1.02-.1-.02a.1.1 0 0 1 .1-.09H5a.1.1 0 0 1 .1.14l-.54 2.32-.1-.02.1.02a.1.1 0 0 1-.1.09H2.99l-.17.41-.1-.04.1.04a.1.1 0 0 1-.1.07h-.64a.1.1 0 0 1-.1-.13l.2-1.12a.1.1 0 0 1 .1-.09zm.64.21h-.55l-.16.91h.44l.17-.4a.1.1 0 0 1 .1-.08h1.44l.5-2.11h-.43l-.37 1.6a.1.1 0 0 1-.1.08H2.92z" class="icon--fill-primary-dark"/>
+                        <path d="M2.5 2.65v-.73h.2v.73z" class="icon--fill-primary-dark"/>
+                        <path d="M2.04 1.74a.1.1 0 0 0 0 .21h2.11a.1.1 0 0 0 0-.21H2.04zM2.5 3.8a.1.1 0 0 0-.2-.06l-.56 2.1a.1.1 0 0 0 .2.05l.56-2.1zM4.07 3.26a.1.1 0 0 0-.2.06l.7 2.57a.1.1 0 0 0 .2-.05l-.7-2.58z" class="icon--fill-primary-dark"/>
+                        <path d="M2.19 4.6H4.3v.22H2.19z" class="icon--fill-primary-dark"/>
+                        <g id="_321117616">
+                        <path id="_321118024" d="M0 0h6.83v6.83H0z" class="icon--bkgd"/>
+                        <path id="_321117928" d="M.85.85h5.12v5.12H.85z" class="icon--bkgd"/>
+                        </g>
                     </g>
-                </g>
-            </svg>
-        </span>
-        <h2 class="event-tile__header">Feeding</h2>
-        <p class="event-tile__subheader">Last fed:
-            <span class="event-tile__subheader__time" am-time-ago="feeding.datetime"></span>
-        </p>
-        <p ng-if="feeding.notes" class="event-tile__notes">Notes: {{feeding.notes}}</p>
+                </svg>
+            </span>
+            <h2 class="event-tile__header">Feeding</h2>
+            <p class="event-tile__subheader">Last fed:
+                <span class="event-tile__subheader__time" am-time-ago="feeding.datetime"></span>
+            </p>
+            <p ng-if="feeding.notes" class="event-tile__notes">Notes: {{feeding.notes}}</p>
+        </div><!-- event-tile__inner -->
+        <div class="modal" ng-if="vm.feedingModal">
+            <div class="modal__inner">
+                <button ng-click="vm.feedingModal = false;">Close</button> 
+                <div>
+                    <!-- after clicking edit, hide notes paragraph and turn it into a textarea with the notes as a value -->
+                    <h3>Edit most recent event:</h3>
+                    <p>{{feeding.notes}}</p>
+                    <textarea name="feeding-notes" ng-model="feeding.notes"></textarea>
+                    <button>Edit</button>
+                    <button>Save</button>
+                </div>
+                <p>OR</p>
+                <div>
+                    <!-- new event tracking section -->
+                    <h3>Create new event:</h3>
+                    <textarea placeholder="Optional notes" ng-model="vm.newFeedingNotes"></textarea>
+                    <button ng-click="vm.feedingModal = false;">Cancel</button>
+                    <button ng-click="vm.trackEvent(vm.trackChild.id, vm.newFeedingNotes, 1, date); vm.feedingModal = false;">Track, no notes</button>
+                    <button ng-click="vm.trackEvent(vm.trackChild.id, vm.newFeedingNotes, 1, date); vm.feedingModal = false;">Save New Feeding</button>
+                </div>
+            </div>
+        </div>
+        
     </div><!-- /.event-tile -->
     <div class="event-tile event-tile--shade2">
         <span class="event-tile__icon">

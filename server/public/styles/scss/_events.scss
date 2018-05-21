@@ -55,13 +55,16 @@
     flex: 0 1 50%;
     box-sizing: border-box;
     color: $primary-dark;
-    cursor: pointer;
     transition: 300ms ease;
 
     @media screen and (min-width: 600px) {
         width: 33.3333%;
         flex: 0 1 33.3333%;
     }
+}
+
+.event-tile__inner {
+    cursor: pointer;
 }
 
 .event-tile__icon {
