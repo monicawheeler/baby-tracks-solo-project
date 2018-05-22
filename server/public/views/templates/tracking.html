@@ -106,10 +106,10 @@
                 <div>
                     <!-- after clicking edit, hide notes paragraph and turn it into a textarea with the notes as a value -->
                     <h3>Edit most recent event:</h3>
-                    <p>{{feeding.notes}}</p>
-                    <textarea name="feeding-notes" ng-model="feeding.notes"></textarea>
-                    <button>Edit</button>
-                    <button ng-click="vm.trackEvent(vm.trackChild.id, feeding.notes, 1, date)">Save</button>
+                    <p ng-if="!vm.editMode">{{feeding.notes}}</p>
+                    <textarea ng-if="vm.editMode" name="feeding-notes" ng-model="feeding.notes"></textarea>
+                    <button ng-if="!vm.editMode" ng-click="vm.editMode = true">Edit</button>
+                    <button ng-if="vm.editMode" ng-click="vm.trackEvent(vm.trackChild.id, feeding.notes, 1, date); vm.editMode = false;">Save</button>
                 </div>
                 <p>OR</p>
                 <div>
