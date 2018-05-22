@@ -52,6 +52,7 @@ Copy and paste database.sql file to set up the entire basic database structure.
 - [ ] Tracking page redesign
 
 ### Next Steps
+- [ ] Convert to PostCSS
 - [ ] Create a vitals list with important child information
   - [ ] Birthday, blood type, clothing sizes
 - [ ] Migrate application to a Progressive Web Application
