@@ -109,7 +109,7 @@
                     <p>{{feeding.notes}}</p>
                     <textarea name="feeding-notes" ng-model="feeding.notes"></textarea>
                     <button>Edit</button>
-                    <button>Save</button>
+                    <button ng-click="vm.trackEvent(vm.trackChild.id, feeding.notes, 1, date)">Save</button>
                 </div>
                 <p>OR</p>
                 <div>
