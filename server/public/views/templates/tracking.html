@@ -97,6 +97,7 @@
             <h2 class="event-tile__header">Feeding</h2>
             <p class="event-tile__subheader">Last fed:
                 <span class="event-tile__subheader__time" am-time-ago="feeding.datetime"></span>
+                <span class="event-tile__subheader__date">at {{feeding.datetime | date:'h:mm a'}}</span>
             </p>
             <p ng-if="feeding.notes" class="event-tile__notes">Notes: {{feeding.notes}}</p>
         </div><!-- event-tile__inner -->
@@ -126,20 +127,24 @@
                 <div class="modal__body">
                     <div>
                         <h3 class="modal__body__heading">Edit most recent event:</h3>
-                        <p ng-if="!vm.editMode">{{feeding.notes}}</p>
-                        <textarea ng-if="vm.editMode" name="feeding-notes" ng-model="feeding.notes"></textarea>
-                        <button ng-if="!vm.editMode" ng-click="vm.editMode = true">Edit</button>
-                        <button ng-if="vm.editMode" ng-click="vm.editMode = false">Cancel</button>
-                        <button ng-if="vm.editMode" ng-click="vm.trackEvent(vm.trackChild.id, feeding.notes, 1, date); vm.editMode = false;">Save</button>
+                        <p class="modal__body__text" title="Edit to modify notes" ng-if="!vm.editMode">{{feeding.notes}}</p>
+                        <textarea class="modal__body__textarea" ng-if="vm.editMode" name="feeding-notes" ng-model="feeding.notes"></textarea>
+                        <div class="modal__body__buttons">
+                            <button class="btn btn-bare" ng-if="!vm.editMode" ng-click="vm.feedingModal = false;">Close</button>
+                            <button class="btn btn-alt" ng-if="!vm.editMode" ng-click="vm.editMode = true">Edit</button>
+                            <button class="btn btn-bare" ng-if="vm.editMode" ng-click="vm.editMode = false">Cancel</button>
+                            <button class="btn btn-alt" ng-if="vm.editMode" ng-click="vm.trackEvent(vm.trackChild.id, feeding.notes, 1, date); vm.editMode = false;">Save</button>
+                        </div>
                     </div>
-                    <p class="modal__body__divider">OR</p>
+                    <p class="modal__body__divider"><span class="modal__body__divider__text">or</span></p>
                     <div>
                         <!-- new event tracking section -->
                         <h3 class="modal__body__heading">Create new event:</h3>
-                        <textarea placeholder="Optional notes" ng-model="vm.newFeedingNotes"></textarea>
-                        <button ng-click="vm.feedingModal = false;">Cancel</button>
-                        <button ng-click="vm.trackEvent(vm.trackChild.id, vm.newFeedingNotes, 1, date); vm.feedingModal = false;">Track, no notes</button>
-                        <button ng-click="vm.trackEvent(vm.trackChild.id, vm.newFeedingNotes, 1, date); vm.feedingModal = false;">Save New Feeding</button>
+                        <textarea class="modal__body__textarea" placeholder="Optional notes" ng-model="vm.newFeedingNotes"></textarea>
+                        <div class="modal__body__buttons">
+                            <button class="btn btn-bare" ng-click="vm.feedingModal = false;">Cancel</button>
+                            <button class="btn btn-alt" ng-click="vm.trackEvent(vm.trackChild.id, vm.newFeedingNotes, 1, date); vm.feedingModal = false;">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
