@@ -41,9 +41,9 @@ Copy and paste database.sql file to set up the entire basic database structure.
 
 ### Completed Features
 
-- [x] **Manage Children**: Allows families to add and remove children.
-- [x] **Account**: Allows families to modify their password.
-- [x] **Tracking**: Allows families to track events, edit notes to the most recent event, and view the historical data of tracking events.
+- [x] **Manage Children - MVP**: Allows families to add and remove children.
+- [x] **Account - MVP**: Allows families to modify their password.
+- [x] **Tracking - MVP**: Allows families to track events, edit notes to the most recent event, and view the historical data of tracking events.
 - [X] **Emergency Contacts**: Allows families to create a comprehensive list of contacts for the family. Telephone numbers dial from mobile phones and addresses generate directions from your location. 
 - [X] **Reports View**: Move reports to its own view and allow for sorting reports by date.
 - [X] **Filtering Report Data**: Filter report table data by Category name and notes detail
@@ -52,8 +52,9 @@ Copy and paste database.sql file to set up the entire basic database structure.
 - [ ] Tracking page redesign
 
 ### Next Steps
+- [ ] Convert to PostCSS
 - [ ] Create a vitals list with important child information
-  - [ ] Birthday, blood type, clothing sizes
+  - [ ] Birthday, blood type, clothing sizes, etc
 - [ ] Migrate application to a Progressive Web Application
 
 
