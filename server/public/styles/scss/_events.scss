@@ -183,13 +183,14 @@
 }
 
 .modal__header__icon {
+    padding: 0 5px;
     position: absolute;
     top: 3px;
     left: 0;
 }
 
 .modal__header__heading {
-    padding: 15px 50px;
+    padding: 15px 55px;
 }
 
 .modal__body {
@@ -213,13 +214,18 @@
     border: 1px dotted $primary;
 }
 
+.modal__body__text {
+    font-style: italic;
+    user-select: none;
+}
+
 .modal__body__textarea {
     width: 100%;
     box-sizing: border-box;
 }
 
 .modal__body__divider {
-    padding: 20px 0;
+    padding: 20px 0 60px;
     position: relative;
     
     &::before {

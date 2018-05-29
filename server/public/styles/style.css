@@ -705,12 +705,13 @@ input {
   border-top-left-radius: 4px; }
 
 .modal__header__icon {
+  padding: 0 5px;
   position: absolute;
   top: 3px;
   left: 0; }
 
 .modal__header__heading {
-  padding: 15px 50px; }
+  padding: 15px 55px; }
 
 .modal__body {
   padding: 10px 40px 40px; }
@@ -730,12 +731,16 @@ input {
   margin-bottom: 10px;
   border: 1px dotted #764ba2; }
 
+.modal__body__text {
+  font-style: italic;
+  user-select: none; }
+
 .modal__body__textarea {
   width: 100%;
   box-sizing: border-box; }
 
 .modal__body__divider {
-  padding: 20px 0;
+  padding: 20px 0 60px;
   position: relative; }
   .modal__body__divider::before {
     width: 100%;
