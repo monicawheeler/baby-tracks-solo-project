@@ -4,22 +4,22 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
 
 	self.message = EventService.message;
     
-    self.showFeedingTrackingButton = true;
-    self.showSleepingTrackingButton = true;
-    self.showDiaperingTrackingButton = true;
-    self.showBathingTrackingButton = true;
-    self.showMedicationTrackingButton = true;
-    self.showOtherTrackingButton = true;
+    self.showFeedingTile = true;
+    self.showSleepingTile = true;
+    self.showDiaperingTile = true;
+    self.showBathingTile = true;
+    self.showMedicationTile = true;
+    self.showOtherTile = true;
 
-    // Show all of the "Track New" buttons when selecting the child
+    // Show all of the "Track New" tiles when selecting the child
     self.showAllButtons = function(childId) {
         if(childId !== '' || childId !== undefined) {
-            self.showFeedingTrackingButton = true; 
-            self.showSleepingTrackingButton = true; 
-            self.showDiaperingTrackingButton = true; 
-            self.showBathingTrackingButton = true; 
-            self.showMedicationTrackingButton = true; 
-            self.showOtherTrackingButton = true;
+            self.showFeedingTile = true; 
+            self.showSleepingTile = true; 
+            self.showDiaperingTile = true; 
+            self.showBathingTile = true; 
+            self.showMedicationTile = true; 
+            self.showOtherTile = true;
         }
     }
     
@@ -61,6 +61,8 @@ myApp.controller('EventController', ['$http', 'FamilyService', 'ChildService', '
     self.trackEvent = function(child_id, notes, category_id) {
         let currentDateTime = new Date();
         EventService.trackEvent(child_id, notes, category_id, currentDateTime);
+        console.log('trackEvent function has run:', child_id, notes, category_id, currentDateTime);
+        
     }
 
     // EventService to get the event list for the current child

@@ -38,6 +38,17 @@
     border: none;
 }
 
+// Looks like regular text
+.btn-ninja {
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background-color: transparent;
+    &:hover {
+        background-color: transparent;
+    }
+}
+
 .btn-warn {
     border: 1px solid $warn;
     color: $warn;

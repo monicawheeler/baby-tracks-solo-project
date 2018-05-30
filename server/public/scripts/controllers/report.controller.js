@@ -4,6 +4,8 @@ myApp.controller('ReportController', ['FamilyService', 'ReportService', 'EventSe
     self.searchEvents = "";
     
     self.showEvents = false;
+    
+    self.editMode = false;
 
     self.familyService = FamilyService;
     self.familyObject = FamilyService.familyObject;
