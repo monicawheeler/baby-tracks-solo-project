@@ -47,12 +47,12 @@ Copy and paste database.sql file to set up the entire basic database structure.
 - [X] **Emergency Contacts**: Allows families to create a comprehensive list of contacts for the family. Telephone numbers dial from mobile phones and addresses generate directions from your location. 
 - [X] **Reports View**: Move reports to its own view and allow for sorting reports by date.
 - [X] **Filtering Report Data**: Filter report table data by Category name and notes detail
+- [X] **Tracking page redesign**: Create large buttons that launch a modal with both Edit and New event entry boxes
 
 ### In Development
-- [ ] Tracking page redesign
+- [ ] Convert to PostCSS
 
 ### Next Steps
-- [ ] Convert to PostCSS
 - [ ] Create a vitals list with important child information
   - [ ] Birthday, blood type, clothing sizes, etc
 - [ ] Migrate application to a Progressive Web Application
