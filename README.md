@@ -49,6 +49,9 @@ Copy and paste database.sql file to set up the entire basic database structure.
 - [X] **Filtering Report Data**: Filter report table data by Category name and notes detail
 - [X] **Tracking page redesign**: Create large buttons that launch a modal with both Edit and New event entry boxes
 
+### Bug Fixes
+- [ ] Add event tiles for new events not yet tracked
+
 ### In Development
 - [ ] Convert to PostCSS
 
