@@ -78,7 +78,7 @@
 </div><!-- /.select-header-no-children -->
 
 <div class="events-wrapper" ng-if="vm.showEventColumns">
-    <div class="event-tile event-tile--shade1" ng-repeat="feeding in vm.categoryFeeding.list" ng-if="vm.showFeedingTile">
+    <div class="event-tile event-tile--shade1" ng-if="vm.showFeedingTile">
         <div class="event-tile__inner" ng-click="vm.feedingModal = true;">
             <span class="event-tile__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
@@ -95,11 +95,11 @@
                 </svg>
             </span>
             <h2 class="event-tile__header">Feeding</h2>
-            <p class="event-tile__subheader">Last fed:
+            <p class="event-tile__subheader" ng-repeat="feeding in vm.categoryFeeding.list">Last fed:
                 <span class="event-tile__subheader__time" am-time-ago="feeding.datetime"></span>
-                <span class="event-tile__subheader__date" ngMaxlength>at {{feeding.datetime | date:'h:mm a'}}</span>
+                <span class="event-tile__subheader__date">at {{feeding.datetime | date:'h:mm a'}}</span>
             </p>
-            <p ng-if="feeding.notes" class="event-tile__notes">Notes: {{feeding.notes}}</p>
+            <p ng-if="feeding.notes" class="event-tile__notes" ng-repeat="feeding in vm.categoryFeeding.list">Notes: {{feeding.notes}}</p>
         </div><!-- event-tile__inner -->
         <div class="modal" ng-if="vm.feedingModal">
             <div class="modal__inner">
@@ -125,7 +125,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="modal__body">
-                    <div>
+                    <div ng-repeat="feeding in vm.categoryFeeding.list">
                         <h3 class="modal__body__heading">Edit most recent event:</h3>
                         <p class="modal__body__text" title="Edit to modify notes" ng-if="!vm.editMode">{{feeding.notes}}</p>
                         <textarea class="modal__body__textarea" ng-if="vm.editMode" name="feeding-notes" ng-model="feeding.notes"></textarea>
@@ -151,7 +151,7 @@
         </div>
     </div><!-- / FEEDING .event-tile -->
     
-    <div class="event-tile event-tile--shade2" ng-repeat="sleeping in vm.categorySleeping.list" ng-if="vm.showSleepingTile">
+    <div class="event-tile event-tile--shade2" ng-if="vm.showSleepingTile">
         <div class="event-tile__inner" ng-click="vm.sleepingModal = true;">
             <span class="event-tile__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
@@ -167,11 +167,11 @@
                 </svg>
             </span>
             <h2 class="event-tile__header">Sleeping</h2>
-            <p class="event-tile__subheader">Last slept:
+            <p class="event-tile__subheader" ng-repeat="sleeping in vm.categorySleeping.list">Last slept:
                 <span class="event-tile__subheader__time" am-time-ago="sleeping.datetime"></span>
                 <span class="event-tile__subheader__date">at {{sleeping.datetime | date:'h:mm a'}}</span>
             </p>
-            <p ng-if="sleeping.notes" class="event-tile__notes">{{vm.trackChild.first_name}} is {{sleeping.notes}}</p>
+            <p ng-if="sleeping.notes" class="event-tile__notes" ng-repeat="sleeping in vm.categorySleeping.list">{{vm.trackChild.first_name}} is {{sleeping.notes}}</p>
         </div><!-- /.event-tile_inner -->
         <div class="modal" ng-if="vm.sleepingModal">
             <div class="modal__inner">
@@ -196,7 +196,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="modal__body">
-                    <div>
+                    <div ng-repeat="sleeping in vm.categorySleeping.list">
                         <h3 class="modal__body__heading">Currently {{vm.trackChild.first_name}} is {{sleeping.notes}}</h3>
                     </div>
                     <p class="modal__body__divider"><span class="modal__body__divider__text">add event</span></p>
@@ -212,7 +212,7 @@
         </div>
     </div><!-- / SLEEPING .event-tile -->
 
-    <div class="event-tile event-tile--shade3" ng-repeat="bathing in vm.categoryBathing.list" ng-if="vm.showBathingTile">
+    <div class="event-tile event-tile--shade3" ng-if="vm.showBathingTile">
         <div class="event-tile__inner" ng-click="vm.bathingModal = true;">
             <span class="event-tile__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.8267 6.8267">
@@ -227,11 +227,11 @@
                 </svg>
             </span>
             <h2 class="event-tile__header">Bathing</h2>
-            <p class="event-tile__subheader">Last clean:
+            <p class="event-tile__subheader" ng-repeat="bathing in vm.categoryBathing.list">Last clean:
                 <span class="event-tile__subheader__time" am-time-ago="bathing.datetime"></span>
                 <span class="event-tile__subheader__date">at {{bathing.datetime | date:'h:mm a'}}</span>
             </p>
-            <p ng-if="bathing.notes" class="event-tile__notes">Notes: {{bathing.notes}}</p>
+            <p ng-if="bathing.notes" class="event-tile__notes" ng-repeat="bathing in vm.categoryBathing.list">Notes: {{bathing.notes}}</p>
         </div><!-- /.event-tile_inner -->
         <div class="modal" ng-if="vm.bathingModal">
             <div class="modal__inner">
@@ -255,7 +255,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="modal__body">
-                    <div>
+                    <div ng-repeat="bathing in vm.categoryBathing.list">
                         <h3 class="modal__body__heading">Edit most recent event:</h3>
                         <p class="modal__body__text" title="Edit to modify notes" ng-if="!vm.editMode">{{bathing.notes}}</p>
                         <textarea class="modal__body__textarea" ng-if="vm.editMode" name="bathing-notes" ng-model="bathing.notes"></textarea>
@@ -281,7 +281,7 @@
         </div>
     </div><!-- / BATHING .event-tile -->
 
-    <div class="event-tile event-tile--shade4" ng-repeat="diapering in vm.categoryDiapering.list" ng-if="vm.showDiaperingTile">
+    <div class="event-tile event-tile--shade4" ng-if="vm.showDiaperingTile">
         <div class="event-tile__inner" ng-click="vm.diaperingModal = true;">
             <span class="event-tile__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
@@ -300,11 +300,11 @@
                 </svg>
             </span>
             <h2 class="event-tile__header">Diapering</h2>
-            <p class="event-tile__subheader">Last changed:
+            <p class="event-tile__subheader" ng-repeat="diapering in vm.categoryDiapering.list">Last changed:
                 <span class="event-tile__subheader__time" am-time-ago="diapering.datetime"></span>
                 <span class="event-tile__subheader__date">at {{diapering.datetime | date:'h:mm a'}}</span>
             </p>
-            <p ng-if="diapering.notes" class="event-tile__notes">Notes: {{diapering.notes}}</p>
+            <p ng-if="diapering.notes" class="event-tile__notes" ng-repeat="diapering in vm.categoryDiapering.list">Notes: {{diapering.notes}}</p>
         </div><!-- / event-tile__inner -->
         <div class="modal" ng-if="vm.diaperingModal">
             <div class="modal__inner">
@@ -332,7 +332,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="modal__body">
-                    <div>
+                    <div ng-repeat="diapering in vm.categoryDiapering.list">
                         <h3 class="modal__body__heading">Edit most recent event:</h3>
                         <p class="modal__body__text" title="Edit to modify notes" ng-if="!vm.editMode">{{diapering.notes}}</p>
                         <textarea class="modal__body__textarea" ng-if="vm.editMode" name="diapering-notes" ng-model="diapering.notes"></textarea>
@@ -358,7 +358,7 @@
         </div>
     </div><!-- / DIAPERING .event-tile -->
     
-    <div class="event-tile event-tile--shade5" ng-repeat="medication in vm.categoryMedication.list" ng-if="vm.showMedicationTile">
+    <div class="event-tile event-tile--shade5" ng-if="vm.showMedicationTile">
         <div class="event-tile__inner" ng-click="vm.medicationModal = true;">
             <span class="event-tile__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
@@ -379,11 +379,11 @@
                 </svg>
             </span>
             <h2 class="event-tile__header">Medication</h2>
-            <p class="event-tile__subheader">Meds given:
+            <p class="event-tile__subheader" ng-repeat="medication in vm.categoryMedication.list">Meds given:
                 <span class="event-tile__subheader__time" am-time-ago="medication.datetime"></span>
                 <span class="event-tile__subheader__date">at {{medication.datetime | date:'h:mm a'}}</span>
             </p>
-            <p ng-if="medication.notes" class="event-tile__notes">Notes: {{medication.notes}}</p>
+            <p ng-if="medication.notes" class="event-tile__notes" ng-repeat="medication in vm.categoryMedication.list">Notes: {{medication.notes}}</p>
         </div><!-- /.event-tile__inner-->
         <div class="modal" ng-if="vm.medicationModal">
             <div class="modal__inner">
@@ -413,7 +413,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="modal__body">
-                    <div>
+                    <div ng-repeat="medication in vm.categoryMedication.list">
                         <h3 class="modal__body__heading">Edit most recent event:</h3>
                         <p class="modal__body__text" title="Edit to modify notes" ng-if="!vm.editMode">{{medication.notes}}</p>
                         <textarea class="modal__body__textarea" ng-if="vm.editMode" name="medication-notes" ng-model="medication.notes"></textarea>
@@ -439,7 +439,7 @@
         </div>
     </div><!-- /MEDICATION .event-tile -->
 
-    <div class="event-tile event-tile--shade6" ng-repeat="other in vm.categoryOther.list" ng-if="vm.showOtherTile">
+    <div class="event-tile event-tile--shade6" ng-if="vm.showOtherTile">
         <div class="event-tile__inner" ng-click="vm.otherModal = true;">
             <span class="event-tile__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-40" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.83 6.83">
@@ -460,11 +460,11 @@
                 </svg>
             </span>
             <h2 class="event-tile__header">Other</h2>
-            <p class="event-tile__subheader">Other:
+            <p class="event-tile__subheader" ng-repeat="other in vm.categoryOther.list">Other:
                 <span class="event-tile__subheader__time" am-time-ago="other.datetime"></span>
                 <span class="event-tile__subheader__date">at {{other.datetime | date:'h:mm a'}}</span>
             </p>
-            <p ng-if="other.notes" class="event-tile__notes">Notes: {{other.notes}}</p>
+            <p ng-if="other.notes" class="event-tile__notes" ng-repeat="other in vm.categoryOther.list">Notes: {{other.notes}}</p>
         </div><!-- /.event-tile__inner -->
         <div class="modal" ng-if="vm.otherModal">
             <div class="modal__inner">
@@ -494,7 +494,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="modal__body">
-                    <div>
+                    <div ng-repeat="other in vm.categoryOther.list">
                         <h3 class="modal__body__heading">Edit most recent event:</h3>
                         <p class="modal__body__text" title="Edit to modify notes" ng-if="!vm.editMode">{{other.notes}}</p>
                         <textarea class="modal__body__textarea" ng-if="vm.editMode" name="other-notes" ng-model="other.notes"></textarea>
